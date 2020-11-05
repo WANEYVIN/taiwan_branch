@@ -1,0 +1,221 @@
+<!--miniprogram/pages/IDcheck/IDcheck.wxml-->
+<!--<text>miniprogram/pages/IDcheck/IDcheck.wxml</text>-->
+<view class="weui-cells__group weui-cells__group_form">
+
+    <form bindsubmit="formSubmit" bindreset="formReset">
+
+        <view class="weui-cells weui-cells_form">
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">姓名:</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="input_name" class="weui-input" placeholder="{{placeholder_name}}" value="{{placeholder_name}}" />
+                </view>
+            </view>
+
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">身份证号:</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="input_ID" class="weui-input" placeholder="{{placeholder_id}}" value="{{placeholder_id}}"  />
+                </view>
+
+
+            </view>
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">地址:</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="input_addr" class="weui-input" placeholder="{{placeholder_addr}}" value="{{placeholder_addr}}"  />
+                </view>
+
+
+            </view>
+
+
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">性别:</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="input_gender" class="weui-input" placeholder="{{placeholder_gender}}" value="{{placeholder_gender}}"  disabled/>
+                </view>
+
+            </view>
+
+
+<!--            <view class="weui-cell weui-cell_active weui-cell_disabled">-->
+<!--                <view class="weui-cell__hd">-->
+<!--                    <label class="weui-label">性别:</label>-->
+<!--                </view>-->
+<!--                <view class="weui-cell__bd">-->
+<!--                    &lt;!&ndash;                    <input name="input_member_gender" class="weui-input" placeholder="请输入" value="{{member_gender}}"  />&ndash;&gt;-->
+
+<!--                    <picker bindchange="Picker_gender" value="{{gender_index}}" range="{{gender_array}}">-->
+<!--                        <a class="">{{shown_gender}}</a>-->
+<!--                    </picker>-->
+<!--                </view>-->
+
+
+<!--            </view>-->
+
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">生日:</label>
+                </view>
+<!--                <view class="weui-cell__bd">-->
+<!--                    <input name="input_birthday" class="weui-input" placeholder="{{placeholder_birthday}}" value="{{placeholder_birthday}}"  />-->
+<!--                </view>-->
+                <view class="weui-cell__bd">
+                    <!--                    <input class="weui-btn weui-btn_default" name="input_member_birthday" class="weui-input" placeholder="请输入" value="{{member_birthday}}"  />-->
+                    <picker mode="date" value="{{member_birthday}}" start="1900-09-01" end="2005-09-01" bindchange="birthdayChange">
+                        <a class="">{{member_birthday}}</a>
+                    </picker>
+
+                </view>
+
+            </view>
+
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">{{label_nationality}}</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="input_nationality" class="weui-input" placeholder="{{placeholder_nationality}}" value="{{placeholder_nationality}}"  />
+                </view>
+
+
+            </view>
+
+<!--            <view class="weui-cell weui-cell_active weui-cell_disabled">-->
+<!--                <view class="weui-cell__hd">-->
+<!--                    <label class="weui-label">电话:</label>-->
+<!--                </view>-->
+<!--                <view class="weui-cell__bd">-->
+<!--                    <input name="input_phone" type="number"  class="weui-input" placeholder="{{member_phone_num}}" value="{{member_phone_num}}"  />-->
+<!--                </view>-->
+
+
+<!--            </view>-->
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">证件到期日:</label>
+                </view>
+<!--                <view class="weui-cell__bd">-->
+<!--                    <input name="input_expiration" class="weui-input" placeholder="{{placeholder_expiration}}" value="{{placeholder_expiration}}"  />-->
+<!--                </view>-->
+
+                <view class="weui-cell__bd">
+                    <!--                    <input class="weui-btn weui-btn_default" name="input_member_birthday" class="weui-input" placeholder="请输入" value="{{member_birthday}}"  />-->
+                    <picker mode="date" value="{{member_id_expiration}}" start="1900-09-01" end="2040-01-01" bindchange="bindDateChange">
+                        <a class="">{{member_id_expiration}}</a>
+                    </picker>
+
+                </view>
+
+            </view>
+
+
+            <view class="button-sp-area" >
+                <button class="weui-btn weui-btn_primary" formType="submit">{{submitButton}}</button>
+            </view>
+<!--            <button formType="submit">{{submitButton}}</button>-->
+        </view></form></view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--&lt;!&ndash; My test above &ndash;&gt;-->
+<!--<form bindsubmit="formSubmit" bindreset="formReset">-->
+<!--&lt;!&ndash;    <view class="section section_gap">&ndash;&gt;-->
+<!--&lt;!&ndash;        <view class="section__title">是否公开信息</view>&ndash;&gt;-->
+<!--&lt;!&ndash;        <switch name="isPub" />&ndash;&gt;-->
+<!--&lt;!&ndash;    </view>&ndash;&gt;-->
+
+<!--    <view class="page-section">-->
+<!--&lt;!&ndash;        <view class="section">&ndash;&gt;-->
+<!--&lt;!&ndash;        <view class="section__title">姓名</view>&ndash;&gt;-->
+<!--        <view class="weui-cells__title">姓名</view>-->
+<!--        <view class="weui-cells weui-cells_after-title">-->
+<!--            <view class="weui-cell weui-cell_input">-->
+
+<!--            <input name="input_name" placeholder="{{placeholder_name}}"  value="{{placeholder_name}}" />-->
+<!--            </view>-->
+<!--        </view>-->
+<!--    </view>-->
+<!--    <view class="section">-->
+<!--        <view class="section__title">身份證號</view>-->
+<!--        <input name="input_ID" placeholder="{{placeholder_id}}" value="{{placeholder_id}}" />-->
+<!--    </view>-->
+<!--    <view class="section">-->
+<!--        <view class="section__title">地址:</view>-->
+<!--        <input name="input_addr" placeholder="{{placeholder_addr}}" value="{{placeholder_addr}}" />-->
+<!--    </view>-->
+<!--    <view class="section">-->
+<!--        <view class="section__title">性別:</view>-->
+<!--        <input name="input_gender" placeholder="{{placeholder_gender}}" value="{{placeholder_gender}}" />-->
+<!--    </view>-->
+<!--    <view class="section">-->
+<!--        <view class="section__title">民族:</view>-->
+<!--        <input name="input_nationality" placeholder="{{placeholder_nationality}}" value="{{placeholder_nationality}}" />-->
+<!--    </view>-->
+<!--    <view class="section">-->
+<!--        <view class="section__title">生日:</view>-->
+<!--        <input name="input_birthday" placeholder="{{placeholder_birthday}}" value="{{placeholder_birthday}}" />-->
+<!--    </view>-->
+<!--    <view class="section">-->
+<!--        <view class="section__title">電話:</view>-->
+<!--        <input name="input_phone" placeholder="請輸入" value="" />-->
+<!--    </view>-->
+<!--    <view class="section">-->
+<!--        <view class="section__title">住處:</view>-->
+<!--        <input name="input_home" placeholder="請輸入" value="" />-->
+<!--    </view>-->
+<!--    <view class="section">-->
+<!--        <view class="section__title">婚姻:</view>-->
+<!--        <input name="input_marriage" placeholder="請輸入" value="" />-->
+<!--    </view>-->
+<!--    <view class="section">-->
+<!--        <view class="section__title">教育程度:</view>-->
+<!--        <input name="input_certificates" placeholder="請輸入" value="" />-->
+<!--    </view>-->
+<!--    <view class="section section_gap">-->
+<!--        <view class="section__title">性别</view>-->
+<!--        <radio-group name="input_sex">-->
+<!--            <label>-->
+<!--                <radio value="男" checked/>男</label>-->
+<!--            <label>-->
+<!--                <radio value="女" />女</label>-->
+<!--        </radio-group>-->
+<!--    </view>-->
+<!--    <view class="btn-area">-->
+<!--        <button formType="submit">提交</button>-->
+<!--        <button formType="reset">重置</button>-->
+<!--    </view>-->
+<!--</form>-->
+<!--<view wx:if="{{isSubmit}}">-->
+<!--&lt;!&ndash;    {{warn ? warn : "是否公开信息："+isPub+"，手机号："+phone+"，密码："+pwd+"，性别："+sex}}&ndash;&gt;-->
+<!--    {{warn ? warn : "姓名:"+input_name+"身份證號:"+input_ID+"地址:"+input_addr+"性别:"+input_gender+"民族:"+input_nationality+"生日:"+input_birthday+"電話:"+input_phone+"住處:"+input_home+"婚姻:"+input_marriage+"教育程度:"+input_certificates}}-->
+<!--</view>-->

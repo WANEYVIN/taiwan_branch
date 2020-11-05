@@ -1,0 +1,10 @@
+/* miniprogram/pages/membership/membership.wxss */
+.alignment{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /*line-height: 2;*/
+    font-weight: 700;
+
+}

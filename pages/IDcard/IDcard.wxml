@@ -1,0 +1,32 @@
+<!--miniprogram/pages/IDcard/IDcard.wxml-->
+<!--<view>-->
+<!--<text>-->
+<!--    使用者進入-->
+<!--    辨識身份證，-->
+<!--    若為既存會員則登入-->
+<!--    新會員則添加進數據庫->下一步辨識銀行卡->下一步簽署同意書與協議->完成登入自動轉跳至任務中心查看列表</text>-->
+<!--</view>-->
+
+    <open-data class="user-avatar" type="userAvatarUrl"></open-data>
+<view class="container2" wx:if="{{condition == '0'}}" >
+
+     <open-data class="procedures" type="userNickName" lang="zh_CN"></open-data>
+
+        <text class="procedures"> 請您依照後續步驟完善登錄程序，謝謝！</text>
+    <text class="procedures"> 步驟一：點擊</text>
+    <button bindtap="shenfenzheng" class="btn">  身份证拍照或上傳  </button>
+<!--    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>-->
+</view>
+
+<view class="container2" wx:else>
+
+    <view wx:for="{{list}}" wx:key="list">
+        <text>{{index}} : </text><text>{{item}}</text>
+    </view>
+
+
+</view>
+
+
+
+

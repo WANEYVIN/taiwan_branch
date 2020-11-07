@@ -1,0 +1,263 @@
+<!--<view>-->
+
+
+    <view  wx:if="{{management=='1'}}">
+        <view>
+        <a class="" bindtap="manager">请点击进入管理页面</a>
+        </view>
+        <!--    {{warn ? warn : "是否公开信息："+isPub+"，手机号："+phone+"，密码："+pwd+"，性别："+sex}}-->
+<!--        {{warn ? warn : "姓名:"+input_name+"身份證號:"+input_ID+"地址:"+input_addr+"性别:"+input_gender+"民族:"+input_nationality+"生日:"+input_birthday+"電話:"+input_phone+"住處:"+input_home+"婚姻:"+input_marriage+"教育程度:"+input_certificates}}-->
+    </view>
+
+
+<view bindtap="takeCamera" class="weui-article " wx:if="{{IsMember =='0'}}">
+
+    <text class="weui-article__p"> 您尚未登录为会员，请依照后续引导步骤完善登录程序，谢谢！</text>
+    <text class="weui-article__p"> 请准备好身份证，点击下方图案按钮</text>
+    <button bindtap="takeCamera" class="btn">  拍照或上传您的身份证  </button>
+<!-- test --->
+
+    <view class="weui-article__p">
+        <image bindtap="takeCamera" class="weui-article__img" src="../../images/magnify_scan.png" mode="aspectFit" />
+<!--        <image class="weui-article__img" src="../images/pic_article.png" mode="aspectFit" style="height: 180px" />-->
+    </view>
+
+    <!-- test --->
+
+</view>
+
+ <!--   <view class="" wx:if="{{IsMember =='1'}}">-->
+
+    <view class="" wx:else>
+
+        <view class="weui-cells__group weui-cells__group_form">
+
+
+            <form bindsubmit="formSubmit" bindreset="formReset">
+
+
+        <view class="weui-cells weui-cells_form">
+
+        <view class="weui-cell weui-cell_active weui-cell_disabled">
+            <view class="weui-cell__hd">
+                <label class="weui-label">姓名:</label>
+            </view>
+            <view class="weui-cell__bd">
+                <input name="input_member_name" class="weui-input" placeholder="请输入" value="{{member_name}}"  />
+            </view>
+        </view>
+
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">身份证号:</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="input_member_id" class="weui-input" placeholder="请输入" value="{{member_id}}"  />
+                </view>
+
+
+            </view>
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label" style="color:{{expired_colour}}">证件到期:</label>
+                </view>
+                <!--                <view class="weui-cell__bd">-->
+                <!--                    <input name="input_expiration" class="weui-input" placeholder="{{placeholder_expiration}}" value="{{placeholder_expiration}}"  />-->
+                <!--                </view>-->
+
+                <view class="weui-cell__bd">
+                    <!--                    <input class="weui-btn weui-btn_default" name="input_member_birthday" class="weui-input" placeholder="请输入" value="{{member_birthday}}"  />-->
+                    <picker mode="date" value="{{member_id_expiration}}" start="1900-09-01" end="2040-01-01" bindchange="expirationChange">
+                        <a class="">{{member_id_expiration}}</a>
+                    </picker>
+
+                </view>
+
+            </view>
+
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">电话:</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="input_member_phone_num" class="weui-input" type="number" placeholder="请输入" value="{{member_phone_num}}"  />
+                </view>
+
+
+            </view>
+
+
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">工资银行:</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="input_bank_name" class="weui-input" placeholder="请输入工资打款的银行" value="{{member_bank_name}}"  />
+
+                </view>
+
+
+            </view>
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">银行支行:</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="input_bank_branch" class="weui-input" placeholder="请输入银行的支行名称" value="{{member_bank_branch}}"  />
+                </view>
+
+
+            </view>
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">银行帐号:</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="input_member_bank" class="weui-input" type="number" placeholder="请输入银行帐号" value="{{member_bank}}"  />
+                </view>
+
+
+            </view>
+
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">地址:</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="input_member_address" class="weui-input" placeholder="请输入" value="{{member_address}}"  />
+                </view>
+
+
+            </view>
+
+
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">性别:</label>
+                </view>
+                <view class="weui-cell__bd">
+<!--                    <input name="input_member_gender" class="weui-input" placeholder="请输入" value="{{member_gender}}"  />-->
+
+                    <picker bindchange="Picker_gender" value="{{gender_index}}" range="{{gender_array}}">
+                        <a class="">{{shown_gender}}</a>
+                    </picker>
+                </view>
+
+
+            </view>
+
+
+
+
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">生日:</label>
+                </view>
+                <view class="weui-cell__bd">
+<!--                    <input class="weui-btn weui-btn_default" name="input_member_birthday" class="weui-input" placeholder="请输入" value="{{member_birthday}}"  />-->
+                    <picker mode="date" value="{{member_birthday}}" start="1900-09-01" end="2005-09-01" bindchange="bindDateChange">
+                        <a class="">{{member_birthday}}</a>
+                    </picker>
+
+                </view>
+
+
+            </view>
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">{{label_nationality}}</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="input_member_nationality" class="weui-input" placeholder="请输入" value="{{member_nationality}}"  />
+                </view>
+
+
+            </view>
+
+
+
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">住处:</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="input_member_registered_addr" class="weui-input" placeholder="请输入" value="{{member_registered_addr}}"  />
+                </view>
+
+
+            </view>
+
+            <view bindchange="bindPickerChange" class="weui-cell weui-cell_active weui-cell_disabled" >
+                <view class="weui-cell__hd">
+                    <label class="weui-label">婚姻:</label>
+                </view>
+                <view class="weui-cell__bd">
+
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                        <a class="">{{shown_marrige}}</a>
+                    </picker>
+<!--                    <input name="input_member_marrige" class="weui-input" placeholder="请输入" value="{{member_marrige}}"  />-->
+                </view>
+
+
+            </view>
+
+
+<!--            <view class="weui-cell weui-cell_active weui-cell_disabled">-->
+<!--                <view class="weui-cell__hd">-->
+<!--                    <label class="weui-label">婚姻:</label>-->
+<!--                </view>-->
+<!--                <view class="weui-cell__bd">-->
+<!--                    <input name="input_member_marrige" class="weui-input" placeholder="请输入" value="{{member_marrige}}"  />-->
+<!--                </view>-->
+
+
+<!--            </view>-->
+
+
+            <view class="button-sp-area" >
+
+            <button class="weui-btn weui-btn_primary" formType="submit" >{{submitButton}}</button>
+
+            </view>
+
+
+
+        </view>
+            </form>
+
+        </view>
+
+
+<!--    <view wx:if="{{isSubmit}}">-->
+<!--        &lt;!&ndash;    {{warn ? warn : "是否公开信息："+isPub+"，手机号："+phone+"，密码："+pwd+"，性别："+sex}}&ndash;&gt;-->
+<!--&lt;!&ndash;        {{warn ? warn : "姓名:"+input_name+"身份證號:"+input_ID+"地址:"+input_addr+"性别:"+input_gender+"民族:"+input_nationality+"生日:"+input_birthday+"電話:"+input_phone+"住處:"+input_home+"婚姻:"+input_marriage+"教育程度:"+input_certificates}}&ndash;&gt;-->
+<!--    </view>-->
+
+
+        <view class="myProfile_buttons">
+        <view class="myProfile_button_text">
+
+            <image bindtap="downloadFile" class="myProfile_icons" name="{{contractDoc}}"  src="../../images/contract.png" mode="aspectFit"  ></image>
+            <view>查看簽署的協議</view>
+
+        </view>
+        <view class="myProfile_button_text">
+
+            <image bindtap="drop" class="myProfile_icons" src="../../images/off_power.png" mode="aspectFit"  ></image>
+            <view>{{drop_button}}</view>
+
+        </view>
+
+        </view>
+
+</view>
+

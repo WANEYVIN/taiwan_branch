@@ -1,0 +1,50 @@
+<!--pages/test/test.wxml-->
+<!-- <text>pages/test/test.wxml</text> -->
+<!--richard/pages/index/index.wxml-->
+<view  class="page" data-weui-theme="{{theme}}" >
+        <view class="page__bd" wx:if="{{loading == '1'}}">
+            <view class="weui-loading__wrp">
+                <view class="loading wx_dot_loading"></view>
+            </view>
+
+            <view class="weui-article "><text class="weui-article__p">辨识中，请稍后！</text></view>ㄑ
+
+            <view class="weui-loading__wrp">
+                <view class="weui-loading"></view>
+            </view>
+        </view>
+</view>
+<view class="page" wx:elseif="{{loading==='0'}}">
+
+   <view class="weui-article "><text class="weui-article__p">打开相机或相册，请稍后！</text></view>
+
+</view>
+
+
+<!--<view>-->
+<!--&lt;!&ndash;<web-view src="https://www.top-talent.com.cn/linghuo/list_task.php"></web-view>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <view class ="test_button">&ndash;&gt;-->
+<!--&lt;!&ndash;        <button type="primary" ontap="send">查詢</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </view>&ndash;&gt;-->
+<!--&lt;!&ndash;    <view>test</view>&ndash;&gt;-->
+
+<!--    <view wx:for="{{list}}" wx:key="list">-->
+<!--        <text>{{index}} : </text><text>{{item}}</text>-->
+<!--        &lt;!&ndash;        <view>{{item.match_sn}}</view>&ndash;&gt;-->
+<!--&lt;!&ndash;        <view>{{item.match_task}}</view>&ndash;&gt;-->
+<!--&lt;!&ndash;        <view>{{item.match_member}}</view>&ndash;&gt;-->
+<!--&lt;!&ndash;        <view>{{item.match_date}}</view>&ndash;&gt;-->
+<!--&lt;!&ndash;        <view>{{item.match_code}}</view>&ndash;&gt;-->
+<!--&lt;!&ndash;        <view>{{item.match_contract}}</view>&ndash;&gt;-->
+<!--&lt;!&ndash;        <view>{{item.match_condition}}</view>&ndash;&gt;-->
+<!--&lt;!&ndash;        <view>{{item.match_approval}}</view>&ndash;&gt;-->
+<!--&lt;!&ndash;        <view>{{item.match_paid}}</view>&ndash;&gt;-->
+<!--&lt;!&ndash;        <view>{{item.match_cancel}}</view>&ndash;&gt;-->
+<!--&lt;!&ndash;        <view>{{item.match_description}}</view>&ndash;&gt;-->
+
+<!--      </view>-->
+<!--      -->
+<!--</view>-->
+
+<!--&lt;!&ndash;[{"match_sn":2,"match_date":"2020-07-16 00:00:00","match_member":"330122198102212239","match_task":"312321321321","match_code":"no","match_contract":"1","match_condition":"yes","match_approval":"0","match_paid":"0","match_cancel":"0","match_description":"descriptionm"}]&ndash;&gt;-->

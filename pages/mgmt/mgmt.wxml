@@ -1,0 +1,28 @@
+<!--miniprogram/pages/mgmt/mgmt.wxml-->
+<view class="container">
+
+<!--<view class ="test_button">-->
+<!--    <button type="primary" ontap="clean_table">清空會員數據庫</button>-->
+<!--</view>-->
+
+
+<!--<view>-->
+<!--    <text>為了方便反覆測試使用，可快速清空數據庫\n\n    </text>-->
+<!--</view>-->
+<view class ="test_button">
+    <button type="primary" ontap="addTask">新任務</button>
+</view>
+
+    <view>
+        <text>HR人員可增加新的任務至數據庫\n\n</text>
+    </view>
+
+<view class ="test_button">
+    <button type="primary" ontap="listTask">安排任務</button>
+</view>
+
+    <view>
+        <text> HR人員針對自己管理的每個任務，匯入預設的名單，建立參與任務的團隊\n\n</text>
+    </view>
+</view>
+

@@ -1,0 +1,89 @@
+<!--miniprogram/pages/listTask/listTask.wxml-->
+<!--<text>miniprogram/pages/listTask/listTask.wxml</text>-->
+<!--<web-view src="https://www.top-talent.com.cn/linghuo/list_task.php"></web-view>-->
+<!--<view>-->
+
+    <view class="weui-panel weui-panel_access">
+        <view class="weui-panel__hd">{{ifMatched}}</view>
+
+        <block wx:for="{{list}}" wx:key="list" wx:for-index="idx">
+
+
+
+<!--            <view wx:if="{{item!=list.matched}}" class="taskProfile"  catchtap="viewTask" id="{{idx}}">-->
+                <view wx:if="{{item!=list.matched}}" class="taskProfile" >
+                <!--          <view>{{idx}}</view>-->
+
+
+
+
+                <view class="weui-panel__bd">
+                    <view class="weui-media-box weui-media-box_text">
+                        <h4 class="weui-media-box__title">{{item.task_name}}</h4>
+<!--                        <view class="weui-media-box__desc"><text>{{task_corporation}} : </text><text>{{item.task_corporation}}</text></view>-->
+                        <view class="weui-media-box__desc"><text>{{task_date}} : </text><text>{{item.task_date}}</text></view>
+                        <view class="weui-media-box__desc"><text>{{task_description}} : </text><text>{{item.task_description}}</text></view>
+                        <view class="weui-media-box__desc"><text>{{task_requirement}} : </text><text>{{item.task_requirement}}</text></view>
+                        <view class="weui-media-box__desc"><text>{{task_address}} : </text><text>{{item.task_address}}</text></view>
+                        <view class="weui-media-box__desc"><text>{{task_expiration}} : </text><text>{{item.task_expiration}}</text></view>
+
+
+                            <view class="weui-cell weui-cell_active weui-cell_disabled" >
+
+<!--                            <view class="weui-cell__bd">-->
+
+                                <view class="button-sp-area" >
+                                    <view class="weui-cell__hd">
+                                        <label class="">请上传本任务之派遣名单，csv文件:</label>
+                                    </view>
+                                    <button class="weui-btn weui-btn_primary" id="{{item.task_id}}" bindtap="chooseDoc">{{submitButton}}</button>
+
+                                </view>
+<!--                                <view class="weui-uploader__input-box">-->
+<!--                                    <view class="">-->
+<!--                                    <view class="weui-uploader__input" bindtap="chooseDoc"></view>-->
+<!--                                </view>-->
+                                <!--                    <input name="input_member_marrige" class="weui-input" placeholder="请输入" value="{{member_marrige}}"  />-->
+<!--                            </view>-->
+
+
+                        </view>
+
+
+                    </view>
+                </view>
+
+
+            </view>
+
+
+
+
+        </block>
+
+
+
+
+
+
+
+        <!-- end of test -->
+    </view>
+
+
+
+
+
+
+
+<!--    <view wx:for="{{list}}" wx:key="list">-->
+<!--        <view wx:for="{{item}}" wx:key="list2">-->
+<!--            <text>-->
+<!--               {{index}} : {{item}}-->
+<!--            </text>-->
+<!--        </view>-->
+
+<!--    </view>-->
+
+
+<!--</view>-->

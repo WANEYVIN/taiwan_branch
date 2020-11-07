@@ -1,0 +1,6 @@
+/* miniprogram/pages/viewTask/viewTask.wxss */
+.myProfile_icons{
+    width: 100rpx;
+    height: 100rpx;
+    align-items: center;
+}

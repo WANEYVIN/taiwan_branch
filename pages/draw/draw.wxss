@@ -1,0 +1,108 @@
+/* pages/draw.wxss */
+
+page{
+    height: 100%;
+}
+
+.container {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #d6cfcf), color-stop(1, #c9c0c0));
+}
+
+.canvas_area {
+    height: 1000rpx;
+    width: 100%;
+    margin-top: 10rpx;
+    background-color: #d6cfcf;
+}
+
+.canvas_area .myCanvas {
+    height: 1000rpx;
+    width: 100%;
+    background-color: white;
+}
+
+.canvas_tools {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    background: #c9c0c0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.canvas_tools .box_box1 {
+    height: 100rpx;
+    width: 100rpx;
+    border-radius: 50rpx;
+    margin-top: 25rpx;
+    margin-left: 25rpx;
+    background-color: #46768c;
+    padding: 0;
+}
+
+.canvas_tools .box_box1 .circle {
+    height: 6rpx;
+    width: 6rpx;
+    border-radius: 3rpx;
+    margin-top: 47rpx;
+    margin-left: 47rpx;
+    background-color: #00fd59;
+}
+
+.canvas_tools .box_box2 {
+    height: 100rpx;
+    width: 100rpx;
+    border-radius: 50rpx;
+    margin-top: 25rpx;
+    margin-left: 25rpx;
+    background-color: #2d50b2;
+    padding: 0;
+}
+
+.canvas_tools .box_box2 .circle {
+    height: 20rpx;
+    width: 20rpx;
+    border-radius: 10rpx;
+    margin-top: 40rpx;
+    margin-left: 40rpx;
+    background-color: #00fd59;
+}
+
+.canvas_tools .box_box3 {
+    height: 100rpx;
+    width: 100rpx;
+    border-radius: 50rpx;
+    margin-top: 25rpx;
+    margin-left: 25rpx;
+    background-color: #fe0000;
+    padding: 0;
+}
+
+.canvas_tools .box_box4 {
+    height: 100rpx;
+    width: 100rpx;
+    border-radius: 50rpx;
+    margin-top: 25rpx;
+    margin-left: 25rpx;
+    background-color: #fea700;
+    padding: 0;
+}
+
+.canvas_tools .box_box5 {
+    height: 100rpx;
+    width: 100rpx;
+    border-radius: 50rpx;
+    margin-top: 25rpx;
+    margin-left: 25rpx;
+    background-color: #afa99c;
+    padding: 0;
+}
+
+.canvas_tools .box_box5 image {
+    height: 60rpx;
+    width: 60rpx;
+    margin-top: 20rpx;
+    margin-left: 20rpx;
+}

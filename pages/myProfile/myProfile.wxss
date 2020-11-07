@@ -1,0 +1,29 @@
+/* miniprogram/pages/membership/membership.wxss */
+
+.myProfile_buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: space-between;
+    margin: auto;
+    padding-top: 10px;
+    width: 90%;
+}
+.myProfile_icons{
+    width: 100rpx;
+    height: 100rpx;
+    align-items: center;
+}
+.myProfile_button_text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit_area{
+    height: 400 rpx;
+    align-items: center;
+    padding-block: 10px;
+
+}

@@ -1,0 +1,124 @@
+<!--index.wxml-->
+<view class="page" data-weui-theme="{{theme}}">
+
+    <view class="container" bindtap="myProfile">
+  <open-data class="user-avatar" type="userAvatarUrl" ></open-data>
+</view>
+  <view class="container2" wx:if="{{condition == '0'}}" >
+
+    <open-data class="procedures" type="userNickName" lang="zh_CN"></open-data>
+
+    <text class="procedures"> 請您依照後續步驟完善登錄程序，謝謝！</text>
+    <text class="procedures"> 步驟一：點擊</text>
+    <button bindtap="myProfile" class="btn">  身份证拍照或上傳  </button>
+    <!--    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>-->
+  </view>
+
+<!--  <view class="container2" wx:else>-->
+
+
+
+
+<!--    <view wx:for="{{list}}" wx:key="list">-->
+<!--      <text>{{index}} : </text><text>{{item}}</text>-->
+<!--    </view>-->
+
+
+<!--    <view id="outer" catchtap='pressView'>-->
+<!--      <view class="top">-->
+<!--        <view class="clear" id="clear" data-text="C">C</view> &lt;!&ndash; 那个data-text就是你自定义的 &ndash;&gt;-->
+<!--      </view>-->
+<!--    </view>-->
+
+<!--    <view wx:for="{{list}}" wx:key="list" wx:for-index="idx" >-->
+<!--      <block wx:for="{{list}}" wx:key="list" wx:for-index="idx" >     -->
+<!--    <view><text>{{ifMatched}}</text></view>-->
+    <!-- test r weUI -->
+
+
+
+
+
+
+
+    <!-- end of test -->
+
+
+
+    <!-- test for weUI -->
+
+    <view class="weui-panel weui-panel_access">
+        <view class="weui-panel__hd">{{ifMatched}}</view>
+
+        <block wx:for="{{list}}" wx:key="list" wx:for-index="idx">
+
+<!--          <view id="outer" catchtap='pressView'>-->
+<!--            <view class="top">-->
+<!--              <view  id="{{item.task_id}}" >C</view> &lt;!&ndash; 那个data-text就是你自定义的 &ndash;&gt;-->
+<!--            </view>-->
+<!--          </view>-->
+<!--            wx:if="{{list.matched==1}}"-->
+
+            <!--            <view class="taskProfile"  catchtap="viewTask" id="{{item.task_id}}" >-->
+
+
+
+                <view wx:if="{{item!=list.matched}}" class="taskProfile"  catchtap="viewTask" id="{{idx}}">
+<!--          <view>{{idx}}</view>-->
+
+
+
+
+                        <view class="weui-panel__bd">
+                            <view class="weui-media-box weui-media-box_text">
+                                <h4 class="weui-media-box__title">{{item.task_name}}</h4>
+                                <view class="weui-media-box__desc"><text>{{task_corporation}} : </text><text>{{item.task_corporation}}</text></view>
+                                <view class="weui-media-box__desc"><text>{{task_date}} : </text><text>{{item.task_date}}</text></view>
+                                <view class="weui-media-box__desc"><text>{{task_description}} : </text><text>{{item.task_description}}</text></view>
+                                <view class="weui-media-box__desc"><text>{{task_requirement}} : </text><text>{{item.task_requirement}}</text></view>
+                                <view class="weui-media-box__desc"><text>{{task_address}} : </text><text>{{item.task_address}}</text></view>
+                                <view class="weui-media-box__desc"><text>{{task_expiration}} : </text><text>{{item.task_expiration}}</text></view>
+
+                            </view>
+                        </view>
+
+
+
+
+<!--                    <view><text>{{task_name}} : </text><text>{{item.task_name}}</text></view>-->
+<!--            <view><text>{{task_corporation}} : </text><text>{{item.task_corporation}}</text></view>-->
+<!--            <view><text>{{task_date}} : </text><text>{{item.task_date}}</text></view>-->
+<!--            <view><text>{{task_description}} : </text><text>{{item.task_description}}</text></view>-->
+<!--            <view><text>{{task_requirement}} : </text><text>{{item.task_requirement}}</text></view>-->
+<!--            <view><text>{{task_address}} : </text><text>{{item.task_address}}</text></view>-->
+<!--            <view><text>{{task_num_recruiting}} : </text><text>{{item.task_num_recruiting}}</text></view>-->
+<!--            <view><text>{{task_expiration}} : </text><text>{{item.task_expiration}}</text></view>-->
+<!--            <view><text>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</text></view>-->
+
+            </view>
+
+
+
+
+        </block>
+
+        <!--                        <view class="weui-panel__ft">-->
+        <!--                            <a class="weui-cell weui-cell_active weui-cell_access weui-cell_link">-->
+        <!--                                <view class="weui-cell__bd">查看更多</view>-->
+        <!--                                <text class="weui-cell__ft"></text>-->
+        <!--                            </a>-->
+        <!--                        </view>-->
+
+
+
+
+
+        <!-- end of test -->
+    </view>
+<!--</view>-->
+</view>
+
+
+
+
+

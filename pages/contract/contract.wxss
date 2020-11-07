@@ -1,0 +1,43 @@
+/* miniprogram/pages/contract/contract.wxss */
+.webviewStyle{
+    height: 80%;
+    width: 50%;
+    position: absolute;
+}
+
+.contract_article{
+    display: flex;
+    width: 85%;
+    }
+
+.img{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+.image_text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.contract_checkbox{
+    display: flex;
+
+}
+.view_drawtaps{
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: space-between;
+}
+.drawtaps{
+    height:  100rpx;
+    width: 100rpx;
+    margin: auto;
+}
+
+.text_drawtaps{
+    display: flex;
+
+}

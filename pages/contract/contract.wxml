@@ -1,0 +1,55 @@
+<!--miniprogram/pages/contract/contract.wxml-->
+
+
+<view class="container" >
+
+
+    <view class="weui-article__section contract_article">
+        <view class="weui-article__p "><text>请您阅读并勾选同意协议。若需要下载协议文档，请点击[打开文件]，并在本机存储。</text>
+<!--            <button bindtap="downloadFile"></button>-->
+
+            <view class="view_drawtaps">
+            <checkbox-group class="contract_checkbox" bindchange="boxcheck">
+                <checkbox name="box_check" value="{{if_checked}}" class="red round">
+
+                    我已阅读并同意<text class="text-blue"></text></checkbox>
+
+            </checkbox-group>
+                <view class="image_text">
+
+                <image bindtap="downloadFile" class="drawtaps" src="../../images/document.png" mode="aspectFit"  ></image>
+                   <view>打开文件</view>
+
+                </view>
+                </view>
+        </view>
+
+<!--        <view class="button-sp-area" >-->
+<!--            <button class="weui-btn weui-btn_primary" bindtap="downloadFile">打开文件</button>-->
+<!--        </view>-->
+
+
+
+    </view>
+    <!--画布区域-->
+    <view class="page__bd" wx:if="{{loading=='1'}}">
+        <view class="weui-loading__wrp">
+            <view class="loading wx_dot_loading"></view>
+        </view>
+    </view>
+    <image src="{{imgUrl}}"  mode='widthFix' class='img' bindload="imageOnLoad" bindtap='clickImg'/>
+
+
+
+
+
+<!--    <checkbox-group class="cu-bar" bindchange="boxcheck">-->
+        <checkbox-group class="cu-bar" bindchange="boxcheck">
+                <checkbox name="box_check" value="{{if_checked}}" class="red round">
+
+                    我已阅读并同意<text class="text-blue"></text></checkbox>
+
+            </checkbox-group>
+
+
+</view>

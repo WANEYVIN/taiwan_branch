@@ -24,7 +24,7 @@ Page({
   let that = this;
 
     wx.request({
-      url: 'https://www.top-talent.com.cn/linghuo/list_task.php?id='+wx.getStorageSync("openid"),
+      url: getApp().globalData.serverURL+'/list_task.php?id='+wx.getStorageSync("openid"),
       header:{
         'Content-Type': 'application/json'
       },
@@ -158,7 +158,8 @@ Page({
             var current_time = new Date().getTime();
 
             wx.uploadFile({
-              url: 'https://www.top-talent.com.cn/linghuo/task_member_mapping.php?id='+e.currentTarget.id,
+              // url: 'https://www.top-talent.com.cn/linghuo/task_member_mapping.php?id='+e.currentTarget.id,
+              url: getApp().globalData.serverURL+'/task_member_mapping.php?id='+e.currentTarget.id,
               // filePath: tempFilePaths[0],
               filePath: res.tempFiles[0].path,
               name: 'file',

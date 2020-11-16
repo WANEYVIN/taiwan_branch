@@ -183,7 +183,8 @@ Page({
     })
 
     wx.request({
-      url: 'https://www.top-talent.com.cn/linghuo/insert2DB.php',
+      // url: 'https://www.top-talent.com.cn/linghuo/insert2DB.php',
+      url: getApp().globalData.serverURL+'/insert2DB.php',
       method:"POST",
       header:{
         // 'Content-Type': 'application/json'
@@ -303,7 +304,8 @@ Page({
     //   id: e.detail.value.input_ID,
     // })
     wx.request({
-      url: 'https://www.top-talent.com.cn/linghuo/member_query.php?openid=' + open_id,
+      // url: 'https://www.top-talent.com.cn/linghuo/member_query.php?openid=' + open_id,
+      url: getApp().globalData.serverURL+'/member_query.php?openid=' + open_id,
       // url: 'https://www.top-talent.com.cn/linghuo/member_query.php?openid=oMa-B4rXn6o8QrlzhXhz27zxxhqs',
       header:{
         'Content-Type': 'application/json'

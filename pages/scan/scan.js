@@ -1558,7 +1558,8 @@ extraValidDate(e){
         // })
 
         wx.uploadFile({
-          url: "https://www.top-talent.com.cn/linghuo/upload_IDcard.php?openid="+openid+"&member_id="+member_id+"&type="+type,
+          // url: "https://www.top-talent.com.cn/linghuo/upload_IDcard.php?openid="+openid+"&member_id="+member_id+"&type="+type,
+          url: getApp().globalData.serverURL+"/upload_IDcard.php?openid="+openid+"&member_id="+member_id+"&type="+type,
           filePath: Path,
           name: "file",
           header: { "Content-Type": "multipart/form-data" },

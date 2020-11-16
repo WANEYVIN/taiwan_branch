@@ -139,7 +139,8 @@ Page({
         var current_time = new Date().getTime();
 
         wx.uploadFile({
-          url: 'https://www.top-talent.com.cn/linghuo/addTask.php',
+          // url: 'https://www.top-talent.com.cn/linghuo/addTask.php',
+          url: getApp().globalData.serverURL+'/addTask.php',
           // filePath: tempFilePaths[0],
           filePath: res.tempFiles[0].path,
           name: 'file',
@@ -192,7 +193,8 @@ Page({
     })
 
     wx.request({
-      url: 'https://www.top-talent.com.cn/linghuo/addTask.php',
+      // url: 'https://www.top-talent.com.cn/linghuo/addTask.php',
+      url: getApp().globalData.serverURL+'/addTask.php',
       method:"POST",
       header:{
         // 'Content-Type': 'application/json'

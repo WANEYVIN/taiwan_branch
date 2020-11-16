@@ -81,7 +81,8 @@ Page({
 
   clean_table(){
     wx.request({
-      url: 'https://www.top-talent.com.cn/linghuo/empty_table.php',
+      // url: 'https://www.top-talent.com.cn/linghuo/empty_table.php',
+      url: getApp().globalData.serverURL+'/empty_table.php',
       method:"GET",
       header:{
         'Content-Type': 'application/json'
@@ -120,7 +121,8 @@ wx.showModal({
   verifyRole(openid){
     let that = this
     wx.request({
-      url: 'https://www.top-talent.com.cn/linghuo/updateMemberRole.php?query="role"&id='+openid,
+      // url: 'https://www.top-talent.com.cn/linghuo/updateMemberRole.php?query="role"&id='+openid,
+      url: getApp().globalData.serverURL+'/updateMemberRole.php?query="role"&id='+openid,
       method:"GET",
       header:{
         'Content-Type': 'application/json'

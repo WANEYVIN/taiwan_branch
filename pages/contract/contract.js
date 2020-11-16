@@ -38,13 +38,13 @@ Page({
     if(that.data.task_id === '0'){
 
       that.setData({
-          imgUrl:'https://www.top-talent.com.cn/linghuo/contract/templates/freelancer/contract_template.jpg',  //图片路径
-          contractDoc: 'https://www.top-talent.com.cn/linghuo/contract/templates/freelancer/full_contract.pdf'
+          imgUrl:getApp().globalData.serverURL+'/contract/templates/freelancer/contract_template.jpg',  //图片路径
+          contractDoc: getApp().globalData.serverURL+'/contract/templates/freelancer/full_contract.pdf'
           })
     }else{
       that.setData({
-      imgUrl:'https://www.top-talent.com.cn/linghuo/contract/templates/'+that.data.task_id+'/contract_template.jpg',  //图片路径
-      contractDoc: 'https://www.top-talent.com.cn/linghuo/contract/templates/'+that.data.task_id+'/contract_template.pdf'
+      imgUrl:getApp().globalData.serverURL+'/contract/templates/'+that.data.task_id+'/contract_template.jpg',  //图片路径
+      contractDoc: getApp().globalData.serverURL+'/contract/templates/'+that.data.task_id+'/contract_template.pdf'
       })
       }
 

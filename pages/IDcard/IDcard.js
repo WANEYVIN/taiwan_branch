@@ -71,7 +71,8 @@ Page({
 
       var that = this;
       wx.request({
-        url: 'https://www.top-talent.com.cn/linghuo/member_query.php?openid=' + app.globalData.openid,
+        // url: 'https://www.top-talent.com.cn/linghuo/member_query.php?openid=' + app.globalData.openid,
+        url: getApp().globalData.serverURL+'/member_query.php?openid=' + app.globalData.openid,
         header:{
           'Content-Type': 'application/json'
         },

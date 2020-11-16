@@ -1,5 +1,21 @@
 /* miniprogram/pages/membership/membership.wxss */
 
+.getPhoneButton{
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: space-between;
+    /*margin: auto;*/
+    /*padding-top: 10px;*/
+    width: 350px;
+    font-weight: 700;
+    inherited:no;
+    all: unset;
+
+
+
+}
+
 .myProfile_buttons{
     display: flex;
     flex-direction: row;

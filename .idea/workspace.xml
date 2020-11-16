@@ -22,12 +22,20 @@
     <list default="true" id="ba07f549-99f8-4a0b-8157-95991536b872" name="Default Changelist" comment="scan page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/IDcard/IDcard.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/IDcard/IDcard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/IDcheck/IDcheck.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/IDcheck/IDcheck.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/addTask/addTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/addTask/addTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/addTask/addTask.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/addTask/addTask.wxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/contract/contract.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contract/contract.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/draw1/draw1.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/draw1/draw1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/membership/membership.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/membership/membership.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/mgmt/mgmt.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/mgmt/mgmt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/myProfile/myProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/myProfile/myProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/myProfile/myProfile.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/myProfile/myProfile.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/myProfile/myProfile.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/myProfile/myProfile.wxss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/scan/scan.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/scan/scan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/viewTask/viewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/viewTask/viewTask.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,15 +62,16 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SshConsoleOptionsProvider">
     <option name="myEncoding" value="UTF-8" />
     <option name="myConnectionType" value="SSH_CONFIG" />
-    <option name="myConnectionId" value="top-talent" />
+    <option name="myConnectionId" value="ubuntu@xyz.yi-wen.wang:22 key" />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -99,6 +108,11 @@
       <workItem from="1603589940440" duration="18792000" />
       <workItem from="1603622186925" duration="4926000" />
       <workItem from="1603631183512" duration="9903000" />
+      <workItem from="1604559057221" duration="1455000" />
+      <workItem from="1604563652226" duration="676000" />
+      <workItem from="1604564784161" duration="30746000" />
+      <workItem from="1605252167685" duration="13000" />
+      <workItem from="1605252217902" duration="803000" />
     </task>
     <task id="LOCAL-00001" summary="profile icons">
       <created>1602648709635</created>
@@ -245,16 +259,17 @@
     <option name="LAST_COMMIT_MESSAGE" value="scan page" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="455" y="164" width="1000" height="570" key="#Deployment" timestamp="1603622310763">
-      <screen x="0" y="35" width="1920" height="1045" />
+    <state x="2375" y="133" width="1000" height="570" key="#Deployment" timestamp="1605151731412">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="455" y="164" width="1000" height="570" key="#Deployment/0.35.1920.1045@0.35.1920.1045" timestamp="1603622310763" />
     <state x="2375" y="133" width="1000" height="846" key="#Deployment/1920.0.1920.1080/0.26.1920.1054@1920.0.1920.1080" timestamp="1601104986694" />
-    <state x="2375" y="133" width="1000" height="846" key="#Deployment/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603444795025" />
-    <state x="430" y="135" width="1062" height="901" key="#SSH_Configurations" timestamp="1603540164138">
-      <screen x="0" y="35" width="1920" height="1045" />
+    <state x="2375" y="133" width="1000" height="846" key="#Deployment/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605151731412" />
+    <state x="2350" y="103" width="1040" height="880" key="#SSH_Configurations" timestamp="1605151727645">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="430" y="135" width="1062" height="901" key="#SSH_Configurations/0.35.1920.1045@0.35.1920.1045" timestamp="1603540164138" />
+    <state x="2350" y="103" width="1040" height="880" key="#SSH_Configurations/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605151727645" />
     <state x="543" y="359" width="1095" height="429" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603540248008">
       <screen x="0" y="35" width="1920" height="1045" />
     </state>
@@ -272,36 +287,36 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="1920" y="27" width="1207" height="1053" key="CommitChangelistDialog2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603346354583" />
-    <state x="2610" y="254" width="530" height="605" key="FileChooserDialogImpl" timestamp="1598599297196">
+    <state x="2610" y="254" width="530" height="605" key="FileChooserDialogImpl" timestamp="1605150910266">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2610" y="254" width="530" height="605" key="FileChooserDialogImpl/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1598599297196" />
-    <state width="1860" height="248" key="GridCell.Tab.0.bottom" timestamp="1603348158146">
+    <state x="2610" y="254" width="530" height="605" key="FileChooserDialogImpl/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605150910266" />
+    <state width="1860" height="248" key="GridCell.Tab.0.bottom" timestamp="1605153478581">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1860" height="248" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603348158146" />
-    <state width="1860" height="248" key="GridCell.Tab.0.center" timestamp="1603348158146">
+    <state width="1860" height="248" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605153478581" />
+    <state width="1860" height="248" key="GridCell.Tab.0.center" timestamp="1605153478581">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1860" height="248" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603348158146" />
-    <state width="1860" height="248" key="GridCell.Tab.0.left" timestamp="1603348158145">
+    <state width="1860" height="248" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605153478581" />
+    <state width="1860" height="248" key="GridCell.Tab.0.left" timestamp="1605153478581">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1860" height="248" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603348158145" />
-    <state width="1860" height="248" key="GridCell.Tab.0.right" timestamp="1603348158146">
+    <state width="1860" height="248" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605153478581" />
+    <state width="1860" height="248" key="GridCell.Tab.0.right" timestamp="1605153478581">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1860" height="248" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603348158146" />
+    <state width="1860" height="248" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605153478581" />
     <state x="2625" y="461" width="500" height="190" key="NewPhpFileDialog" timestamp="1601106442743">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2625" y="461" width="500" height="190" key="NewPhpFileDialog/1920.0.1920.1080/0.26.1920.1054@1920.0.1920.1080" timestamp="1601106442743" />
-    <state x="317" y="132" width="1286" height="929" key="SettingsEditor" timestamp="1603509313690">
-      <screen x="0" y="35" width="1920" height="1045" />
+    <state x="2237" y="100" width="1286" height="929" key="SettingsEditor" timestamp="1605252416907">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="317" y="132" width="1286" height="929" key="SettingsEditor/0.35.1920.1045@0.35.1920.1045" timestamp="1603509313690" />
     <state x="2237" y="100" width="1286" height="912" key="SettingsEditor/1920.0.1920.1080/0.26.1920.1054@1920.0.1920.1080" timestamp="1600415039829" />
-    <state x="2237" y="100" width="1286" height="912" key="SettingsEditor/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603348007685" />
+    <state x="2237" y="100" width="1286" height="912" key="SettingsEditor/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605252416907" />
     <state x="704" y="415" width="501" height="308" key="WebDeployment.AddServerDialog.v.1" timestamp="1603540110896">
       <screen x="0" y="35" width="1920" height="1045" />
     </state>
@@ -314,21 +329,23 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2594" y="449" width="572" height="215" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603170656848" />
-    <state x="818" y="105" width="274" height="961" key="ftp.server.browser" timestamp="1603540184757">
-      <screen x="0" y="35" width="1920" height="1045" />
-    </state>
-    <state x="818" y="105" width="274" height="961" key="ftp.server.browser/0.35.1920.1045@0.35.1920.1045" timestamp="1603540184757" />
-    <state x="2460" y="248" key="run.anything.popup" timestamp="1603357841900">
+    <state x="2738" y="72" width="274" height="961" key="ftp.server.browser" timestamp="1605150971501">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2460" y="248" key="run.anything.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603357841900" />
+    <state x="818" y="105" width="274" height="961" key="ftp.server.browser/0.35.1920.1045@0.35.1920.1045" timestamp="1603540184757" />
+    <state x="2738" y="72" key="ftp.server.browser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605150971501" />
+    <state x="2460" y="248" key="run.anything.popup" timestamp="1605168625484">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2460" y="248" key="run.anything.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605168625484" />
     <state x="2459" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1603370115656">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2459" y="45" width="840" height="1034" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603370115656" />
-    <state x="2644" y="396" width="461" height="320" key="webDeployment.PermissionsDialog" timestamp="1601107395329">
+    <state x="2644" y="396" width="461" height="320" key="webDeployment.PermissionsDialog" timestamp="1605153445083">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2644" y="396" width="461" height="320" key="webDeployment.PermissionsDialog/1920.0.1920.1080/0.26.1920.1054@1920.0.1920.1080" timestamp="1601107395329" />
+    <state x="2644" y="396" width="461" height="320" key="webDeployment.PermissionsDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605153445083" />
   </component>
 </project>

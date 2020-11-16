@@ -55,7 +55,8 @@ Page({
       member_role:wx.getStorageSync("member_role"),
       member_sn:wx.getStorageSync("member_sn"),
       member_birthday: wx.getStorageSync("member_birthday"),
-      contractDoc: 'https://www.top-talent.com.cn/linghuo/contract/member_signoff/'+wx.getStorageSync("member_id")+'/'+wx.getStorageSync("member_id")+'-'+that.data.task_id+'.pdf'
+      // contractDoc: 'https://www.top-talent.com.cn/linghuo/contract/member_signoff/'+wx.getStorageSync("member_id")+'/'+wx.getStorageSync("member_id")+'-'+that.data.task_id+'.pdf'
+      contractDoc: getApp().globalData.serverURL+'/contract/member_signoff/'+wx.getStorageSync("member_id")+'/'+wx.getStorageSync("member_id")+'-'+that.data.task_id+'.pdf'
       // contractDoc: 'https://www.top-talent.com.cn/linghuo/contract/member_signoff/freelancer/'+wx.getStorageSync("member_id")+'/'+wx.getStorageSync("member_id")+'.pdf'
     })
 ////////////////

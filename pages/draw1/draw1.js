@@ -169,7 +169,8 @@ Page({
                     wx.uploadFile({
                         // url: "http://192.168.0.101:8080/Teacher/copyfile.action",
                         // url: "https://www.top-talent.com.cn/linghuo/uploaded_doc.php?id="+app.globalData.openid+"&memberID="+this.data.member_id+"&member_name="+this.data.member_name,
-                        url: "https://www.top-talent.com.cn/linghuo/uploaded_doc.php?id="+app.globalData.openid+"&memberID="+that.data.member_id+"&member_name="+that.data.member_name+'&task_id='+that.data.task_id,
+                        // url: "https://www.top-talent.com.cn/linghuo/uploaded_doc.php?id="+app.globalData.openid+"&memberID="+that.data.member_id+"&member_name="+that.data.member_name+'&task_id='+that.data.task_id,
+                        url: getApp().globalData.serverURL+"/uploaded_doc.php?id="+app.globalData.openid+"&memberID="+that.data.member_id+"&member_name="+that.data.member_name+'&task_id='+that.data.task_id,
                         // filePath: this.data.FilePath,
                         filePath: that.data.FilePath,
                         // filePath: tempFilePath,

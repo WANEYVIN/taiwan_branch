@@ -82,8 +82,10 @@
                 <view class="weui-cell__hd">
                     <label class="weui-label">电话:</label>
                 </view>
-                <view class="weui-cell__bd">
-                    <input name="input_member_phone_num" class="weui-input" type="number" placeholder="请输入" value="{{member_phone_num}}"  />
+                <view class="weui-cell__bd" >
+<!--                    <input  name="input_member_phone_num" class="weui-input" type="number" placeholder="点击自动输入" value="{{member_phone_num}}"  />-->
+                    <button class="getPhoneButton" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">   <input name="input_member_phone_num" class="weui-input" type="number" placeholder="点击自动输入" value="{{member_phone_num}}"  /></button>
+
                 </view>
 
 

@@ -89,7 +89,8 @@ Page({
 
        */
   wx.request({
-    url: 'https://www.top-talent.com.cn/linghuo/member_query.php?openid=' + open_id,
+      // url: 'https://www.top-talent.com.cn/linghuo/member_query.php?openid=' + open_id,
+      url: getApp().globalData.serverURL+'/member_query.php?openid=' + open_id,
     // url: 'https://www.top-talent.com.cn/linghuo/member_query.php?openid=oMa-B4rXn6o8QrlzhXhz27zxxhqs',
     header:{
         'Content-Type': 'application/json'

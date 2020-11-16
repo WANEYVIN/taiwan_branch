@@ -1,5 +1,17 @@
-App({
+App({    /**
+     * 定义全局变量
+     */
+    globalData: {
+        openid: '', //用户openid
+        userId: '', //用户编号
+        member_address: '',
+        serverURL: ''
+
+    },
     onLaunch: function() {
+
+        this.globalData.serverURL = "https://xyz.yi-wen.wang/linghuo";
+
         console.log('App Launch')
 //不在这里默认请求
 
@@ -56,14 +68,16 @@ App({
             })
         }
     },
-    /**
-     * 定义全局变量
-     */
-    globalData: {
-        openid: '', //用户openid
-        userId: '', //用户编号
-        member_address: ''
-    },
+    // /**
+    //  * 定义全局变量
+    //  */
+    // globalData: {
+    //     openid: '', //用户openid
+    //     userId: '', //用户编号
+    //     member_address: '',
+    //     serverURL: ''
+    //
+    // },
     /**
      * 用户登录请求封装(解决onlaunch和onload执行顺序问题)
      */
@@ -73,7 +87,7 @@ App({
 //定义promise方法
         return new Promise(function(resolve, reject) {
 
-           console.log("resolve")
+           console.log("resolve-----------------")
             // var that = this
             wx.login({
 
@@ -83,7 +97,9 @@ App({
                     console.log(res+"code= "+code)
                     wx.request({
                         // url: '后台通过获取前端传的code返回openid的接口地址',
-                        url: 'https://www.top-talent.com.cn/linghuo/getOpenID.php?code='+code,
+                        // url: 'https://www.top-talent.com.cn/linghuo/getOpenID.php?code='+code,
+                        // url: 'https://www.melburg.tw/linghuo/getOpenID.php?code='+code,
+                        url: that.globalData.serverURL+'/getOpenID.php?code='+code,
 
                         data: { code: code
                                 },
@@ -95,7 +111,7 @@ App({
                             // that.globalData.openid = res.data.openid
                             // console.log("status= "+res.statusCode);
                             console.log(res.data.errMsg+"1 OPEN ID= "+ res.data.openid+"    ---   SESSIID = "+res.data.session_key+" other factor ="+res.data.IsMember);
-                            // console.log("222 OPEN ID= "+  that.globalData.openid+"    ---   SESSIID = "+res.data.session_key+" other factor ="+res.data.IsMember);
+                            console.log("login result"+  that.globalData.openid+"    ---   SESSIID = "+res.data.session_key+" other factor ="+res.data.IsMember);
                             // return that.globalData.openid
 
                             if (res.statusCode == 200) {
@@ -167,14 +183,15 @@ App({
 
         wx.request({
             // url: '后台通过获取前端传的code返回openid的接口地址',
-            url: 'https://www.top-talent.com.cn/linghuo/getOpenID.php?p=1&profile='+openid,
+            // url: 'https://www.ttalent.com.cn/linghuo/getOpenID.php?p=1&profile='+openid,
+            url: getApp().globalData.serverURL+'/getOpenID.php?p=1&profile='+openid,
 
             // data: { code: code },
             // method: 'POST',
             method: 'GET',
             header: { 'content-type': 'application/json'},
             success: function (res) {
-                console.log("query database for profile = ",res);
+                console.log("********query database for profile = ",res);
 
 
 

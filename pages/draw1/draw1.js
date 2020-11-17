@@ -188,7 +188,7 @@ Page({
                                 return;
                             }
                             var data = res.data;
-                            console.log("田江南你好刷币:" + data);
+                            console.log("上傳成功:" + data);
 
                             wx.navigateTo({
                                 url:'../membership/membership?task_id='+that.data.task_id

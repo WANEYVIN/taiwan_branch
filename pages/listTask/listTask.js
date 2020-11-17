@@ -14,7 +14,9 @@ Page({
     task_address: '工作地點',
     task_num_recruiting: '需求人數',
     task_expiration: '截止日期',
-    submitButton:"上传名单csv"
+    submitButton:"上传名单csv",
+    listMembers:"招募狀況"
+
   },
 
   /**
@@ -196,6 +198,46 @@ Page({
 
   },
 
+  listMember: function(e){
+     console.log("click: ", e, e.currentTarget.id);
+
+    var task_id = e.currentTarget.id
+
+    wx.navigateTo({
+      url: '../taskMembers/taskMembers?task_id='+task_id,
+
+    })
+
+
+    /*
+    wx.request({
+      url: getApp().globalData.serverURL+'/listMembers.php?id='+task_id,
+      header:{
+        'Content-Type': 'application/json'
+      },
+
+      success: function (res) {
+        // console.log("reload: ", res.data);
+        // console.log("reload2: ", getApp().globalData.member_id);
+        // that.setData({
+        //   list: res.data,
+        // })
+
+
+
+
+      },
+      fail: function (res) {
+        console.log("fail: ", res);
+      },
+      complete: function (res) {
+        // wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh();
+      }
+    })
+
+    */
+  }
 
 
 })

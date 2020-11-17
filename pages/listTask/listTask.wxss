@@ -1,1 +1,15 @@
 /* miniprogram/pages/listTask/listTask.wxss */
+.taskButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /*background-color: chartreuse;*/
+    width: 300px;
+}
+.viewTaskButton{
+    display: flex;
+    /*flex-direction: row;*/
+    /*justify-content: space-between;*/
+    /*background-color: chartreuse;*/
+    width: 180px;
+}

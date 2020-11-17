@@ -13,29 +13,25 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:taiwan_branch" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
     <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba07f549-99f8-4a0b-8157-95991536b872" name="Default Changelist" comment="scan page">
+      <change afterPath="$PROJECT_DIR$/pages/taskMembers/taskMembers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/taskMembers/taskMembers.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/taskMembers/taskMembers.wxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/taskMembers/taskMembers.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/IDcard/IDcard.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/IDcard/IDcard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/IDcheck/IDcheck.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/IDcheck/IDcheck.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/addTask/addTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/addTask/addTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/contract/contract.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contract/contract.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/draw1/draw1.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/draw1/draw1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.wxss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/membership/membership.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/membership/membership.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/mgmt/mgmt.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/mgmt/mgmt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/myProfile/myProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/myProfile/myProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/myProfile/myProfile.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/myProfile/myProfile.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/myProfile/myProfile.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/myProfile/myProfile.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/scan/scan.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/scan/scan.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/viewTask/viewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/viewTask/viewTask.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,12 +45,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1giYY8yg4kPvmJVfia1YL4E8fdm" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
@@ -65,7 +64,20 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SshConsoleOptionsProvider">
@@ -113,6 +125,8 @@
       <workItem from="1604564784161" duration="30746000" />
       <workItem from="1605252167685" duration="13000" />
       <workItem from="1605252217902" duration="803000" />
+      <workItem from="1605495742851" duration="4259000" />
+      <workItem from="1605513429490" duration="25597000" />
     </task>
     <task id="LOCAL-00001" summary="profile icons">
       <created>1602648709635</created>
@@ -252,6 +266,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
     <MESSAGE value="profile icons" />
     <MESSAGE value="home icons" />
     <MESSAGE value="scan icons" />
@@ -259,22 +277,22 @@
     <option name="LAST_COMMIT_MESSAGE" value="scan page" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2375" y="133" width="1000" height="570" key="#Deployment" timestamp="1605151731412">
+    <state x="2375" y="133" width="1000" height="570" key="#Deployment" timestamp="1605514746338">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="455" y="164" width="1000" height="570" key="#Deployment/0.35.1920.1045@0.35.1920.1045" timestamp="1603622310763" />
     <state x="2375" y="133" width="1000" height="846" key="#Deployment/1920.0.1920.1080/0.26.1920.1054@1920.0.1920.1080" timestamp="1601104986694" />
-    <state x="2375" y="133" width="1000" height="846" key="#Deployment/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605151731412" />
+    <state x="2375" y="133" width="1000" height="846" key="#Deployment/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605514746338" />
     <state x="2350" y="103" width="1040" height="880" key="#SSH_Configurations" timestamp="1605151727645">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="430" y="135" width="1062" height="901" key="#SSH_Configurations/0.35.1920.1045@0.35.1920.1045" timestamp="1603540164138" />
     <state x="2350" y="103" width="1040" height="880" key="#SSH_Configurations/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605151727645" />
-    <state x="543" y="359" width="1095" height="429" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603540248008">
-      <screen x="0" y="35" width="1920" height="1045" />
+    <state x="2463" y="335" width="863" height="443" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605495879808">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="543" y="359" width="1095" height="429" key="#com.intellij.fileTypes.FileTypeChooser/0.35.1920.1045@0.35.1920.1045" timestamp="1603540248008" />
-    <state x="2463" y="335" width="824" height="443" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1602647485349" />
+    <state x="2463" y="335" width="863" height="443" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605495879808" />
     <state x="2605" y="198" width="530" height="730" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1603347752441">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -307,16 +325,20 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1860" height="248" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605153478581" />
+    <state x="2360" y="239" width="1030" height="635" key="IDE.errors.dialog" timestamp="1605585227760">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2360" y="239" width="1030" height="635" key="IDE.errors.dialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605585227760" />
     <state x="2625" y="461" width="500" height="190" key="NewPhpFileDialog" timestamp="1601106442743">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2625" y="461" width="500" height="190" key="NewPhpFileDialog/1920.0.1920.1080/0.26.1920.1054@1920.0.1920.1080" timestamp="1601106442743" />
-    <state x="2237" y="100" width="1286" height="929" key="SettingsEditor" timestamp="1605252416907">
+    <state x="2237" y="100" width="1286" height="929" key="SettingsEditor" timestamp="1605514411273">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="317" y="132" width="1286" height="929" key="SettingsEditor/0.35.1920.1045@0.35.1920.1045" timestamp="1603509313690" />
     <state x="2237" y="100" width="1286" height="912" key="SettingsEditor/1920.0.1920.1080/0.26.1920.1054@1920.0.1920.1080" timestamp="1600415039829" />
-    <state x="2237" y="100" width="1286" height="912" key="SettingsEditor/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605252416907" />
+    <state x="2237" y="100" width="1286" height="912" key="SettingsEditor/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605514411273" />
     <state x="704" y="415" width="501" height="308" key="WebDeployment.AddServerDialog.v.1" timestamp="1603540110896">
       <screen x="0" y="35" width="1920" height="1045" />
     </state>

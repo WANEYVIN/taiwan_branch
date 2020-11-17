@@ -36,8 +36,10 @@
                                     <view class="weui-cell__hd">
                                         <label class="">请上传本任务之派遣名单，csv文件:</label>
                                     </view>
-                                    <button class="weui-btn weui-btn_primary" id="{{item.task_id}}" bindtap="chooseDoc">{{submitButton}}</button>
-
+                                    <view class="taskButtons">
+                                        <button class="weui-btn_primary" id="{{item.task_id}}" bindtap="chooseDoc">{{submitButton}}</button>
+                                        <button class="viewTaskButton weui-btn weui-btn_primary" id="{{item.task_id}}" bindtap="listMember">{{listMembers}}</button>
+                                    </view>
                                 </view>
 <!--                                <view class="weui-uploader__input-box">-->
 <!--                                    <view class="">-->

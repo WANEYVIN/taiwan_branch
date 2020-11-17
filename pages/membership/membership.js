@@ -19,6 +19,8 @@ Page({
     this.setData({
       task_id: options.task_id
     })
+
+    this.updateMatchTable();
   },
   onShow: function ()  {
     var that = this
@@ -180,6 +182,47 @@ Page({
       wx.switchTab({
         url: '../myProfile/myProfile'
              });
+  },
+
+  updateMatchTable:function(){
+
+      var app = getApp();
+      let that = this
+
+
+      wx.request({
+        // url: 'https://www.top-talent.com.cn/linghuo/update2DB.php',
+        url: getApp().globalData.serverURL + '/updateMatchTable.php',
+        method: "POST",
+        header: {
+          // 'Content-Type': 'application/json'
+          'content-type': 'application/x-www-form-urlencoded' //POST修改此处即可
+        },
+
+        data: {
+          member_id: wx.getStorageSync("member_id"),
+          task_id: that.data.task_id,
+          // date: NOW(),
+          contract: getApp().globalData.serverURL+'/contract/member_signoff/'+wx.getStorageSync("member_id")+'/'+wx.getStorageSync("member_id")+'-'+that.data.task_id+'.pdf'
+
+
+        },
+
+
+        success: function (ret) {
+          // that.globalData.openid= openid,
+          // that.globalData.member_id=id
+          console.log('db result ', ret.data);
+          // console.log('member_id=',this.data.name);
+          // console.log('member_id=',that.data.id);
+          // return ret.data
+          return ret.data
+
+
+        }
+      })
+
+
   }
 })
 

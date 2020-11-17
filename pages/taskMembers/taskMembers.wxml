@@ -1,0 +1,45 @@
+<!--pages/taskMembers/taskMembers.wxml-->
+<!--<text>pages/taskMembers/taskMembers.wxml</text>-->
+
+<block wx:for="{{list}}" wx:key="list" wx:for-index="idx" wx:for-item="value">
+
+<!--    wx:for="{{value}}"-->
+<view class="weui-panel__bd">
+    <view class="weui-media-box weui-media-box_text">
+<!--        <h4 class="weui-media-box__title">{{item.member_name}}</h4>-->
+        <h3 class="weui-media-box__title">{{value[0][0].member_name}}</h3>
+        <!--                        <view class="weui-media-box__desc"><text>{{task_corporation}} : </text><text>{{item.task_corporation}}</text></view>-->
+        <view class="weui-media-box__desc"><text>{{member_name}} : </text><text>{{value[0][0].member_name}}</text></view>
+        <view class="weui-media-box__desc"><text>{{phone}} : </text><text>{{value[0][0].member_phone_num}}</text></view>
+        <view class="weui-media-box__desc"><text>{{id}} : </text><text>{{value[1].match_member}}</text></view>
+<!--        <view class="weui-media-box__desc"><text>{{birthday}} : </text><text>{{value[0][0].member_birthday}}</text></view>-->
+<!--        <view class="weui-media-box__desc"><text>{{gender}} : </text><text>{{value[0][0].member_gender}}</text></view>-->
+        <view class="weui-media-box__desc"><text>{{signOff_date}} : </text><text>{{value[1].match_date}}</text></view>
+        <view class="weui-media-box__desc"><text>{{approval}} : </text><text>{{value[1].match_approval}}</text></view>
+
+
+        <view class="weui-cell weui-cell_active weui-cell_disabled" >
+
+            <!--                            <view class="weui-cell__bd">-->
+
+            <view class="button-sp-area" >
+
+                <view class="taskButtons">
+<!--                    <button class="weui-btn_primary" id="{{value[1].match_member}}" bindtap="deletePersonnel">{{deleteButton}}</button>-->
+                </view>
+            </view>
+            <!--                                <view class="weui-uploader__input-box">-->
+            <!--                                    <view class="">-->
+            <!--                                    <view class="weui-uploader__input" bindtap="chooseDoc"></view>-->
+            <!--                                </view>-->
+            <!--                    <input name="input_member_marrige" class="weui-input" placeholder="请输入" value="{{member_marrige}}"  />-->
+            <!--                            </view>-->
+
+
+        </view>
+
+
+    </view>
+
+</view>
+</block>

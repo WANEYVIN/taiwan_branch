@@ -17,7 +17,8 @@
     "pages/myProfile/myProfile",
     "pages/test/failPage",
     "pages/test/expiredPage",
-     "pages/scan/scan"
+    "pages/scan/scan",
+    "pages/taskMembers/taskMembers"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -41,7 +42,7 @@
         "iconPath": "images/profile2.png",
         "selectedIconPath": "images/profile1.png"
       }
-        ]
+    ]
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

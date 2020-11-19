@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="8afaa088-1896-4dcb-aa10-8f50713f8bc6" name="xyz.yi-wen.wang" url="https://xyz.yi-wen.wang/linghuo/">
+        <fileTransfer rootFolder="/home/ubuntu/html/linghuo" accessType="SFTP" host="xyz.yi-wen.wang" port="22" sshConfigId="95f7ea58-d79f-481b-a1d8-60bb45eac21b" sshConfig="ubuntu@xyz.yi-wen.wang:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

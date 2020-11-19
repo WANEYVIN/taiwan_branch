@@ -21,12 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ba07f549-99f8-4a0b-8157-95991536b872" name="Default Changelist" comment="scan page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/taskMembers/taskMembers.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/taskMembers/taskMembers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/taskMembers/taskMembers.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/taskMembers/taskMembers.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/taskMembers/taskMembers.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/taskMembers/taskMembers.wxss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +115,7 @@
       <workItem from="1605252167685" duration="13000" />
       <workItem from="1605252217902" duration="803000" />
       <workItem from="1605495742851" duration="4259000" />
-      <workItem from="1605513429490" duration="40485000" />
+      <workItem from="1605513429490" duration="44211000" />
     </task>
     <task id="LOCAL-00001" summary="profile icons">
       <created>1602648709635</created>

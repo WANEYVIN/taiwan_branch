@@ -37,9 +37,11 @@
                                         <label class="">请上传本任务之派遣名单，csv文件:</label>
                                     </view>
                                     <view class="taskButtons">
-                                        <button class="weui-btn_primary" id="{{item.task_id}}" bindtap="chooseDoc">{{submitButton}}</button>
-                                        <button class="viewTaskButton weui-btn weui-btn_primary" id="{{item.task_id}}" bindtap="listMember">{{listMembers}}</button>
+                                        <button class="buttonConfig greenButton" id="{{item.task_id}}" bindtap="chooseDoc">{{submitButton}}</button>
+                                        <button class="buttonConfig yellowButton" id="{{item.task_id}}" bindtap="listMember">{{listMembers}}</button>
+                                        <button class="buttonConfig redButton" id="{{item.task_id}}" bindtap="dropProject">{{dropProject}}</button>
                                     </view>
+<!--                                    weui-btn weui-btn_primary-->
                                 </view>
 <!--                                <view class="weui-uploader__input-box">-->
 <!--                                    <view class="">-->

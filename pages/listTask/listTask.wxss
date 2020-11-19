@@ -4,12 +4,34 @@
     flex-direction: row;
     justify-content: space-between;
     /*background-color: chartreuse;*/
-    width: 300px;
+    width: 350px;
 }
 .viewTaskButton{
     display: flex;
     /*flex-direction: row;*/
     /*justify-content: space-between;*/
     /*background-color: chartreuse;*/
-    width: 180px;
+    /*width: 180px;*/
+}
+.buttonConfig{
+    width: 80px;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*padding: 8px 24px;*/
+    line-height: 1.41176471;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 17px;
+    /*background-color: chartreuse;*/
+
+}
+.redButton{
+    background-color: red;
+}
+.yellowButton{
+    background-color: yellow;
+}
+.greenButton{
+    background-color: green;
+
 }

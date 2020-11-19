@@ -14,8 +14,9 @@ Page({
     task_address: '工作地點',
     task_num_recruiting: '需求人數',
     task_expiration: '截止日期',
-    submitButton:"上传名单csv",
-    listMembers:"招募狀況"
+    submitButton:"上传名单",
+    listMembers:"招募狀況",
+    dropProject:"撤销此案"
 
   },
 
@@ -237,7 +238,71 @@ Page({
     })
 
     */
+  },
+  dropProject:function (e){
+
+
+    console.log("sn= ", e.currentTarget.id)
+
+    wx.showModal({
+      title: '撤销此案',
+      content: '若要删除本任务，请按确定',
+      success (res) {
+        // jump to scan the back side
+        // that.bianshi1(type,imgUrl,result)
+        // that.photo("shenfenzheng")
+        if (res.confirm) {
+          wx.request({
+            url: getApp().globalData.serverURL+'/deleteTask.php?task_id='+e.currentTarget.id,
+            header:{
+              'Content-Type': 'application/json'
+            },
+
+            success: function (res) {
+              console.log("respose from deleteTaskMember:  ", res.data)
+
+              if(res.data ='1'){
+                wx.showToast({
+                  title: '本任务已删除',
+                  icon: 'success',
+                  duration: 2000
+                })
+
+
+              }else{
+                wx.showToast({
+                  title: '删除未成功请与管理员联系',
+                  icon: 'ading',
+                  duration: 2000
+                })
+
+
+              }
+
+            },
+            fail: function (res) {
+              console.log("fail: ", res);
+            },
+            complete: function (res) {
+              // wx.hideNavigationBarLoading() //完成停止加载
+              wx.stopPullDownRefresh();
+            }
+          })
+
+        }
+        if (res.cancel) {
+          // jump to scan the back side
+          // wx.navigateTo({
+          //   url: '../listTask/listTask',
+          //
+          // })
+
+        }
+
+      }
+    })
+
+
+
   }
-
-
 })

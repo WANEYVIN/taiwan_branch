@@ -1,1 +1,13 @@
 /* pages/taskMembers/taskMembers.wxss */
+
+.myProfile_icons{
+    width: 60rpx;
+    height: 60rpx;
+    align-items: center;
+}
+.button-area{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

@@ -14,18 +14,35 @@
         <view class="weui-media-box__desc"><text>{{id}} : </text><text>{{value[1].match_member}}</text></view>
 <!--        <view class="weui-media-box__desc"><text>{{birthday}} : </text><text>{{value[0][0].member_birthday}}</text></view>-->
 <!--        <view class="weui-media-box__desc"><text>{{gender}} : </text><text>{{value[0][0].member_gender}}</text></view>-->
-        <view class="weui-media-box__desc"><text>{{signOff_date}} : </text><text>{{value[1].match_date}}</text></view>
+<!--        <view class="weui-media-box__desc"><text>{{signOff_date}} : </text><text>{{value[1].match_date}}</text></view>-->
+        <view class="weui-media-box__desc" wx:if="{{value[1].match_date==null}}"><text>{{signOff_date}} : </text><text>{{notSignOff}}</text></view>
+        <view class="weui-media-box__desc" wx:elif="{{value[1].match_date}}"><text>{{signOff_date}} : </text><text>{{value[1].match_date}}</text></view>
+
+
+
+
+
+
         <view class="weui-media-box__desc"><text>{{approval}} : </text><text>{{value[1].match_approval}}</text></view>
 
 
         <view class="weui-cell weui-cell_active weui-cell_disabled" >
 
-            <!--                            <view class="weui-cell__bd">-->
+            <!--                          <view class="weui-cell__bd">-->
 
-            <view class="button-sp-area" >
+            <view class="button-sp-area button-area" >
 
                 <view class="taskButtons">
-<!--                    <button class="weui-btn_primary" id="{{value[1].match_member}}" bindtap="deletePersonnel">{{deleteButton}}</button>-->
+                    <button class="weui-btn_primary" id="{{value[1].match_sn}}" bindtap="deletePersonnel">{{deleteButton}}</button>
+
+
+
+                </view>
+                <view class="myProfile_button_text" wx:if="{{value[1].match_date}}">
+
+                    <image bindtap="downloadFile" class="myProfile_icons"  src="../../images/contract.png" mode="aspectFit"  ></image>
+                    <view>查看簽署的協議</view>
+
                 </view>
             </view>
             <!--                                <view class="weui-uploader__input-box">-->

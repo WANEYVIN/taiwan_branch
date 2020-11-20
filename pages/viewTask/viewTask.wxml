@@ -150,14 +150,31 @@
                 <view><button bindtap="go_home">{{HOME}}</button></view>
 
                 <view wx:if="{{matched =='1'}}">
+                    <view class="myProfile_button_text">
 
-                <view class="myProfile_button_text">
+                    <view wx:if="{{signOff =='0'}}">
+
+
+                            <image bindtap="goSignOff" class="myProfile_icons" src="../../images/pen64.png" mode="aspectFit"  ></image>
+                            <view>必须尽快完成签署流程，以便顺利开工发资</view>
+
+                        </view>
+
+                        <view wx:elif="{{signOff =='1'}}">
+
+
 
                         <image bindtap="downloadFile" class="myProfile_icons" name="{{contractDoc}}"  src="../../images/contract.png" mode="aspectFit"  ></image>
-                        <view>查看簽署的協議</view>
+                        <view>查看签署的协议</view>
+                        </view>
+                    </view>
+<!--                </view>-->
+
+
 
                 </view>
-                </view>
+
+
 
 
         </block>

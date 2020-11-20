@@ -63,7 +63,7 @@
 
 
 
-                <view wx:if="{{item!=list.matched}}" class="taskProfile"  catchtap="viewTask" id="{{idx}}">
+                <view wx:if="{{item!=list.matched && item!=list.signOff}}" class="taskProfile"  catchtap="viewTask" id="{{idx}}">
 <!--          <view>{{idx}}</view>-->
 
 

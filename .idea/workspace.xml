@@ -21,6 +21,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ba07f549-99f8-4a0b-8157-95991536b872" name="Default Changelist" comment="scan page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/taskMembers/taskMembers.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/taskMembers/taskMembers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/viewTask/viewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/viewTask/viewTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/viewTask/viewTask.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/viewTask/viewTask.wxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +123,7 @@
       <workItem from="1605252167685" duration="13000" />
       <workItem from="1605252217902" duration="803000" />
       <workItem from="1605495742851" duration="4259000" />
-      <workItem from="1605513429490" duration="44211000" />
+      <workItem from="1605513429490" duration="59710000" />
     </task>
     <task id="LOCAL-00001" summary="profile icons">
       <created>1602648709635</created>
@@ -294,6 +302,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="1920" y="27" width="1207" height="1053" key="CommitChangelistDialog2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603346354583" />
+    <state x="2020" y="127" width="1720" height="853" key="DiffContextDialog" timestamp="1605848188153">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2020" y="127" width="1720" height="853" key="DiffContextDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605848188153" />
     <state x="2610" y="254" width="530" height="605" key="FileChooserDialogImpl" timestamp="1605150910266">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -349,10 +361,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2460" y="248" key="run.anything.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605168625484" />
-    <state x="2459" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1603370115656">
+    <state x="2459" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1605853583709">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2459" y="45" width="840" height="1034" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603370115656" />
+    <state x="2459" y="45" width="840" height="1034" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605853583709" />
     <state x="2644" y="396" width="461" height="320" key="webDeployment.PermissionsDialog" timestamp="1605153445083">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

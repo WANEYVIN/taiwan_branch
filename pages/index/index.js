@@ -101,7 +101,16 @@ Page({
         // console.log("get matched from storage :", res.data.length);
         // console.log("delete the last :", res.data['matched']);
         if(res.data['matched']==1){
-            var ifmatched='你有指定的任务';
+            if(res.data['signOff']==1){
+                var ifmatched='你有指定的任务';
+
+            }else{
+                var ifmatched='你有指定的任务，请尽快签署协议，并完善个人资质';
+
+            }
+
+
+            // var ifmatched='你有指定的任务';
             console.log("check if condition = 1:", that.data.condition);
         }else{
             var ifmatched='请浏览任务';
@@ -118,7 +127,8 @@ Page({
           task_num_recruiting: '需求人數',
           task_expiration: '截止日期',
             matched :res.data['matched'],
-            ifMatched: ifmatched
+            ifMatched: ifmatched,
+           signOff: res.data['signOff']?res.data['signOff']:0
 
 
       })
@@ -197,16 +207,18 @@ Page({
         var taskID = e.currentTarget.id;
         var task = that.data.list;
         var matched = that.data.matched;
+        var signOff = that.data.signOff;
         // var task_length = that.data.list.length;
 
         console.log("task tapped, & task ID= ",taskID); //输出点击的view的id，第二种情况就不重复写了
         // console.log("task content:" + JSON.stringify(task));
         console.log("task value:" + JSON.stringify(task[taskID]));
         console.log("matched value:" + matched);
+        console.log("sign off value:" + signOff);
 
         // console.log("task tapped",viewId);
         wx.redirectTo({
-            url: '../viewTask/viewTask?taskID='+JSON.stringify(task[taskID])+'&matched='+matched,
+            url: '../viewTask/viewTask?taskID='+JSON.stringify(task[taskID])+'&matched='+matched+'&signOff='+signOff,
             // url: '../viewTask/viewTask?taskID='+task[taskID],
         })
     }

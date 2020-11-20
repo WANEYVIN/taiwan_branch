@@ -9,6 +9,8 @@ Page({
     KEEP:'保留',
     APPLY:'申请',
     role:''
+    // matched: this.data.matched,
+    // signOff: this.data.signOff
 
 
   },
@@ -19,7 +21,8 @@ Page({
   onLoad: function (options) {
     let that = this;
       let task_block = JSON.parse(options.taskID);
-      console.log("parameter sending : ",options.matched);
+    console.log("parameter sending : ",options.matched);
+    console.log("signOff sending : ",options.signOff);
     console.log("task_block : ",task_block);
 
     that.setData({
@@ -32,11 +35,13 @@ Page({
       task_address: '工作地點',
       task_num_recruiting: '需求人數',
       task_expiration: '截止日期',
-      matched: options.matched
+      matched: options.matched,
+      signOff: options.signOff
 
 
 
     })
+    console.log("task_id : ",that.data.list.task_id);
 
     if (wx.getStorageSync('openid')=='oMa-B4qh1ancRHPAr32QBHiTQGSk'){
       that.setData({
@@ -134,6 +139,27 @@ Page({
         console.log(res)
       }
     })
+
+  },
+  goSignOff(e){
+    // check if the personal profile completed?
+    // if not go from scan
+    // if yes, go to sign off
+    if (wx.getStorageSync("member_certificate")!=null) {
+      console.log("get Local Storage", wx.getStorageSync("member_certificate"))
+    }
+
+    if(wx.getStorageSync("member_id")!=null && wx.getStorageSync("expiration")!=null){
+      wx.navigateTo({
+        url:'../contract/contract?openid='+wx.getStorageSync("member_openID")+'&member_id='+wx.getStorageSync("member_id")+'&member_name='+wx.getStorageSync("member_name")+'&task_id='+this.data.list.task_id
+      })
+
+    }else{
+
+    }
+    wx.switchTab({
+      url: '../myProfile/myProfile',
+    });
 
   }
 

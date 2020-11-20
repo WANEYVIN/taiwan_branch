@@ -132,18 +132,26 @@ Page({
           // that.photo("shenfenzheng")
           if (res.confirm) {
             // jump to scan the back side
-            wx.navigateTo({
-              url: '../listTask/listTask',
-
+            // wx.navigateTo({
+            //   url: '../listTask/listTask',
+            //
+            // })
+            wx.navigateBack({
+              // delta: 2
             })
+
 
           }
           if (res.cancel) {
             // jump to scan the back side
-            wx.navigateTo({
-              url: '../listTask/listTask',
-
+            // wx.navigateTo({
+            //   url: '../listTask/listTask',
+            //
+            // })
+            wx.navigateBack({
+              // delta: 2
             })
+
 
           }
 

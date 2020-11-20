@@ -241,6 +241,37 @@ Page({
   },
   dropProject:function (e){
 
+    wx.request({
+      url: getApp().globalData.serverURL + '/listMembers.php?id=' + e.currentTarget.id,
+      header: {
+        'Content-Type': 'application/json'
+      },
+
+      success: function (res) {
+
+        console.log("result of members: ", res);
+
+        if (res.data != 0) {
+          console.log("ZERO: ", res.data);
+
+          wx.showModal({
+            title: '此案尚有成员！',
+            content: '请将成员清空后再撤销此任务',
+            success (res) {
+
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: '../taskMembers/taskMembers?task_id=' + e.currentTarget.id,
+
+                })
+              }
+
+            }
+          })
+
+        }else{
+
+
 
     console.log("sn= ", e.currentTarget.id)
 
@@ -248,9 +279,7 @@ Page({
       title: '撤销此案',
       content: '若要删除本任务，请按确定',
       success (res) {
-        // jump to scan the back side
-        // that.bianshi1(type,imgUrl,result)
-        // that.photo("shenfenzheng")
+
         if (res.confirm) {
           wx.request({
             url: getApp().globalData.serverURL+'/deleteTask.php?task_id='+e.currentTarget.id,
@@ -302,7 +331,9 @@ Page({
       }
     })
 
-
+        }
+      }
+    })
 
   }
 })

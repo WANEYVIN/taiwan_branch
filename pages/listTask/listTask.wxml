@@ -28,7 +28,7 @@
                         <view class="weui-media-box__desc"><text>{{task_expiration}} : </text><text>{{item.task_expiration}}</text></view>
 
 
-                            <view class="weui-cell weui-cell_active weui-cell_disabled" >
+                            <view class="viewTaskButton weui-cell weui-cell_active weui-cell_disabled" >
 
 <!--                            <view class="weui-cell__bd">-->
 
@@ -36,10 +36,10 @@
                                     <view class="weui-cell__hd">
                                         <label class="">请上传本任务之派遣名单，csv文件:</label>
                                     </view>
-                                    <view class="taskButtons">
-                                        <button class="buttonConfig greenButton" id="{{item.task_id}}" bindtap="chooseDoc">{{submitButton}}</button>
-                                        <button class="buttonConfig yellowButton" id="{{item.task_id}}" bindtap="listMember">{{listMembers}}</button>
-                                        <button class="buttonConfig redButton" id="{{item.task_id}}" bindtap="dropProject">{{dropProject}}</button>
+                                    <view class="taskButtons weui-cell weui-cell_active weui-cell_disabled">
+                                        <view><button class="buttonConfig greenButton" id="{{item.task_id}}" bindtap="chooseDoc">{{submitButton}}</button></view>
+                                        <view><button class="buttonConfig yellowButton" id="{{item.task_id}}" bindtap="listMember">{{listMembers}}</button></view>
+                                        <view><button class="buttonConfig redButton" id="{{item.task_id}}" bindtap="dropProject">{{dropProject}}</button></view>
                                     </view>
 <!--                                    weui-btn weui-btn_primary-->
                                 </view>

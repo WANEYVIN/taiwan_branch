@@ -16,7 +16,10 @@ Page({
     task_expiration: '截止日期',
     submitButton:"上传名单",
     listMembers:"招募狀況",
-    dropProject:"撤销此案"
+    dropProject:"撤销此案",
+    copy:"复制此案内容",
+    editing:"修改本案内容",
+    checkContract:"检查合同协议"
 
   },
 

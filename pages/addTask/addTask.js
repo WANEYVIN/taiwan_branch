@@ -8,6 +8,7 @@ Page({
     today: '',
     submitButton:'確認提交',
     // shown_today:''
+    uploaded:'0'
   },
 
   /**
@@ -91,6 +92,25 @@ Page({
   },
 
   bindDateChange: function(e) {
+    if(e.detail.value == this.getToday()){
+      console.log("the same day, please add some more")
+      wx.showModal({
+        title: '提示',
+        content: '终止日期最好别设为当天',
+        success (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+
+
+
+    }else{
+      console.log("chose end date =",e.detail.value)
+    }
     this.setData({
       shown_today: e.detail.value
     })
@@ -144,16 +164,18 @@ Page({
           // filePath: tempFilePaths[0],
           filePath: res.tempFiles[0].path,
           name: 'file',
-          // formData:{
-          //   'upload': '1',
-          //   'filename': current_time
-          // },
+          formData:{
+            'upload': '1'
+            // 'filename': current_time
+          },
           success (res){
             // const data = res.data
             //do something
-            console.log("uploading", res.data)
+            console.log("uploading1", res.data)
             that.setData({
-              tmpFile_name : res.data
+              tmpFile_name : res.data,
+              upload:'1',
+              uploaded:'1'
             })
           },fail(res){
             console.log("uploading2", res)
@@ -217,7 +239,8 @@ Page({
         task_address:e.detail.value.input_task_address,
         // task_owner:wx.getStorageSync("openid"),
         tmpFile_name: that.data.tmpFile_name,
-        submit:"1"
+        submit:"1",
+        uploaded:that.data.uploaded
 
 /*
     id: e.detail.value.input_ID,

@@ -18,6 +18,7 @@
 
 
                 <view class="weui-panel__bd">
+
                     <view class="weui-media-box weui-media-box_text">
                         <h4 class="weui-media-box__title">{{item.task_name}}</h4>
 <!--                        <view class="weui-media-box__desc"><text>{{task_corporation}} : </text><text>{{item.task_corporation}}</text></view>-->
@@ -39,8 +40,17 @@
                                     <view class="taskButtons weui-cell weui-cell_active weui-cell_disabled">
                                         <view><button class="buttonConfig greenButton" id="{{item.task_id}}" bindtap="chooseDoc">{{submitButton}}</button></view>
                                         <view><button class="buttonConfig yellowButton" id="{{item.task_id}}" bindtap="listMember">{{listMembers}}</button></view>
+                                        <view><button class="buttonConfig redButton" id="{{item.task_id}}" bindtap="checkContract">{{checkContract}}</button></view>
+                                    </view>
+                                    <view class="weui-cell__hd">
+                                        <label class="">请上传本任务之派遣名单，csv文件:</label>
+                                    </view>
+                                    <view class="taskButtons weui-cell weui-cell_active weui-cell_disabled">
+                                        <view><button class="buttonConfig greenButton" id="{{item.task_id}}" bindtap="copy">{{copy}}</button></view>
+                                        <view><button class="buttonConfig yellowButton" id="{{item.task_id}}" bindtap="editing">{{editing}}</button></view>
                                         <view><button class="buttonConfig redButton" id="{{item.task_id}}" bindtap="dropProject">{{dropProject}}</button></view>
                                     </view>
+
 <!--                                    weui-btn weui-btn_primary-->
                                 </view>
 <!--                                <view class="weui-uploader__input-box">-->

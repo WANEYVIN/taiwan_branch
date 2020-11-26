@@ -26,12 +26,26 @@ page {
 }
 
 .userinfo-avatar {
-  width: 100rpx;
-  height: 100rpx;
+  width: 200rpx;
+  height: 200rpx;
   margin: 20rpx;
   border-radius: 50%;
   background-size: cover;
   background-color: white;
+  display: flex;
+  overflow:hidden;
+  text-align: center;
+
+}
+.center{
+  /*width: 210rpx;*/
+  /*height: 210rpx;*/
+  display: flex;
+  flex-direction: column;
+  /*align-items: center;*/
+  align-items: center;
+  box-sizing: border-box;
+
 }
 
 .userinfo-avatar[size] {

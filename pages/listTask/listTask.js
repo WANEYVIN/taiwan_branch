@@ -19,7 +19,9 @@ Page({
     dropProject:"撤销此案",
     copy:"复制此案内容",
     editing:"修改本案内容",
-    checkContract:"检查合同协议"
+    checkContract:"检查合同协议",
+    dialog1: false,
+    preview: false
 
   },
 
@@ -338,5 +340,223 @@ Page({
       }
     })
 
+  },
+  copy:function(e){
+
+    wx.request({
+      url: getApp().globalData.serverURL+'/select_task.php?act=copy&id='+e.currentTarget.id,
+      header:{
+        'Content-Type': 'application/json'
+      },
+
+      success: function (res) {
+        console.log("select from select task php:  ", res)
+        console.log("select from select task php:1  ", res.data)
+
+
+
+
+        wx.navigateTo({
+          url: '../addTask/addTask?data=' + JSON.stringify(res.data),
+
+        })
+
+      },
+      fail: function (res) {
+        console.log("fail: ", res);
+      },
+      complete: function (res) {
+        // wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh();
+      }
+    })
+
+
+  },
+  editing:function(e) {
+
+
+
+  },
+
+  checkContract:function(e) {
+
+    let that = this
+    that.setData({     dialog2: true,
+      task_id: e.currentTarget.id,
+      // type: "专用"
+    });
+    wx.request({
+      url: getApp().globalData.serverURL+'/select_task.php?act=contract&id='+e.currentTarget.id,
+      header:{
+        'Content-Type': 'application/json'
+      },
+
+      success: function (res) {
+        console.log("select from select task php:  ", res.data)
+
+        if (res.data.jpg==null){
+        var contractStatusjpg = " 协议预览图片 "
+        }else{
+          var contractStatusjpg = ""
+        }
+        if (res.data.pdf==null){
+          var contractStatuspdf = " 协议文档 "
+        }else{
+          var contractStatuspdf = ""
+        }
+        if (res.data.type==null){
+          var contractType = "尚缺乏协议文件"
+        }else if (res.data.type=="specific"){
+          var contractType = "使用专用协议文件"
+
+        }else{
+          var contractType = "使用通用协议文件"
+        }
+        if (res.data.jpg==null || res.data.type==null || res.data.pdf==null){
+          var doc = "0"
+        }else{
+          var doc = "1"
+        }
+
+        that.setData({
+          main_description: "本任务"+ contractType ,
+          minor_description:"本任务尚缺乏"+contractStatusjpg+contractStatuspdf,
+          download_tap: "下载",
+          preview_tap:"查看",
+          more:"更多",
+          back:"返回",
+          document: doc,
+          upload_tap:"上传协议文档",
+          copy_tap:"复制通用协议"
+        });
+
+
+
+      },
+      fail: function (res) {
+        console.log("fail: ", res);
+      },
+      complete: function (res) {
+        // wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh();
+      }
+    })
+  },
+  close: function() {
+    this.setData({
+      dialog1: false,
+      dialog2: false
+    });
+  },
+
+  preview_agreement:function (e){
+    let that = this
+    that.setData({
+      preview: true,
+      dialog2: false,
+
+      imgUrl:getApp().globalData.serverURL+'/contract/templates/'+that.data.task_id+'/contract_template.jpg',  //图片路径
+      contractDoc: getApp().globalData.serverURL+'/contract/templates/'+that.data.task_id+'/contract_template.pdf'
+
+    });
+
+  },
+
+  download_agreement(e){
+
+    let that = this
+      // var src = e.currentTarget.dataset.src; // 这个定义了一个属性src来存地址
+      // var src = this.data.contractDoc; // 这个定义了一个属性src来存地址
+    var src =getApp().globalData.serverURL+'/contract/templates/'+that.data.task_id+'/contract_template.pdf'
+
+    console.log("tap download",e,src)
+
+    wx.downloadFile({
+        url: src,
+        success: function (res) {
+          console.log(res)
+          var Path = res.tempFilePath              //返回的文件临时地址，用于后面打开本地预览所用
+          wx.openDocument({
+            filePath: Path,
+            Type: 'pdf',
+            showMenu: true,
+            success: function (res) {
+              console.log('打开文档成功')
+            }
+          })
+        },
+        fail:function (res){
+          console.log(res)
+        }
+      })
+
+
+  },
+  upload_agreement(){
+
+      var that = this;
+
+      wx.chooseMessageFile({
+        count: 1,
+        // type: 'image',
+        type: 'file',
+        success (res) {
+          var filename = res.tempFiles[0].name
+          that.setData({filename:filename});
+
+
+          console.log("choose file res", res)
+          var current_time = new Date().getTime();
+
+          that.setData({
+            upload:'1',
+            uploaded:'1'
+          })
+
+          wx.uploadFile({
+            // url: 'https://www.top-talent.com.cn/linghuo/addTask.php',
+            url: getApp().globalData.serverURL+'/addTask.php',
+            // filePath: tempFilePaths[0],
+            filePath: res.tempFiles[0].path,
+            name: 'file',
+            formData:{
+              'upload': '1'
+              // 'filename': current_time
+            },
+            success (res){
+              // const data = res.data
+              //do something
+              console.log("chooseFILE", res.data)
+              that.setData({
+                tmpFile_name : res.data,
+                upload:'1',
+                uploaded:'1'
+              })
+              console.log("set uploaded =", that.data.uploaded)
+
+
+            },fail(res){
+              console.log("fail to choose file", res)
+
+            }
+          })
+
+
+
+        }
+
+
+
+      })
+
+
+
+
+  },
+  copy_agreement(){
+
   }
-})
+
+
+  })

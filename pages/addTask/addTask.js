@@ -15,14 +15,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("option: ", JSON.parse(options.data));
+    var copiedTask = JSON.parse(options.data)[0]
+    console.log("copiedTask: ", copiedTask.task_requirement);
+
 
     var today = this.getToday()
     this.setData({
       today: today,
       shown_today:today,
-      task_corporation: wx.getStorageSync("member_corporate")
-
-
+      task_corporation: wx.getStorageSync("member_corporate"), // maybe in the future, find a new way to identify the manager
+      task_name: copiedTask.task_name?copiedTask.task_name:'',
+      task_certificate: copiedTask.task_requirement?copiedTask.task_requirement:'',
+      task_description: copiedTask.task_description?copiedTask.task_description:'请描述工作內容',
+      task_address: copiedTask.task_address?copiedTask.task_address:'',
+      member_registered_addr:copiedTask.member_registered_addr?copiedTask.member_registered_addr:'',
     })
 
   },
@@ -129,18 +136,7 @@ Page({
 
   chooseDoc: function (e) {
     var that = this;
-    /*
-    wx.chooseImage({
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        that.setData({
-          files: that.data.files.concat(res.tempFilePaths)
-        });
-      }
-    })
-*/
+
     wx.chooseMessageFile({
       count: 1,
       // type: 'image',
@@ -158,6 +154,11 @@ Page({
         console.log("choose file res", res)
         var current_time = new Date().getTime();
 
+        that.setData({
+          upload:'1',
+          uploaded:'1'
+        })
+
         wx.uploadFile({
           // url: 'https://www.top-talent.com.cn/linghuo/addTask.php',
           url: getApp().globalData.serverURL+'/addTask.php',
@@ -171,14 +172,17 @@ Page({
           success (res){
             // const data = res.data
             //do something
-            console.log("uploading1", res.data)
+            console.log("chooseFILE", res.data)
             that.setData({
               tmpFile_name : res.data,
               upload:'1',
               uploaded:'1'
             })
+            console.log("set uploaded =", that.data.uploaded)
+
+
           },fail(res){
-            console.log("uploading2", res)
+            console.log("fail to choose file", res)
 
           }
         })
@@ -242,21 +246,7 @@ Page({
         submit:"1",
         uploaded:that.data.uploaded
 
-/*
-    id: e.detail.value.input_ID,
-        addr: e.detail.value.input_addr,
-        // birthday: e.detail.value.input_birthday,
-        birthday: that.data.member_birthday,
-        gender: e.detail.value.input_gender,
-        nationality: e.detail.value.input_nationality,
-        // type: e.detail.value.input_type,
-        openid: wx.getStorageSync("openid"),
-        // marriage:e.detail.value.input_marriage,
-        // certificates:e.detail.value.input_certificates,
-        // home_addr: e.detail.value.input_home,
-        // phone_num:e.detail.value.input_phone,
-        expiration:that.data.member_id_expiration
-*/
+
       },
 
 
@@ -264,11 +254,7 @@ Page({
 
         console.log('insert2DB result=',ret);
 
-        // if(ret.data === that.data.id){
-        //   return 1;
-        // }else{
-        //   return 0;
-        // }
+
 
 
       }
@@ -281,13 +267,161 @@ Page({
     let that = this
     console.log("indsert new task content= ",e)
 
+    var vp = that.validateExpiration(e)
+
+    console.log("validateExpiration ",vp)
+
+    // if (that.validatePhone(e)){
+    //   if (that.validateExpiration(e)){
+    if (that.validatePhone(e) && that.validateExpiration(e)){
+
+    // upload the new task
     var update = that.insert2DB(e);
     wx.showModal({
-      // title: "提示"+update,
       content: "已送出",
-      showCancel: false
+      showCancel: false,
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.navigateBack()
+        }
+      }
     });
 
+      // }
+    }
+
+
+
+  },
+
+
+  validatePhone(e){
+    if(e.detail.value.input_task_contact==''){
+      wx.showModal({
+        title: '提示',
+        content: '请填联络电话',
+        success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+      return false;
+    }else{
+      return true;
+    }
+  },
+  validateExpiration(e){
+    let that = this
+    // check the expiration setting
+    if (that.data.shown_today == that.getToday()) {
+      console.log("the same day, please add some more")
+      wx.showModal({
+        title: '提示',
+        content: '终止日期最好别设为当天',
+        success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+
+
+
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    return false;
+    } else {
+      console.log("chose end date =", e.detail.value)
+      return true;
+
+    }
+  },
+
+
+  getPhoneNumber(e) {
+    console.log('ERR MSG', e.detail.errMsg)
+    console.log('iv', e.detail.iv)
+    console.log('DATA', e.detail.encryptedData)
+
+    let that = this
+
+
+    getApp().userLogin().then(
+
+        function (res){
+          console.log("promise回调后的数据session_key："+res.data.session_key);
+          console.log("res in page= ",res);
+          // var test = that.GetData(res.data.openid);
+          // console.log("if res true : ", test);
+          that.setData({
+            condition: 1,
+            openid : res.data.openid,
+            session_key : res.data.session_key
+
+
+
+          })
+
+          console.log("POST parameters: data : ",e.detail.encryptedData);
+          console.log("POST parameters: iv : ",e.detail.iv);
+          console.log("POST parameters: session : ",that.data.session_key);
+          wx.request({
+            url: getApp().globalData.serverURL + '/getOpenID.php',
+            data: {
+              //   // code: code,
+              encryptedData:e.detail.encryptedData,
+              // encryptedData:"HoLM9cNa1Y5sl4nb1XZmSZCYSxmVbkpOVbYqQ+H9iQP7CnQUzKFzBX96VjfNb/C8IZyA4WPbQctlkdZ3Rr2q2SaEhUomAEoLkHZ2JTCUuvs5CjnHdxF+nIG8fSJzhH3kQRqVSU+Yg9OvPO8YoZo+6+2LbIvN8FiLOMps7BsSCLeQUY/m6rGahFZDqWW2OI00tuhh7pCGDlhGtYUGHHlXcw==",
+              iv:e.detail.iv,
+              sessionKey:that.data.session_key
+
+            },
+
+            method: 'POST',
+
+            header:{
+              'content-type':'application/x-www-form-urlencoded'
+            },
+            success: function (res) {
+              console.log("encryptedData :",e.detail.encryptedData);
+              console.log("iv :",e.detail.iv);
+              console.log("sessionKey :",that.data.session_key);
+              console.log("total res :",res);
+
+
+              console.log("login result",res.data.phoneNumber);
+              // return that.globalData.openid
+              if (res.data.phoneNumber!= '') {
+                that.setData({
+                  member_registered_addr: res.data.phoneNumber,
+                })
+              }
+
+
+            }
+          })
+
+
+
+
+
+
+        }
+        ,
+        function (res){
+
+          console.log("promise rejected  : "+res);
+
+
+        })
+
   }
+
+
+
 
 })

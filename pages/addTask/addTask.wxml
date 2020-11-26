@@ -69,7 +69,7 @@
 <!--                </view>-->
 
                 <view class="weui-cell__bd">
-                    <textarea name="input_task_description" class="weui-textarea" placeholder="请描述工作內容" rows="3"></textarea>
+                    <textarea name="input_task_description" class="weui-textarea" placeholder="请输入" value="{{task_description}}" rows="3"></textarea>
                     <view class="weui-textarea-counter"></view>
                 </view>
 
@@ -151,9 +151,14 @@
                 <view class="weui-cell__hd">
                     <label class="weui-label">聯絡電話:</label>
                 </view>
-                <view class="weui-cell__bd">
-                    <input name="input_task_contact" type="number" class="weui-input" placeholder="请输入" value="{{member_registered_addr}}"  />
+<!--                <view class="weui-cell__bd">-->
+<!--                    <input name="input_task_contact" type="number" class="weui-input" placeholder="请输入" value="{{member_registered_addr}}"  />-->
+<!--                </view>-->
+
+                <view class="weui-cell__bd" >
+                    <button class="getPhoneButton" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">   <input name="input_task_contact" class="weui-input" type="number" placeholder="点击自动输入" value="{{member_registered_addr}}"  /></button>
                 </view>
+
 
 
             </view>

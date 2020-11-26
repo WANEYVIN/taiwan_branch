@@ -1,8 +1,18 @@
 <!--index.wxml-->
 <view class="page" data-weui-theme="{{theme}}">
 
-    <view class="container" bindtap="myProfile">
-  <open-data class="user-avatar" type="userAvatarUrl" ></open-data>
+    <view class="center weui-cell__hd" bindtap="myProfile" >
+<!--        <open-data class="user-avatar" type="userAvatarUrl" ></open-data>-->
+        <view style="position: relative;margin-right: 5px;margin-top: 5px;" wx:if="{{badge > 0}}">
+        <open-data class="userinfo-avatar" type="userAvatarUrl" ></open-data>
+        <text class="weui-badge" style="position: absolute; top: 1em; right: 1em;">{{badge}}</text>
+        </view>
+        <view style="position: relative;margin-right: 5px;margin-top: 5px;" wx:else="{{badge}}">
+            <open-data class="userinfo-avatar" type="userAvatarUrl" ></open-data>
+<!--            <text class="weui-badge" style="position: absolute; top: 1em; right: 1em;">{{badge}}</text>-->
+        </view>
+
+
 </view>
   <view class="container2" wx:if="{{condition == '0'}}" >
 

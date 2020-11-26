@@ -22,9 +22,13 @@
     <list default="true" id="ba07f549-99f8-4a0b-8157-95991536b872" name="Default Changelist" comment="scan page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/addTask/addTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/addTask/addTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/addTask/addTask.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/addTask/addTask.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.wxss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.wxss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +51,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
@@ -60,13 +65,15 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -120,6 +127,7 @@
       <workItem from="1605252217902" duration="803000" />
       <workItem from="1605495742851" duration="4259000" />
       <workItem from="1605513429490" duration="93136000" />
+      <workItem from="1606271515763" duration="34993000" />
     </task>
     <task id="LOCAL-00001" summary="profile icons">
       <created>1602648709635</created>
@@ -270,17 +278,21 @@
     <option name="LAST_COMMIT_MESSAGE" value="scan page" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2375" y="133" width="1000" height="570" key="#Deployment" timestamp="1606125539058">
+    <state x="2375" y="133" width="1000" height="570" key="#Deployment" timestamp="1606273721870">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="455" y="164" width="1000" height="570" key="#Deployment/0.35.1920.1045@0.35.1920.1045" timestamp="1603622310763" />
     <state x="2375" y="133" width="1000" height="846" key="#Deployment/1920.0.1920.1080/0.26.1920.1054@1920.0.1920.1080" timestamp="1601104986694" />
-    <state x="2375" y="133" width="1000" height="846" key="#Deployment/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606125539058" />
+    <state x="2375" y="133" width="1000" height="846" key="#Deployment/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606273721870" />
     <state x="2350" y="103" width="1040" height="880" key="#SSH_Configurations" timestamp="1605151727645">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="430" y="135" width="1062" height="901" key="#SSH_Configurations/0.35.1920.1045@0.35.1920.1045" timestamp="1603540164138" />
     <state x="2350" y="103" width="1040" height="880" key="#SSH_Configurations/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605151727645" />
+    <state x="2452" y="209" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606271586098">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2452" y="209" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606271586098" />
     <state x="2463" y="335" width="863" height="443" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605495879808">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -353,10 +365,10 @@
     </state>
     <state x="818" y="105" width="274" height="961" key="ftp.server.browser/0.35.1920.1045@0.35.1920.1045" timestamp="1603540184757" />
     <state x="2738" y="72" key="ftp.server.browser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605150971501" />
-    <state x="2460" y="248" key="run.anything.popup" timestamp="1605168625484">
+    <state x="2460" y="248" key="run.anything.popup" timestamp="1606278534982">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2460" y="248" key="run.anything.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605168625484" />
+    <state x="2460" y="248" key="run.anything.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606278534982" />
     <state x="2459" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1605853583709">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

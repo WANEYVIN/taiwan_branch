@@ -2,8 +2,12 @@
 <!--<text>miniprogram/pages/listTask/listTask.wxml</text>-->
 <!--<web-view src="https://www.top-talent.com.cn/linghuo/list_task.php"></web-view>-->
 <!--<view>-->
+<view  wx:if="{{preview}}">
 
-    <view class="weui-panel weui-panel_access">
+    <image src="{{imgUrl}}" mode='widthFix'  data-src="{{image}}" bindtap="preview_agreement"></image>
+
+</view>
+    <view class="weui-panel weui-panel_access" wx:else="{{preview}}">
         <view class="weui-panel__hd">{{ifMatched}}</view>
 
         <block wx:for="{{list}}" wx:key="list" wx:for-index="idx">
@@ -101,3 +105,61 @@
 
 
 <!--</view>-->
+
+
+
+<view class="fadeIn" wx:if="{{dialog1}}">
+    <view class="weui-mask" bindtap="close"></view>
+    <view class="weui-half-screen-dialog">
+        <view class="weui-half-screen-dialog__hd">
+            <view class="weui-half-screen-dialog__hd__side" bindtap="close">
+                <a class="weui-icon-btn">关闭<i class="weui-icon-close-thin"></i></a>
+            </view>
+            <view class="weui-half-screen-dialog__hd__main">
+                <strong class="weui-half-screen-dialog__title">标题</strong>
+            </view>
+        </view>
+        <view class="weui-half-screen-dialog__bd" style="padding-top:32px;height:50px;">
+            可放自定义内容
+        </view>
+    </view>
+</view>
+
+
+
+
+
+<view class="fadeIn" wx:if="{{dialog2}}">
+    <view class="weui-mask" bindtap="close"></view>
+    <view class="weui-half-screen-dialog">
+        <view class="weui-half-screen-dialog__hd">
+            <view class="weui-half-screen-dialog__hd__side" bindtap="close">
+                <a class="weui-icon-btn">{{back}}<i class="weui-icon-back-arrow-thin"></i></a>
+            </view>
+            <view class="weui-half-screen-dialog__hd__main">
+                <strong class="weui-half-screen-dialog__title">{{strongTitle}}</strong>
+                <view class="weui-half-screen-dialog__subtitle">{{title}}</view>
+            </view>
+            <view class="weui-half-screen-dialog__hd__side" bindtap="close">
+                <a class="weui-icon-btn">{{more}}<i class="weui-icon-more"></i></a>
+            </view>
+        </view>
+        <view class="weui-half-screen-dialog__bd">
+            <view class="weui-half-screen-dialog__desc">
+                {{main_description}}
+            </view>
+            <view class="weui-half-screen-dialog__tips">
+                {{minor_description}}
+            </view>
+        </view>
+        <view class="weui-half-screen-dialog__ft" wx:if="{{document==1}}">
+            <a class="weui-btn weui-btn_default" bindtap="download_agreement">{{download_tap}}</a>
+            <a class="weui-btn weui-btn_primary" bindtap="preview_agreement">{{preview_tap}}</a>
+        </view>
+        <view class="weui-half-screen-dialog__ft" wx:else="{{document}}">
+            <a class="weui-btn weui-btn_default" bindtap="upload_agreement">{{upload_tap}}</a>
+            <a class="weui-btn weui-btn_primary" bindtap="copy_agreement">{{copy_tap}}</a>
+        </view>
+    </view>
+</view>
+

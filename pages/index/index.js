@@ -3,7 +3,9 @@ Page({
   data:{
     condition: '',
     openid:wx.getStorageSync("openid"),
-      name : wx.getStorageSync("member_name")
+    name : wx.getStorageSync("member_name"),
+    badge:0
+
   },
 
   onLoad: function (option) {

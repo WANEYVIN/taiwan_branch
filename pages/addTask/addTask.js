@@ -8,16 +8,38 @@ Page({
     today: '',
     submitButton:'確認提交',
     // shown_today:''
-    uploaded:'0'
+    uploaded:'0',
+    copy_it:'0'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("option: ", JSON.parse(options.data));
-    var copiedTask = JSON.parse(options.data)[0]
-    console.log("copiedTask: ", copiedTask.task_requirement);
+    // console.log("option: ", JSON.parse(options.data));
+    // var copiedTask = JSON.parse(options.data)[0]
+    // console.log("copiedTask: ", copiedTask.task_requirement);
+    if(options.data!=null){
+      var copiedTask = JSON.parse(options.data)[0]
+      this.setData({
+        copiedCase:"1",
+        copyAgreement: "复制协议",
+        today: today,
+        shown_today:today,
+        task_corporation: wx.getStorageSync("member_corporate"), // maybe in the future, find a new way to identify the manager
+        task_name: copiedTask.task_name?copiedTask.task_name:'',
+        task_certificate: copiedTask.task_requirement?copiedTask.task_requirement:'',
+        task_description: copiedTask.task_description?copiedTask.task_description:'请描述工作內容',
+        task_address: copiedTask.task_address?copiedTask.task_address:'',
+        member_registered_addr:copiedTask.member_registered_addr?copiedTask.member_registered_addr:'',
+        copiedTask_id : copiedTask.task_id
+      })
+      console.log("This is a copied case",copiedTask);
+
+    }else{
+      console.log("This is a originated case");
+
+    }
 
 
     var today = this.getToday()
@@ -25,11 +47,11 @@ Page({
       today: today,
       shown_today:today,
       task_corporation: wx.getStorageSync("member_corporate"), // maybe in the future, find a new way to identify the manager
-      task_name: copiedTask.task_name?copiedTask.task_name:'',
-      task_certificate: copiedTask.task_requirement?copiedTask.task_requirement:'',
-      task_description: copiedTask.task_description?copiedTask.task_description:'请描述工作內容',
-      task_address: copiedTask.task_address?copiedTask.task_address:'',
-      member_registered_addr:copiedTask.member_registered_addr?copiedTask.member_registered_addr:'',
+      // task_name: copiedTask.task_name?copiedTask.task_name:'',
+      // task_certificate: copiedTask.task_requirement?copiedTask.task_requirement:'',
+      // task_description: copiedTask.task_description?copiedTask.task_description:'请描述工作內容',
+      // task_address: copiedTask.task_address?copiedTask.task_address:'',
+      // member_registered_addr:copiedTask.member_registered_addr?copiedTask.member_registered_addr:'',
     })
 
   },
@@ -244,7 +266,9 @@ Page({
         // task_owner:wx.getStorageSync("openid"),
         tmpFile_name: that.data.tmpFile_name,
         submit:"1",
-        uploaded:that.data.uploaded
+        uploaded:that.data.uploaded,
+        copied: that.data.copy_it,
+        copiedTask_id:that.data.copiedTask_id
 
 
       },
@@ -419,6 +443,17 @@ Page({
 
         })
 
+  },
+
+  copyAgreement(){
+    let that = this
+    console.log("id =", that.data.copiedTask_id)
+
+    this.setData({
+      copy_it: "1",
+      copiedTask_id: that.data.copiedTask_id,
+      close_upload:"1"
+    })
   }
 
 

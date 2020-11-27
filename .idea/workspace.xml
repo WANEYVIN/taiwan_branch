@@ -23,12 +23,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/addTask/addTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/addTask/addTask.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/addTask/addTask.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/addTask/addTask.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/addTask/addTask.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/addTask/addTask.wxss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/viewTask/viewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/viewTask/viewTask.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +125,7 @@
       <workItem from="1605252217902" duration="803000" />
       <workItem from="1605495742851" duration="4259000" />
       <workItem from="1605513429490" duration="93136000" />
-      <workItem from="1606271515763" duration="34993000" />
+      <workItem from="1606271515763" duration="51514000" />
     </task>
     <task id="LOCAL-00001" summary="profile icons">
       <created>1602648709635</created>

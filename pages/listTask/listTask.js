@@ -33,6 +33,7 @@ Page({
 
     wx.request({
       url: getApp().globalData.serverURL+'/list_task.php?id='+wx.getStorageSync("openid"),
+
       header:{
         'Content-Type': 'application/json'
       },
@@ -380,10 +381,13 @@ Page({
   },
 
   checkContract:function(e) {
+    console.log("e:  ", e)
 
     let that = this
-    that.setData({     dialog2: true,
+    that.setData({
+      dialog2: true,
       task_id: e.currentTarget.id,
+      this_task_id:e.currentTarget.id
       // type: "专用"
     });
     wx.request({
@@ -394,6 +398,7 @@ Page({
 
       success: function (res) {
         console.log("select from select task php:  ", res.data)
+        console.log("task name  ", res.data.task.task_name)
 
         if (res.data.jpg==null){
         var contractStatusjpg = " 协议预览图片 "
@@ -406,14 +411,15 @@ Page({
           var contractStatuspdf = ""
         }
         if (res.data.type==null){
-          var contractType = "尚缺乏协议文件"
+          var contractType = "为 "+res.data.task.task_name
         }else if (res.data.type=="specific"){
-          var contractType = "使用专用协议文件"
+          var contractType = "为 "+res.data.task.task_name+"使用专用协议文件"
 
         }else{
-          var contractType = "使用通用协议文件"
+          var contractType = "为 "+res.data.task.task_name+"使用通用协议文件"
         }
-        if (res.data.jpg==null || res.data.type==null || res.data.pdf==null){
+        // if (res.data.jpg==null || res.data.type==null || res.data.pdf==null){
+          if (res.data.jpg==null  || res.data.pdf==null){
           var doc = "0"
         }else{
           var doc = "1"
@@ -493,7 +499,8 @@ Page({
 
 
   },
-  upload_agreement(){
+  upload_agreement(e){
+    console.log("upload e:", e)
 
       var that = this;
 
@@ -503,50 +510,58 @@ Page({
         type: 'file',
         success (res) {
           var filename = res.tempFiles[0].name
-          that.setData({filename:filename});
+          that.setData({filename: filename});
 
 
           console.log("choose file res", res)
           var current_time = new Date().getTime();
 
           that.setData({
-            upload:'1',
-            uploaded:'1'
+            upload: '1',
+            uploaded: '1'
           })
 
           wx.uploadFile({
             // url: 'https://www.top-talent.com.cn/linghuo/addTask.php',
-            url: getApp().globalData.serverURL+'/addTask.php',
+            url: getApp().globalData.serverURL + '/editTask.php',
             // filePath: tempFilePaths[0],
             filePath: res.tempFiles[0].path,
             name: 'file',
-            formData:{
-              'upload': '1'
+            formData: {
+              // 'upload': '1',
+              act: 'upload',
+              task_id: e.currentTarget.id
               // 'filename': current_time
             },
-            success (res){
+            success(res) {
               // const data = res.data
               //do something
-              console.log("chooseFILE", res.data)
-              that.setData({
-                tmpFile_name : res.data,
-                upload:'1',
-                uploaded:'1'
-              })
-              console.log("set uploaded =", that.data.uploaded)
+
+              console.log("result", res.data)
+              if (res.data =="11"){
+                that.setData({
+                  dialog2: false
+
+                })
+                wx.showToast({
+                  title: '上传协议完成',
+                  icon: 'success',
+                  duration: 2000
+                })
 
 
-            },fail(res){
+
+              }
+
+              // console.log("set uploaded =", that.data.uploaded)
+
+
+            }, fail(res) {
               console.log("fail to choose file", res)
 
             }
           })
-
-
-
         }
-
-
 
       })
 
@@ -554,7 +569,62 @@ Page({
 
 
   },
-  copy_agreement(){
+  copy_agreement(e){
+    let that = this
+    console.log("cy agreement: ", e.currentTarget.id)
+
+
+
+    wx.request({
+      url: getApp().globalData.serverURL+'/editTask.php',
+      data: {
+        act:'copy',
+        task_id:e.currentTarget.id
+
+
+      },
+
+      method: 'POST',
+
+      header:{
+        'content-type':'application/x-www-form-urlencoded'
+      },
+      // header:{
+      //   'Content-Type': 'application/json'
+      // },
+
+      success: function (res) {
+        console.log("copy edit task php:  ", res)
+        // console.log("select from select task php:1  ", res.data)
+if (res.data =="1"){
+  that.setData({
+    dialog2: false
+
+  })
+  wx.showToast({
+    title: '复制通用协议完成',
+    icon: 'success',
+    duration: 2000
+  })
+
+}
+
+
+      },
+      fail: function (res) {
+        console.log("fail: ", res);
+      },
+      complete: function (res) {
+        // wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh();
+      }
+    })
+
+
+
+
+
+
 
   }
 

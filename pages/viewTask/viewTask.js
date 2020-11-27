@@ -114,9 +114,10 @@ Page({
     // var src = e.currentTarget.dataset.src; // 这个定义了一个属性src来存地址
     // var src = this.data.contractDoc; // 这个定义了一个属性src来存地址
     // var src = e.data.contractDoc; // 这个定义了一个属性src来存地址
-    console.log( "contract = ",this.data.contractDoc)
+    // console.log( "contract = ",that.data.contractDoc)
     // var src = 'https://www.top-talent.com.cn/linghuo/contract/member_signoff/' + wx.getStorageSync("member_id") + '/' + wx.getStorageSync("member_id") +'-'+wx.getStorageSync("task_id")+ '.pdf'
     var src = getApp().globalData.serverURL+'/contract/member_signoff/' + wx.getStorageSync("member_id") + '/' + wx.getStorageSync("member_id") +'-'+wx.getStorageSync("task_id")+ '.pdf'
+    console.log( "contract = ",src)
 
     wx.downloadFile({
       url: src,
@@ -128,7 +129,7 @@ Page({
           Type: 'pdf',
           showMenu: true,
           success: function (res) {
-            // console.log('打开文档成功')
+            console.log('打开文档成功')
             // wx.navigateBack({
             //   delta:1
             // })

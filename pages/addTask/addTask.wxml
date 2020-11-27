@@ -162,25 +162,46 @@
 
 
             </view>
-
-            <view bindchange="bindPickerChange" class="weui-cell weui-cell_active weui-cell_disabled" >
+<!--    -->
+           <view bindchange="bindPickerChange" class="weui-cell weui-cell_active weui-cell_disabled" wx:if="{{copiedCase}}">
                 <view class="weui-cell__hd">
-                    <label class="weui-label">合約需求:</label>
+                    <label class="weui-label">上传协议:</label>
                 </view>
-                <view class="weui-cell__bd">
+                <view class="between weui-cell__bd">
 
-<!--                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">-->
-<!--                        <a class="">{{shown_marrige}}</a>-->
-<!--                    </picker>-->
 
-                    <view class="weui-uploader__input-box">
+                    <view class=" weui-uploader__input-box">
                         <view class="weui-uploader__input" bindtap="chooseDoc"></view>
+
+
                     </view>
-                    <!--                    <input name="input_member_marrige" class="weui-input" placeholder="请输入" value="{{member_marrige}}"  />-->
+                    <view>
+                     <button class="buttonConfig weui-btn_primary" bindtap="copyAgreement">{{copyAgreement}}</button>
+                    </view>
+
                 </view>
 
 
             </view>
+
+
+
+            <view bindchange="bindPickerChange" class="weui-cell weui-cell_active weui-cell_disabled" wx:else="{{copiedCase}}">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">上传协议:</label>
+                </view>
+                <view class="weui-cell__bd">
+
+                    <view class="weui-uploader__input-box">
+                        <view class="weui-uploader__input" bindtap="chooseDoc"></view>
+                    </view>
+                </view>
+
+
+            </view>
+
+
+
             <view class="button-sp-area" >
 
                 <button class="weui-btn weui-btn_primary" formType="submit" >{{submitButton}}</button>

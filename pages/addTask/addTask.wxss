@@ -1,1 +1,9 @@
 /* miniprogram/pages/addTask/addTask.wxss */
+.between{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.buttonConfig{
+    width:120px !important;
+}

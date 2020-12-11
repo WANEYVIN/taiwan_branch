@@ -9,6 +9,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="e82df7c9-08d5-4af6-a0ed-5c6bc247f446" name="www.top-talent.com.cn" url="https://www.to-talent.com.cn/linghuo/">
+        <fileTransfer rootFolder="/root/docker/html/linghuo" accessType="SFTP" host="www.top-talent.com.cn" port="22" sshConfigId="ec5dec37-873c-477f-869e-7783366f260b" sshConfig="richard@www.top-talent.com.cn:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

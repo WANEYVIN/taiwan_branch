@@ -3,78 +3,53 @@
 
     <view class="center weui-cell__hd" bindtap="myProfile" >
 <!--        <open-data class="user-avatar" type="userAvatarUrl" ></open-data>-->
-        <view style="position: relative;margin-right: 5px;margin-top: 5px;" wx:if="{{badge > 0}}">
+        <view style="position: relative;margin-right: 5px;margin-top: 5px;" >
         <open-data class="userinfo-avatar" type="userAvatarUrl" ></open-data>
-        <text class="weui-badge" style="position: absolute; top: 1em; right: 1em;">{{badge}}</text>
+            <view wx:if="{{badge > 0}}">
+            <text class="weui-badge" style="position: absolute; top: 1em; right: 1em;">{{badge}}</text>
+            </view>
+
+            <view wx:if="{{mgmt_badge > 0}}">
+            <text class="weui-badge badge_colour" style="position: absolute; top: 7em; right: 1em;" >{{mgmt_badge}}</text>
+            </view>
+
         </view>
-        <view style="position: relative;margin-right: 5px;margin-top: 5px;" wx:else="{{badge}}">
-            <open-data class="userinfo-avatar" type="userAvatarUrl" ></open-data>
-<!--            <text class="weui-badge" style="position: absolute; top: 1em; right: 1em;">{{badge}}</text>-->
-        </view>
+
 
 
 </view>
-  <view class="container2" wx:if="{{condition == '0'}}" >
 
-    <open-data class="procedures" type="userNickName" lang="zh_CN"></open-data>
+    <!--
+     <view class="container2" wx:if="{{condition == '0'}}" >
 
-    <text class="procedures"> 請您依照後續步驟完善登錄程序，謝謝！</text>
-    <text class="procedures"> 步驟一：點擊</text>
-    <button bindtap="myProfile" class="btn">  身份证拍照或上傳  </button>
-    <!--    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>-->
+       <open-data class="procedures" type="userNickName" lang="zh_CN"></open-data>
+
+       <text class="procedures"> 請您依照後續步驟完善登錄程序，謝謝！</text>
+       <text class="procedures"> 步驟一：點擊</text>
+       <button bindtap="myProfile" class="btn">  身份证拍照或上傳  </button>
+         <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
   </view>
-
-<!--  <view class="container2" wx:else>-->
-
-
-
-
-<!--    <view wx:for="{{list}}" wx:key="list">-->
-<!--      <text>{{index}} : </text><text>{{item}}</text>-->
-<!--    </view>-->
-
-
-<!--    <view id="outer" catchtap='pressView'>-->
-<!--      <view class="top">-->
-<!--        <view class="clear" id="clear" data-text="C">C</view> &lt;!&ndash; 那个data-text就是你自定义的 &ndash;&gt;-->
-<!--      </view>-->
-<!--    </view>-->
-
-<!--    <view wx:for="{{list}}" wx:key="list" wx:for-index="idx" >-->
-<!--      <block wx:for="{{list}}" wx:key="list" wx:for-index="idx" >     -->
-<!--    <view><text>{{ifMatched}}</text></view>-->
-    <!-- test r weUI -->
+-->
+	<view class="weui-cells">
+			<view class="weui-cell weui-cell_active weui-cell_access" bindtap="notification" >
+				<view class="weui-cell__bd">{{ifMatched}}</view>
+				<view class="weui-cell__ft" style="font-size: 0;">
+					<text style="vertical-align: middle; font-size: 17px;">查看</text>
+					<text class="weui-badge weui-badge_dot" style="margin-left: 5px; margin-right: 5px;"></text>
+				</view>
+			</view>
+		</view>
 
 
 
-
-
-
-
-    <!-- end of test -->
-
-
-
-    <!-- test for weUI -->
 
     <view class="weui-panel weui-panel_access">
-        <view class="weui-panel__hd">{{ifMatched}}</view>
+<!--        <view class="weui-panel__hd">{{ifMatched}}</view>-->
 
         <block wx:for="{{list}}" wx:key="list" wx:for-index="idx">
 
-<!--          <view id="outer" catchtap='pressView'>-->
-<!--            <view class="top">-->
-<!--              <view  id="{{item.task_id}}" >C</view> &lt;!&ndash; 那个data-text就是你自定义的 &ndash;&gt;-->
-<!--            </view>-->
-<!--          </view>-->
-<!--            wx:if="{{list.matched==1}}"-->
-
-            <!--            <view class="taskProfile"  catchtap="viewTask" id="{{item.task_id}}" >-->
-
-
 
                 <view wx:if="{{item!=list.matched && item!=list.signOff}}" class="taskProfile"  catchtap="viewTask" id="{{idx}}">
-<!--          <view>{{idx}}</view>-->
 
 
 
@@ -95,39 +70,79 @@
 
 
 
-<!--                    <view><text>{{task_name}} : </text><text>{{item.task_name}}</text></view>-->
-<!--            <view><text>{{task_corporation}} : </text><text>{{item.task_corporation}}</text></view>-->
-<!--            <view><text>{{task_date}} : </text><text>{{item.task_date}}</text></view>-->
-<!--            <view><text>{{task_description}} : </text><text>{{item.task_description}}</text></view>-->
-<!--            <view><text>{{task_requirement}} : </text><text>{{item.task_requirement}}</text></view>-->
-<!--            <view><text>{{task_address}} : </text><text>{{item.task_address}}</text></view>-->
-<!--            <view><text>{{task_num_recruiting}} : </text><text>{{item.task_num_recruiting}}</text></view>-->
-<!--            <view><text>{{task_expiration}} : </text><text>{{item.task_expiration}}</text></view>-->
-<!--            <view><text>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</text></view>-->
-
             </view>
 
 
 
 
         </block>
+    </view>
 
-        <!--                        <view class="weui-panel__ft">-->
-        <!--                            <a class="weui-cell weui-cell_active weui-cell_access weui-cell_link">-->
-        <!--                                <view class="weui-cell__bd">查看更多</view>-->
-        <!--                                <text class="weui-cell__ft"></text>-->
-        <!--                            </a>-->
-        <!--                        </view>-->
+
+
+        <view wx:if="{{commercials}}">
+
+            <view class="weui-cells">
+                <view class="weui-cell weui-cell_active " bindtap="notification" >
+                    <view class="weui-cell__bd">工作之余 猜你喜欢</view>
+                    <view class="weui-cell__ft" style="font-size: 0;">
+<!--                        <text style="vertical-align: middle; font-size: 17px;">查看</text>-->
+<!--                        <text class="weui-badge weui-badge_dot" style="margin-left: 5px; margin-right: 5px;"></text>-->
+                    </view>
+                </view>
+            </view>
+
+
+            <block wx:for="{{ads}}" wx:key="list" wx:for-index="idx">
+<!--            <image style="width: 300px; height: 200px; background-color: #eeeeee;" mode="{{mode}}" src="{{item.product_img}}"></image>-->
+            <image style="width: 100%;  background-color: #eeeeee;" mode="{{mode}}" src="{{item.product_img}}"></image>
+            <view class="weui-media-box__desc"><text>{{product_name}} : </text><text>{{item.product_name}}</text></view>
+            <view class="weui-media-box__desc"><text>{{product_price}} : </text><text>{{item.product_price}}元</text></view>
+            <view class="weui-media-box__desc"><text>{{product_escription}} : </text><text>{{item.product_description}}</text></view>
+
+</block>
+        </view>
 
 
 
 
 
         <!-- end of test -->
-    </view>
+
 <!--</view>-->
 </view>
 
+
+
+<view class="fadeIn" wx:if="{{dialog2}}">
+    <!--            <view class="weui-mask" bindtap="close"></view>-->
+    <view class="weui-half-screen-dialog">
+        <view class="weui-half-screen-dialog__hd">
+            <view class="weui-half-screen-dialog__hd__side" bindtap="close">
+                <a class="weui-icon-btn">返回<i class="weui-icon-back-arrow-thin"></i></a>
+            </view>
+            <view class="weui-half-screen-dialog__hd__main">
+                <strong class="weui-half-screen-dialog__title">{{request_title}}</strong>
+                <view class="weui-half-screen-dialog__subtitle">{{request_subtile}}</view>
+            </view>
+            <!--                    <view class="weui-half-screen-dialog__hd__side">-->
+            <!--                        <a class="weui-icon-btn">更多<i class="weui-icon-more"></i></a>-->
+            <!--                    </view>-->
+        </view>
+        <view class="weui-half-screen-dialog__bd">
+            <view class="weui-half-screen-dialog__desc">
+                {{notice_request}}
+            </view>
+            <view class="weui-half-screen-dialog__tips">
+                {{always_accept_request}}
+            </view>
+        </view>
+        <view class="weui-half-screen-dialog__ft">
+            <!--                    <a class="weui-btn weui-btn_default" bindtap="close">辅助操作</a>-->
+            <a class="weui-btn weui-btn_primary" bindtap="close">{{subscribe}}</a>
+        </view>
+    </view>
+</view>
 
 
 

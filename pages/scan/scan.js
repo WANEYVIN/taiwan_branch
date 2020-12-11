@@ -1496,10 +1496,18 @@ extraValidDate(e){
       // var expirationDate = "2020.10.20-2022.11.24 0"
       // var sep = expirationDate.split("-")
     console.log("extractString input: ", e)
+    if(e.indexOf("-")>0) {
+      var sep = e.split("-")
+      console.log("separation of - ", sep[1])
+    }else {
+            if(e.indexOf(" ")>0)
+            {
+              var sep = e.split(" ")
+              console.log("separation of space ", sep[1])
+            }
+          }
+        var date = sep[1].split(".")
 
-    var sep = e.split("-")
-    console.log("separation", sep[1])
-    var date = sep[1].split(".")
 
     console.log("extracting expiration date", date)
     var yyyy= date[0]

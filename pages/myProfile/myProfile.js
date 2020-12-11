@@ -53,8 +53,13 @@ Page({
     }
 
 
-    if (wx.getStorageSync("openid") === 'oMa-B4qh1ancRHPAr32QBHiTQGSk') {
-      that.setData({
+    // if (wx.getStorageSync("openid") === 'oMa-B4qh1ancRHPAr32QBHiTQGSk') {
+      var member_role = wx.getStorageSync("member_role")
+    console.log("MY ROLE = ",member_role)
+
+    if ( member_role === ('admin' || 'manager')) {
+console.log("ROLE = ",member_role)
+        that.setData({
         management: '1'
       })
     }
@@ -172,10 +177,23 @@ Page({
           Type: 'pdf',
           showMenu: true,
           success: function (res) {
-            // console.log('打开文档成功')
+            console.log('打开文档成功',res)
+            console.log('打开文档成功PATH: ',Path)
+
             // wx.navigateBack({
             //   delta:1
             // })
+
+                if (Path.length > 0){
+                  wx.removeSavedFile({
+                    filePath: Path,
+                    complete (res) {
+                      console.log("REMOVE FILE",res)
+                    }
+                  })
+                }
+
+
           }
         })
       },
@@ -318,12 +336,13 @@ Page({
           // wx.navigateTo({
           //   url:'../index/index'
           // }) // no use
-          wx.switchTab({
-            url: '../index/index',
-          });
+          // wx.switchTab({
+          //   url: '../index/index',
+          // });
 
 
           wx.request({
+            //撤銷人員方式為刪除該員資料庫裡的open_id
             // url: 'https://www.top-talent.com.cn/linghuo/delete_member.php?openid='+openid,
             url: getApp().globalData.serverURL + '/member_self_drop.php?member_id=' + member_id,
             // url: 'https://www.top-talent.com.cn/linghuo/member_self_drop.php?member_id='+member_id,
@@ -337,14 +356,17 @@ Page({
             success: function (ret) {
 
               console.log('db result ', ret);
-              wx.clearStorage()
+              wx.clearStorageSync()
               console.log('clean storage');
               // wx.navigateTo({
               //   url:'../index/index'
               // })
-
-              getApp().userLogin();
-
+              // wx.reLaunch({
+              //   url: 'index'
+              // })
+              wx.switchTab({
+                url: '../index/index',
+              });
 
             }
           })
@@ -437,7 +459,7 @@ Page({
 
     })
   },
-  manager() {
+  manager(e) {
 
     // verifyRole(openid){
     let that = this
@@ -458,8 +480,20 @@ Page({
         //   role: ret.data
         // })
         console.log('verify result set data=', that.data.role);
+        console.log('click approval=', e.currentTarget.id);
+
+        if (ret.data === 'admin' && e.currentTarget.id=='approval'){
+          wx.redirectTo({
+            url: '../apply4mgmt/apply4mgmt'
+            // url: '../test/test'
+          })
+        }
+
 
         if (ret.data === 'admin' || ret.data === 'manager') {
+
+
+
 
           wx.redirectTo({
             url: '../mgmt/mgmt'

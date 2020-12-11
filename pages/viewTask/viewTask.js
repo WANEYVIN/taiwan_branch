@@ -146,21 +146,30 @@ Page({
     // check if the personal profile completed?
     // if not go from scan
     // if yes, go to sign off
+    console.log("get goSignOff",e)
+
+/* currently useless, we are looking for some other ways to verify if the user registered
     if (wx.getStorageSync("member_certificate")!=null) {
       console.log("get Local Storage", wx.getStorageSync("member_certificate"))
     }
-
+*/
     if(wx.getStorageSync("member_id")!=null && wx.getStorageSync("expiration")!=null){
+
+      console.log("go to contract for sign off, member id = ", wx.getStorageSync("member_id")," expiration =",wx.getStorageSync("expiration"))
+
       wx.navigateTo({
         url:'../contract/contract?openid='+wx.getStorageSync("member_openID")+'&member_id='+wx.getStorageSync("member_id")+'&member_name='+wx.getStorageSync("member_name")+'&task_id='+this.data.list.task_id
       })
+      console.log("navigate to  ",'../contract/contract?openid='+wx.getStorageSync("member_openID")+'&member_id='+wx.getStorageSync("member_id")+'&member_name='+wx.getStorageSync("member_name")+'&task_id='+this.data.list.task_id)
 
     }else{
-
+      console.log("probably brand new user, not existing in database ,local storage is null member_id ,expiration", wx.getStorageSync("member_id"),wx.getStorageSync("expiration"))
+          wx.switchTab({
+            url: '../myProfile/myProfile',
+          });
     }
-    wx.switchTab({
-      url: '../myProfile/myProfile',
-    });
+
+
 
   }
 

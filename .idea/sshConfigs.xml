@@ -2,6 +2,7 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
+      <sshConfig authType="PASSWORD" host="www.top-talent.com.cn" id="ec5dec37-873c-477f-869e-7783366f260b" port="22" nameFormat="DESCRIPTIVE" username="richard" />
       <sshConfig host="xyz.yi-wen.wang" id="95f7ea58-d79f-481b-a1d8-60bb45eac21b" keyPath="$PROJECT_DIR$/../../AWS/melburg_tw.pem" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" />
     </configs>
   </component>

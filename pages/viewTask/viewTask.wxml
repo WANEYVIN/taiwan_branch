@@ -131,14 +131,6 @@
 
 
 
-<!--        <view><text>{{task_name}} : </text><text>{{list.task_name}}</text></view>-->
-<!--        <view><text>{{task_corporation}} : </text><text>{{list.task_corporation}}</text></view>-->
-<!--        <view><text>{{task_date}} : </text><text>{{list.task_date}}</text></view>-->
-<!--        <view><text>{{task_description}} : </text><text>{{list.task_description}}</text></view>-->
-<!--        <view><text>{{task_requirement}} : </text><text>{{list.task_requirement}}</text></view>-->
-<!--        <view><text>{{task_address}} : </text><text>{{list.task_address}}</text></view>-->
-<!--        <view><text>{{task_num_recruiting}} : </text><text>{{list.task_num_recruiting}}</text></view>-->
-<!--        <view><text>{{task_expiration}} : </text><text>{{list.task_expiration}}</text></view>-->
 
                 <view wx:if="{{matched =='0'}}">
 <!--                        wx:if="{{condition == '0'}}"-->
@@ -148,6 +140,8 @@
 
                 </view>
                 <view><button bindtap="go_home">{{HOME}}</button></view>
+<view class="footer">
+
 
                 <view wx:if="{{matched =='1'}}">
                     <view class="myProfile_button_text">
@@ -173,7 +167,7 @@
 
 
                 </view>
-
+</view>
 
 
 

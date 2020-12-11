@@ -10,7 +10,9 @@ App({    /**
     },
     onLaunch: function() {
 
-        this.globalData.serverURL = "https://xyz.yi-wen.wang/linghuo";
+
+        // this.globalData.serverURL = "https://xyz.yi-wen.wang/linghuo";
+        this.globalData.serverURL = "https://www.top-talent.com.cn/linghuo";
 
         console.log('App Launch')
 //不在这里默认请求
@@ -215,6 +217,7 @@ App({    /**
                                 wx.setStorageSync("member_sn", res.data[0].member_sn)
                                 wx.setStorageSync("member_birthday", res.data[0].member_birthday)
                                 wx.setStorageSync("member_corporate", res.data[0].member_corporate)
+                                wx.setStorageSync("expiration", res.data[0].member_ID_expiration)
 
                             }else{
                                 console.log("this is a new user, not yet register as a member");
@@ -253,98 +256,6 @@ App({    /**
 
 
 
-/*
-   WxLogin(e){
-
-        var that = this
-        wx.login({
-            success: function (res) {
-                var code = res.code;
-
-                console.log(res+"code= "+code)
-                wx.request({
-                    // url: '后台通过获取前端传的code返回openid的接口地址',
-                    url: 'https://www.top-talent.com.cn/linghuo/getOpenID.php?code='+code,
-
-                    data: { code: code },
-                    // method: 'POST',
-                    method: 'GET',
-                    header: { 'content-type': 'application/json'},
-                    success: function (res) {
-
-                        // that.globalData={
-                        //     // that.globalData.open_id = res.data.openid
-                        //     openid : res.data.openid
-                        //     // that.globalData.openid = res.data.openid
-                        //     // IsMember : "999"
-                        //
-                        // }
-                        that.globalData.openid = res.data.openid
-                        // console.log("status= "+res.statusCode);
-                        console.log("1 OPEN ID= "+ res.data.openid+"    ---   SESSIID = "+res.data.session_key+" other factor ="+res.data.IsMember);
-                        console.log("222 OPEN ID= "+  that.globalData.openid+"    ---   SESSIID = "+res.data.session_key+" other factor ="+res.data.IsMember);
-                        return that.globalData.openid
-                        // that.globalData.open_id= res.data.openid
-                        // console.log("1 OPEN ID22= "+ that.globalData.open_id);
-                        // that.globalData= {
-                        //     openid : res.data.openid
-                        //
-                        // }
-
-                        // that.globalData.open_id = res.data.openid
-
-                        // IsMember : res.data.IsMember
 
 
-
-                        if (res.statusCode == 200) {
-                            console.log("APP_JS onShow = "+  JSON.stringify(res));
-
-                            //     that.globalData.member_address = res.data.member[0].member_address
-                            //     that.globalData.member_application = res.data.member[0].member_application
-                            //     that.globalData.member_certificate = res.data.member[0].member_certificate
-                            //     that.globalData.member_id = res.data.member[0].member_id
-                            //     that.globalData.member_marrige = res.data.member[0].member_marrige
-                            //     that.globalData.member_name = res.data.member[0].member_name
-                            //     that.globalData.member_openID = res.data.member[0].member_openID
-                            //     that.globalData.member_gender = res.data.member[0].member_gender
-                            //     that.globalData.member_nationality = res.data.member[0].member_nationality
-                            //     that.globalData.member_phone_num = res.data.member[0].member_phone_num
-                            //     that.globalData.member_registered_addr = res.data.member[0].member_registered_addr
-                            //     that.globalData.member_role = res.data.member[0].member_role
-                            //     that.globalData.member_sn = res.data.member[0].member_sn
-                            // }
-                            if (res.data.IsMember !=0) {
-                                // globalData:{
-                                //     that.globalData.member_address = res.data.member[0].member_address
-                                //     that.globalData.member_application = res.data.member[0].member_application
-                                //     that.globalData.member_certificate = res.data.member[0].member_certificate
-                                //     that.globalData.member_id = res.data.member[0].member_id
-                                //     that.globalData.member_marrige = res.data.member[0].member_marrige
-                                //     that.globalData.member_name = res.data.member[0].member_name
-                                //     that.globalData.member_openID = res.data.member[0].member_openID
-                                //     that.globalData.member_gender = res.data.member[0].member_gender
-                                //     that.globalData.member_nationality = res.data.member[0].member_nationality
-                                //     that.globalData.member_phone_num = res.data.member[0].member_phone_num
-                                //     that.globalData.member_registered_addr = res.data.member[0].member_registered_addr
-                                //     that.globalData.member_role = res.data.member[0].member_role
-                                //     that.globalData.member_sn = res.data.member[0].member_sn
-                                // }
-                            } // isMember>0 which is member and will return properties
-                            // console.log("2 OPEN ID= "+ res.data.openid+"    ---   SESSIID = "+res.data.session_key+" other factor ="+res.data.IsMember);
-
-                        } else {
-                            console.log(res.errMsg)
-                        }
-
-                    },
-
-                })
-
-            }
-        })
-    }
-
-
-    */
 })

@@ -43,3 +43,8 @@
     padding-block: 10px;
 
 }
+.square{
+    display: flex;
+        justify-content: center;
+
+}

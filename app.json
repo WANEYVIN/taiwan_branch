@@ -18,7 +18,8 @@
     "pages/test/failPage",
     "pages/test/expiredPage",
     "pages/scan/scan",
-    "pages/taskMembers/taskMembers"
+    "pages/taskMembers/taskMembers",
+    "pages/apply4mgmt/apply4mgmt"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

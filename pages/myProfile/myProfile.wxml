@@ -1,12 +1,36 @@
 <!--<view>-->
+<button open-type="contact">  客服消息</button>
 
-
-    <view  wx:if="{{management=='1'}}">
-        <view>
-        <a class="" bindtap="manager">请点击进入管理页面</a>
+<view  wx:if="{{management=='1'}}">
+<!--        <view>-->
+<!--        <a class="" bindtap="manager">请点击进入管理页面</a>-->
+<!--        </view>-->
+    <view class="weui-cells" bindtap="manager">
+        <view class="weui-cell weui-cell_active weui-cell_access">
+            <view class="weui-cell__bd">请点击进入管理页面</view>
+            <view class="weui-cell__ft" style="font-size: 0;">
+                <text style="vertical-align: middle; font-size: 17px;">查看</text>
+                <!--                <text class="weui-badge weui-badge_dot" style="margin-left: 5px; margin-right: 5px;"></text>-->
+            </view>
         </view>
-        <!--    {{warn ? warn : "是否公开信息："+isPub+"，手机号："+phone+"，密码："+pwd+"，性别："+sex}}-->
-<!--        {{warn ? warn : "姓名:"+input_name+"身份證號:"+input_ID+"地址:"+input_addr+"性别:"+input_gender+"民族:"+input_nationality+"生日:"+input_birthday+"電話:"+input_phone+"住處:"+input_home+"婚姻:"+input_marriage+"教育程度:"+input_certificates}}-->
+    </view>
+
+    <!--    <view>-->
+<!--        <a class="" bindtap="manager" id="approval">请点击进入核准页面</a>-->
+<!--    </view>-->
+    <view class="weui-cells" bindtap="manager" id="approval">
+        <view class="weui-cell weui-cell_active weui-cell_access">
+            <view class="weui-cell__bd">请点击进入核准页面</view>
+            <view class="weui-cell__ft" style="font-size: 0;">
+                <text style="vertical-align: middle; font-size: 17px;">查看</text>
+<!--                <text class="weui-badge weui-badge_dot" style="margin-left: 5px; margin-right: 5px;"></text>-->
+            </view>
+        </view>
+    </view>
+
+
+
+
     </view>
 
 
@@ -15,10 +39,10 @@
     <text class="weui-article__p"> 您尚未登录为会员，请依照后续引导步骤完善登录程序，谢谢！</text>
     <text class="weui-article__p"> 请准备好身份证，点击下方图案按钮</text>
     <button bindtap="takeCamera" class="btn">  拍照或上传您的身份证  </button>
-<!-- test --->
 
-    <view class="weui-article__p">
+    <view class="weui-article__p square">
         <image bindtap="takeCamera" class="weui-article__img" src="../../images/magnify_scan.png" mode="aspectFit" />
+<!--        <image bindtap="takeCamera" class="weui-article__img" src="../../images/magnify_scan.png" mode="aspectFill" />-->
 <!--        <image class="weui-article__img" src="../images/pic_article.png" mode="aspectFit" style="height: 180px" />-->
     </view>
 

@@ -20,13 +20,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba07f549-99f8-4a0b-8157-95991536b872" name="Default Changelist" comment="scan page">
+      <change afterPath="$PROJECT_DIR$/lib/we-base64.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/apply4mgmt/apply4mgmt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/apply4mgmt/apply4mgmt.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/apply4mgmt/apply4mgmt.wxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/apply4mgmt/apply4mgmt.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sshConfigs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/addTask/addTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/addTask/addTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/addTask/addTask.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/addTask/addTask.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/addTask/addTask.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/addTask/addTask.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/listTask/listTask.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/listTask/listTask.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/membership/membership.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/membership/membership.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/membership/membership.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/membership/membership.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/myProfile/myProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/myProfile/myProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/myProfile/myProfile.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/myProfile/myProfile.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/myProfile/myProfile.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/myProfile/myProfile.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/scan/scan.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/scan/scan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/taskMembers/taskMembers.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/taskMembers/taskMembers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/taskMembers/taskMembers.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/taskMembers/taskMembers.wxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/viewTask/viewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/viewTask/viewTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/viewTask/viewTask.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/viewTask/viewTask.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/viewTask/viewTask.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/viewTask/viewTask.wxss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,18 +77,16 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="sshConsole" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -80,8 +95,8 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SshConsoleOptionsProvider">
     <option name="myEncoding" value="UTF-8" />
-    <option name="myConnectionType" value="SSH_CONFIG" />
-    <option name="myConnectionId" value="ubuntu@xyz.yi-wen.wang:22 key" />
+    <option name="myConnectionType" value="NONE" />
+    <option name="myConnectionId" value="" />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -125,7 +140,13 @@
       <workItem from="1605252217902" duration="803000" />
       <workItem from="1605495742851" duration="4259000" />
       <workItem from="1605513429490" duration="93136000" />
-      <workItem from="1606271515763" duration="51514000" />
+      <workItem from="1606271515763" duration="104461000" />
+      <workItem from="1607060860546" duration="22000" />
+      <workItem from="1607060936430" duration="1025000" />
+      <workItem from="1607062878300" duration="47000" />
+      <workItem from="1607063333997" duration="289000" />
+      <workItem from="1607063700808" duration="8000" />
+      <workItem from="1607063726794" duration="36000" />
     </task>
     <task id="LOCAL-00001" summary="profile icons">
       <created>1602648709635</created>
@@ -276,17 +297,17 @@
     <option name="LAST_COMMIT_MESSAGE" value="scan page" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2375" y="133" width="1000" height="570" key="#Deployment" timestamp="1606273721870">
+    <state x="2375" y="133" width="1000" height="570" key="#Deployment" timestamp="1606882461537">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="455" y="164" width="1000" height="570" key="#Deployment/0.35.1920.1045@0.35.1920.1045" timestamp="1603622310763" />
     <state x="2375" y="133" width="1000" height="846" key="#Deployment/1920.0.1920.1080/0.26.1920.1054@1920.0.1920.1080" timestamp="1601104986694" />
-    <state x="2375" y="133" width="1000" height="846" key="#Deployment/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606273721870" />
-    <state x="2350" y="103" width="1040" height="880" key="#SSH_Configurations" timestamp="1605151727645">
+    <state x="2375" y="133" width="1000" height="846" key="#Deployment/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606882461537" />
+    <state x="2350" y="103" width="1040" height="880" key="#SSH_Configurations" timestamp="1606882405538">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="430" y="135" width="1062" height="901" key="#SSH_Configurations/0.35.1920.1045@0.35.1920.1045" timestamp="1603540164138" />
-    <state x="2350" y="103" width="1040" height="880" key="#SSH_Configurations/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605151727645" />
+    <state x="2350" y="103" width="1040" height="880" key="#SSH_Configurations/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606882405538" />
     <state x="2452" y="209" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606271586098">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -316,22 +337,54 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2610" y="254" width="530" height="605" key="FileChooserDialogImpl/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605150910266" />
-    <state width="1860" height="248" key="GridCell.Tab.0.bottom" timestamp="1605153478581">
+    <state width="1864" height="72" key="GridCell.Tab.0.bottom" timestamp="1606899520790">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1860" height="248" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605153478581" />
-    <state width="1860" height="248" key="GridCell.Tab.0.center" timestamp="1605153478581">
+    <state width="1864" height="72" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606899520790" />
+    <state width="1864" height="72" key="GridCell.Tab.0.center" timestamp="1606899520790">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1860" height="248" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605153478581" />
-    <state width="1860" height="248" key="GridCell.Tab.0.left" timestamp="1605153478581">
+    <state width="1864" height="72" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606899520790" />
+    <state width="1864" height="72" key="GridCell.Tab.0.left" timestamp="1606899520790">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1860" height="248" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605153478581" />
-    <state width="1860" height="248" key="GridCell.Tab.0.right" timestamp="1605153478581">
+    <state width="1864" height="72" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606899520790" />
+    <state width="1864" height="72" key="GridCell.Tab.0.right" timestamp="1606899520790">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1860" height="248" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605153478581" />
+    <state width="1864" height="72" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606899520790" />
+    <state width="1864" height="72" key="GridCell.Tab.1.bottom" timestamp="1606899520790">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1864" height="72" key="GridCell.Tab.1.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606899520790" />
+    <state width="1864" height="72" key="GridCell.Tab.1.center" timestamp="1606899520790">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1864" height="72" key="GridCell.Tab.1.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606899520790" />
+    <state width="1864" height="72" key="GridCell.Tab.1.left" timestamp="1606899520790">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1864" height="72" key="GridCell.Tab.1.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606899520790" />
+    <state width="1864" height="72" key="GridCell.Tab.1.right" timestamp="1606899520790">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1864" height="72" key="GridCell.Tab.1.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606899520790" />
+    <state width="1864" height="72" key="GridCell.Tab.2.bottom" timestamp="1606899520790">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1864" height="72" key="GridCell.Tab.2.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606899520790" />
+    <state width="1864" height="72" key="GridCell.Tab.2.center" timestamp="1606899520790">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1864" height="72" key="GridCell.Tab.2.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606899520790" />
+    <state width="1864" height="72" key="GridCell.Tab.2.left" timestamp="1606899520790">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1864" height="72" key="GridCell.Tab.2.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606899520790" />
+    <state width="1864" height="72" key="GridCell.Tab.2.right" timestamp="1606899520790">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1864" height="72" key="GridCell.Tab.2.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606899520790" />
     <state x="2360" y="239" width="1030" height="635" key="IDE.errors.dialog" timestamp="1605585227760">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -340,12 +393,12 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2625" y="461" width="500" height="190" key="NewPhpFileDialog/1920.0.1920.1080/0.26.1920.1054@1920.0.1920.1080" timestamp="1601106442743" />
-    <state x="2237" y="100" width="1286" height="929" key="SettingsEditor" timestamp="1605514411273">
+    <state x="2237" y="100" width="1286" height="929" key="SettingsEditor" timestamp="1606899789728">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="317" y="132" width="1286" height="929" key="SettingsEditor/0.35.1920.1045@0.35.1920.1045" timestamp="1603509313690" />
     <state x="2237" y="100" width="1286" height="912" key="SettingsEditor/1920.0.1920.1080/0.26.1920.1054@1920.0.1920.1080" timestamp="1600415039829" />
-    <state x="2237" y="100" width="1286" height="912" key="SettingsEditor/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605514411273" />
+    <state x="2237" y="100" width="1286" height="912" key="SettingsEditor/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606899789728" />
     <state x="704" y="415" width="501" height="308" key="WebDeployment.AddServerDialog.v.1" timestamp="1603540110896">
       <screen x="0" y="35" width="1920" height="1045" />
     </state>
@@ -354,23 +407,23 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2345" y="71" width="1060" height="970" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.0.1920.1080/0.26.1920.1054@1920.0.1920.1080" timestamp="1600759344396" />
-    <state x="2594" y="449" width="572" height="215" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603170656848">
+    <state x="2594" y="449" width="572" height="215" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607578790883">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2594" y="449" width="572" height="215" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603170656848" />
-    <state x="2738" y="72" width="274" height="961" key="ftp.server.browser" timestamp="1605150971501">
+    <state x="2594" y="449" width="572" height="215" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1607578790883" />
+    <state x="2738" y="72" width="484" height="663" key="ftp.server.browser" timestamp="1606882431780">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="818" y="105" width="274" height="961" key="ftp.server.browser/0.35.1920.1045@0.35.1920.1045" timestamp="1603540184757" />
-    <state x="2738" y="72" key="ftp.server.browser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605150971501" />
-    <state x="2460" y="248" key="run.anything.popup" timestamp="1606278534982">
+    <state x="2738" y="72" width="484" height="663" key="ftp.server.browser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606882431780" />
+    <state x="2460" y="248" key="run.anything.popup" timestamp="1607483561813">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2460" y="248" key="run.anything.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606278534982" />
-    <state x="2459" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1605853583709">
+    <state x="2460" y="248" key="run.anything.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1607483561813" />
+    <state x="2459" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1606893146110">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2459" y="45" width="840" height="1034" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605853583709" />
+    <state x="2459" y="45" width="840" height="1034" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606893146110" />
     <state x="2644" y="396" width="461" height="320" key="webDeployment.PermissionsDialog" timestamp="1605153445083">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

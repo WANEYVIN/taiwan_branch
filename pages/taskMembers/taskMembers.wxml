@@ -1,6 +1,16 @@
 <!--pages/taskMembers/taskMembers.wxml-->
 <!--<text>pages/taskMembers/taskMembers.wxml</text>-->
+<view wx:if="{{list!='0'}}">
 
+
+<view class="button-sp-area button-area" >
+
+    <view class="taskButtons">
+        <button class="weui-btn_primary" id="{{task_id}}" bindtap="export">{{export}}</button>
+    </view>
+
+</view>
+</view>
 <block wx:for="{{list}}" wx:key="list" wx:for-index="idx" wx:for-item="value">
 
 <!--    wx:for="{{value}}"-->
@@ -38,9 +48,9 @@
 
 
                 </view>
-                <view class="myProfile_button_text" wx:if="{{value[1].match_date}}">
+                <view id="{{value[1].match_member}}" bindtap="downloadFile" class="myProfile_button_text" wx:if="{{value[1].match_date}}">
 
-                    <image bindtap="downloadFile" class="myProfile_icons"  src="../../images/contract.png" mode="aspectFit"  ></image>
+                    <image class="myProfile_icons"  src="../../images/contract.png" mode="aspectFit"  ></image>
                     <view>查看簽署的協議</view>
 
                 </view>

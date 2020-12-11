@@ -6,7 +6,10 @@ page {
   flex-direction: column;
   justify-content: flex-start;
 }
-
+.badge_colour{
+  color: red;
+  background-color: aqua;
+}
 .userinfo, .uploader, .tunnel {
   margin-top: 40rpx;
   height: 140rpx;

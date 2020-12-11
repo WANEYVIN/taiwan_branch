@@ -1,0 +1,44 @@
+<block wx:for="{{list}}" wx:key="list" wx:for-index="idx">
+<!--    <block wx:for="{{list}}" wx:key="unique" wx:for-index="idx">-->
+
+
+
+<!--    <view class="weui-cell weui-cell_active weui-cell_access">-->
+<view class="weui-cell weui-cell_active " style="display: flex;align-content: space-between">
+        <view class="weui-panel__bd">
+            <view class="weui-media-box weui-media-box_text">
+                <h4 class="weui-media-box__title">{{item.task_name}}</h4>
+                <view class="weui-media-box__desc"><text>{{member_name}} : </text><text>{{item.member_name}}</text></view>
+                <view class="weui-media-box__desc"><text>{{phone_num}} : </text><text>{{item.member_phone_num}}</text></view>
+                <view class="weui-media-box__desc"><text>{{corporation}} : </text><text>{{item.member_corporate}}</text></view>
+
+            </view>
+        </view>
+
+
+    <view style="font-size: 0; float:right;"   id="{{item.member_id}}">
+<!--        <view style="font-size: 0; float:right;" data-sw="switch_{{idx}}" wx:if="{{present == item.member_id}}" id="{{idx}}">-->
+
+
+        <text style="vertal-align:middle ; font-size: 15px; ">请核准</text>
+<!--        <switch  bindchange="switchChange" id="{{item.member_id}}"></switch>-->
+<!--        <switch  bindchange="approval" id="{{item.member_id}}" data-sn="switch_{{idx}}" value="{{default}}"></switch>-->
+<!--        <text style="vertical-align:middle ; font-size: 15px; ">已核准</text>-->
+
+       <button class="weui-btn" type="primary"  id="{{item.member_id}}" bindtap="approval" >{{approve}}</button>
+<!--        <text style="vertical-align:middle ; font-size: 20px; ">{{approve}}</text>-->
+<!--        <text class="weui-badge weui-badge_dot" style="margin-left: 55px;"></text>-->
+    </view>
+
+<!--    <view wx:else="{{present}}">-->
+<!--        <view wx:elseif="{{present == 0}}">-->
+<!--        <text style="vertical-align:middle ; font-size: 20px; ">{{approve}}</text>-->
+<!--    </view>-->
+    </view>
+
+<!--    </view>-->
+
+
+
+
+</block>

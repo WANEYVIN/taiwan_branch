@@ -110,5 +110,35 @@
 
             </view>
 
+        <view class="fadeIn" wx:if="{{dialog2}}">
+<!--            <view class="weui-mask" bindtap="close"></view>-->
+            <view class="weui-half-screen-dialog">
+                <view class="weui-half-screen-dialog__hd">
+                    <view class="weui-half-screen-dialog__hd__side" bindtap="close">
+                        <a class="weui-icon-btn">返回<i class="weui-icon-back-arrow-thin"></i></a>
+                    </view>
+                    <view class="weui-half-screen-dialog__hd__main">
+                        <strong class="weui-half-screen-dialog__title">{{request_title}}</strong>
+                        <view class="weui-half-screen-dialog__subtitle">{{request_subtile}}</view>
+                    </view>
+<!--                    <view class="weui-half-screen-dialog__hd__side">-->
+<!--                        <a class="weui-icon-btn">更多<i class="weui-icon-more"></i></a>-->
+<!--                    </view>-->
+                </view>
+                <view class="weui-half-screen-dialog__bd">
+                    <view class="weui-half-screen-dialog__desc">
+                        {{notice_request}}
+                    </view>
+                    <view class="weui-half-screen-dialog__tips">
+                        {{always_accept_request}}
+                    </view>
+                </view>
+                <view class="weui-half-screen-dialog__ft">
+<!--                    <a class="weui-btn weui-btn_default" bindtap="close">辅助操作</a>-->
+                    <a class="weui-btn weui-btn_primary" bindtap="close">{{subscribe}}</a>
+                </view>
+            </view>
+        </view>
+
     </view>
 

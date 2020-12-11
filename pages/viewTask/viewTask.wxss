@@ -4,3 +4,11 @@
     height: 100rpx;
     align-items: center;
 }
+.footer{
+    align-content:space-evenly;
+    /*margin-left: 100px;*/
+    /*flex-direction: column;*/
+    display: flex;
+    justify-content: center;
+
+}

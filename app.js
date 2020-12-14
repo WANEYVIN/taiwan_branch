@@ -5,14 +5,16 @@ App({    /**
         openid: '', //用户openid
         userId: '', //用户编号
         member_address: '',
-        serverURL: ''
+        serverURL: '',
+        log:''
 
     },
     onLaunch: function() {
+
         wx.clearStorage()
         console.log('App Launch check openid= ',wx.getStorageSync("openid"))
-
-
+        var log1 = require('lib/log.js') // 引用上面的log.js文件
+        this.globalData.log =log1
         // this.globalData.serverURL = "https://xyz.yi-wen.wang/linghuo";
         this.globalData.serverURL = "https://www.top-talent.com.cn/linghuo";
 

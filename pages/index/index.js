@@ -16,15 +16,31 @@ Page({
       request_subtile: "提醒通知",
       abc: '',
 
+
   },
 
   onLoad: function (option) {
+      // wx.setEnableDebug({
+      //     enableDebug: true
+      // })
 
-      var log = require('../../lib/log.js') // 引用上面的log.js文件
-      // log('hello test hahaha') // 日志会和当前打开的页面关联，建议在页面的onHide、onShow等生命周期里面打
+      // const logger = wx.getLogManager()
+      // logger.log({str: 'hello world'}, 'basic log', 100, [1, 2, 3])
+      //
+      // // logger.debug()
+      // let _nowTime = + new Date()
+      // console.log("logger manaer：" , _nowTime);
+
+      import {Logs} from '../../lib/log.js';
+      // const log = new Logs();
+
+      const log = require('../../lib/log_backup.js') // 引用上面的log.js文件
+      var takelook = log.log('index', 'this is a test event')
+      console.log("take a look", takelook)
+      // log.info('hello test hahaha') // 日志会和当前打开的页面关联，建议在页面的onHide、onShow等生命周期里面打
       // log.warn('warn')
       // log.error('error')
-      // log.setFilterMsg('filterkeyword')
+      // log.setFilterMsg('filterkeyword)
       // log.setFilterMsg('addfilterkeyword')
 
 
@@ -33,6 +49,7 @@ Page({
     let openid = wx.getStorageSync("openid");
 
       console.log("进入首页的用户编号为：" + openid);
+
 
     if (openid == '') { // for the brand new user who enter this app for the first time, call back the user login function on app.js
                         // 首次登入或者撤銷用戶，其openid將會是空值，因此呼叫app.js中的登入程序
@@ -240,6 +257,15 @@ Page({
      */
     onHide: function () {
 // record what user has chosen for marketing algorithm
+
+        // const log = require('../../lib/log.js') // 引用上面的log.js文件
+
+        getApp().globalData.log.info('leaving index onhide') // 日志会和当前打开的页面关联，建议在页面的onHide、onShow等生命周期里面打
+        // log.warn('warn')
+        // log.error('error')
+        // log.setFilterMsg('filterkeyword')
+        // log.setFilterMsg('addfilterkeyword')
+
     },
 
     /**
@@ -258,9 +284,13 @@ Page({
     console.log("reloading: ", getApp().globalData.openid);
     this.onShow();
   },
-    myProfile: function(){
+    myProfile: function(e){
         var that = this;
         console.log("photo tapped and condition = ", that.data.condition);
+        console.log("which tapped = ", e.currentTarget.id);
+        const log = require('../../lib/log.js') // 引用上面的log.js文件
+
+        log.info("which tapped = ", e.currentTarget.id) // 日志会和当前打开的页面关联，建议在页面的onHide、onShow等生命周期里面打
 
         if(that.data.condition===0) {
             console.log("this is a brand new user not yet registered ", that.data.openid);

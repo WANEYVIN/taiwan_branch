@@ -1,5 +1,6 @@
 
 Page({
+
   data:{
     condition: '',
     openid:wx.getStorageSync("openid"),
@@ -19,6 +20,12 @@ Page({
 
   onLoad: function (option) {
 
+      var log = require('../../lib/log.js') // 引用上面的log.js文件
+      // log('hello test hahaha') // 日志会和当前打开的页面关联，建议在页面的onHide、onShow等生命周期里面打
+      // log.warn('warn')
+      // log.error('error')
+      // log.setFilterMsg('filterkeyword')
+      // log.setFilterMsg('addfilterkeyword')
 
 
       var app=getApp();

@@ -18,7 +18,8 @@ Page({
     // expired_colour: '#E64340'
     expired_colour: '',
     label_nationality: "民族:",
-    default_input: '请输入'
+    default_input: '请输入',
+    management:1
 
   },
   // data: {
@@ -58,10 +59,11 @@ Page({
     console.log("MY ROLE = ",member_role)
 
     if ( member_role === ('admin' || 'manager')) {
-console.log("ROLE = ",member_role)
         that.setData({
         management: '1'
       })
+      console.log("ROLE = ",member_role,"management = ",that.data.management)
+
     }
   },
   onShow: function () {
@@ -304,6 +306,7 @@ console.log("ROLE = ",member_role)
         // console.log('member_id=',that.data.id);
         // return ret.data
         return ret.data
+              // wx.clearStorageSync()
 
         // console.log('member_id=',app.globalData.member_id);
         // console.log('openid=',that.globalData.openid);
@@ -586,6 +589,122 @@ console.log("ROLE = ",member_role)
     })
     */
 
+
+    /////////////////////////////////////
+
+    wx.login({
+
+      success: function (res) {
+        var code = res.code;
+
+        console.log(res+"code= "+code)
+        wx.request({
+
+          url: getApp().globalData.serverURL+'/getOpenID.php?code='+code,
+
+          data: { code: code
+          },
+          // method: 'POST',
+          method: 'GET',
+          header: { 'content-type': 'application/json'},
+          success: function (res) {
+
+            console.log("RES:",res.data.openid);
+            console.log("    ---   SESSIID = "+res.data.session_key);
+            // return that.globalData.openid
+
+            if (res.statusCode == 200) {
+              console.log("APP_JS onShow = "+  JSON.stringify(res));
+              // that.globalData.openid = res.data.openid;
+              // // that.globalData.userId = res.data.UserId;
+              // // console.log("openid= "+that.globalData.openid);
+              // wx.setStorageSync("openid", that.globalData.openid)
+
+
+              that.setData({
+                condition: 1,
+                openid : res.data.openid,
+                session_key : res.data.session_key
+
+              })
+
+
+              wx.request({
+
+                url: getApp().globalData.serverURL + '/getOpenID.php',
+
+
+                data: {
+                  //   // code: code,
+                  encryptedData:e.detail.encryptedData,
+                  // encryptedData:"HoLM9cNa1Y5sl4nb1XZmSZCYSxmVbkpOVbYqQ+H9iQP7CnQUzKFzBX96VjfNb/C8IZyA4WPbQctlkdZ3Rr2q2SaEhUomAEoLkHZ2JTCUuvs5CjnHdxF+nIG8fSJzhH3kQRqVSU+Yg9OvPO8YoZo+6+2LbIvN8FiLOMps7BsSCLeQUY/m6rGahFZDqWW2OI00tuhh7pCGDlhGtYUGHHlXcw==",
+                  iv:e.detail.iv,
+                  sessionKey:that.data.session_key
+                  // iv:"HdfNFpG19ZXCDMzikSEJQA==",
+                  // sessionKey:"HS4+tljWW6cIL4REPbNbAA=="
+                  //
+                },
+
+                method: 'POST',
+                // method: 'GET',
+                // header: {'content-type': 'application/json'},
+                header:{
+                  'content-type':'application/x-www-form-urlencoded'
+                },
+                success: function (res) {
+                  console.log("encryptedData :",e.detail.encryptedData);
+                  console.log("iv :",e.detail.iv);
+                  console.log("sessionKey :",that.data.session_key);
+
+                  // that.globalData.openid = res.data.openid
+                  // console.log("status= "+res.statusCode);
+                  // console.log(res.data.errMsg + "1 OPEN ID= " + res.data.openid + "    ---   SESSIID = " + res.data.session_key + " other factor =" + res.data.IsMember);
+                  console.log("login result",res.data.phoneNumber);
+                  // return that.globalData.openid
+                  if (res.data.phoneNumber!= '') {
+                    that.setData({
+                      member_phone_num: res.data.phoneNumber,
+                    })
+                  }
+
+
+                }
+              })
+
+
+            } else {
+              console.log("network status = "+  res.statusCode); // this error code should be recorded on the backend server
+
+              console.log("network error = "+res.errMsg);// useless error message
+              // reject(res);
+            }
+
+            // resolve(res)
+            // }else{
+            //     reject('error')
+          },
+          fail: function(res) {
+            // reject(res);
+            wx.showToast({
+              title: '系统错误'
+            })
+          },
+          complete: () => {
+
+          } //complete接口执行后的回调函数，无论成功失败都会调用
+
+        })
+
+      }
+    })
+
+
+
+
+
+
+    /////////////////////////////////
+    /*
     getApp().userLogin().then(
 
         function (res){
@@ -667,6 +786,8 @@ console.log("ROLE = ",member_role)
 
 
         })
+
+    */
 
   }
 })

@@ -9,6 +9,8 @@ App({    /**
 
     },
     onLaunch: function() {
+        wx.clearStorage()
+        console.log('App Launch check openid= ',wx.getStorageSync("openid"))
 
 
         // this.globalData.serverURL = "https://xyz.yi-wen.wang/linghuo";

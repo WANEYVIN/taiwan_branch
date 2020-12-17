@@ -38,6 +38,8 @@ Page({
 
 
     // this.photo("shenfenzheng")
+    // this.photo("shenfenzheng")
+    // this.photo("shenfenzheng")
 
 
 

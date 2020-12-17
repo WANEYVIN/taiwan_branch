@@ -20,12 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba07f549-99f8-4a0b-8157-95991536b872" name="Default Changelist" comment="scan page">
-      <change afterPath="$PROJECT_DIR$/lib/log_backup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/log_original.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/log.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/log.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/log_backup.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/IDcheck/IDcheck.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/IDcheck/IDcheck.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/IDcheck/IDcheck.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/IDcheck/IDcheck.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/contract/contract.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contract/contract.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/draw1/draw1.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/draw1/draw1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/myProfile/myProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/myProfile/myProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/myProfile/myProfile.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/myProfile/myProfile.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/scan/scan.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/scan/scan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/scan/scan.json" beforeDir="false" afterPath="$PROJECT_DIR$/pages/scan/scan.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/viewTask/viewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/viewTask/viewTask.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/viewTask/viewTask.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/pages/viewTask/viewTask.wxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/viewTask/viewTask.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/viewTask/viewTask.wxss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,9 +75,11 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JavaScript" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pages/scan/scan.js" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="sshConsole" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/pages/scan/scan.js" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -143,7 +156,9 @@
       <workItem from="1607063333997" duration="289000" />
       <workItem from="1607063700808" duration="8000" />
       <workItem from="1607063726794" duration="36000" />
-      <workItem from="1607914412896" duration="14736000" />
+      <workItem from="1607914412896" duration="19217000" />
+      <workItem from="1608011459847" duration="22657000" />
+      <workItem from="1608102615314" duration="24447000" />
     </task>
     <task id="LOCAL-00001" summary="profile icons">
       <created>1602648709635</created>
@@ -271,7 +286,21 @@
       <option name="project" value="LOCAL" />
       <updated>1607922005161</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="scan page">
+      <created>1607936628090</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1607936628090</updated>
+    </task>
+    <task id="LOCAL-00020" summary="scan page">
+      <created>1608175293846</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1608175293846</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,14 +362,14 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="1920" y="27" width="1207" height="1053" key="CommitChangelistDialog2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1603346354583" />
-    <state x="2020" y="127" width="1720" height="853" key="DiffContextDialog" timestamp="1605848188153">
+    <state x="2020" y="127" width="1720" height="853" key="DiffContextDialog" timestamp="1608177008197">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2020" y="127" width="1720" height="853" key="DiffContextDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605848188153" />
-    <state x="2610" y="254" width="530" height="605" key="FileChooserDialogImpl" timestamp="1605150910266">
+    <state x="2020" y="127" width="1720" height="853" key="DiffContextDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1608177008197" />
+    <state x="2610" y="254" width="530" height="605" key="FileChooserDialogImpl" timestamp="1608174642710">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2610" y="254" width="530" height="605" key="FileChooserDialogImpl/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605150910266" />
+    <state x="2610" y="254" width="530" height="605" key="FileChooserDialogImpl/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1608174642710" />
     <state width="1864" height="72" key="GridCell.Tab.0.bottom" timestamp="1606899520790">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -420,10 +449,10 @@
     </state>
     <state x="818" y="105" width="274" height="961" key="ftp.server.browser/0.35.1920.1045@0.35.1920.1045" timestamp="1603540184757" />
     <state x="2738" y="72" width="484" height="663" key="ftp.server.browser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1606882431780" />
-    <state x="2460" y="248" key="run.anything.popup" timestamp="1607483561813">
+    <state x="2460" y="248" key="run.anything.popup" timestamp="1608115079150">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2460" y="248" key="run.anything.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1607483561813" />
+    <state x="2460" y="248" key="run.anything.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1608115079150" />
     <state x="2459" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1606893146110">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -433,17 +462,5 @@
     </state>
     <state x="2644" y="396" width="461" height="320" key="webDeployment.PermissionsDialog/1920.0.1920.1080/0.26.1920.1054@1920.0.1920.1080" timestamp="1601107395329" />
     <state x="2644" y="396" width="461" height="320" key="webDeployment.PermissionsDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605153445083" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/app.js</url>
-          <line>18</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

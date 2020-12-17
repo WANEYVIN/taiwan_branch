@@ -10,15 +10,21 @@ App({    /**
 
     },
     onLaunch: function() {
-
+        // wx.setEnableDebug({ enableDebug: false })
         wx.clearStorage()
-        console.log('App Launch check openid= ',wx.getStorageSync("openid"))
-        var log1 = require('lib/log.js') // 引用上面的log.js文件
-        this.globalData.log =log1
+
+        // enable log system
+        var logger = require('lib/log.js') // 引用上面的log.js文件
+        this.globalData.log =logger
+
+
+
         // this.globalData.serverURL = "https://xyz.yi-wen.wang/linghuo";
         this.globalData.serverURL = "https://www.top-talent.com.cn/linghuo";
 
         console.log('App Launch')
+        // logger.logging('App launch')
+
 //不在这里默认请求
 
 
@@ -74,16 +80,7 @@ App({    /**
             })
         }
     },
-    // /**
-    //  * 定义全局变量
-    //  */
-    // globalData: {
-    //     openid: '', //用户openid
-    //     userId: '', //用户编号
-    //     member_address: '',
-    //     serverURL: ''
-    //
-    // },
+
     /**
      * 用户登录请求封装(解决onlaunch和onload执行顺序问题)
      */
@@ -93,8 +90,6 @@ App({    /**
 //定义promise方法
         return new Promise(function(resolve, reject) {
 
-           console.log("resolve-----------------")
-            // var that = this
             wx.login({
 
                 success: function (res) {
@@ -103,9 +98,7 @@ App({    /**
                     console.log(res+"code= "+code)
                     wx.request({
                         // url: '后台通过获取前端传的code返回openid的接口地址',
-                        // url: 'https://www.top-talent.com.cn/linghuo/getOpenID.php?code='+code,
-                        // url: 'https://www.melburg.tw/linghuo/getOpenID.php?code='+code,
-                        url: that.globalData.serverURL+'/getOpenID.php?code='+code,
+                       url: that.globalData.serverURL+'/getOpenID.php?code='+code,
 
                         data: { code: code
                                 },
@@ -114,39 +107,29 @@ App({    /**
                         header: { 'content-type': 'application/json'},
                         success: function (res) {
 
-                            // that.globalData.openid = res.data.openid
-                            // console.log("status= "+res.statusCode);
-                            console.log(res.data.errMsg+"1 OPEN ID= "+ res.data.openid+"    ---   SESSIID = "+res.data.session_key+" other factor ="+res.data.IsMember);
-                            console.log("login result"+  that.globalData.openid+"    ---   SESSIID = "+res.data.session_key+" other factor ="+res.data.IsMember);
-                            // return that.globalData.openid
+                            console.log("1 OPEN ID= "+ res.data.openid+"    ---   SESSIID = "+res.data.session_key+" other factor ="+res.data.IsMember);
+
 
                             if (res.statusCode == 200) {
-                                console.log("APP_JS onShow = "+  JSON.stringify(res));
+                                // console.log("APP_JS onShow = "+  JSON.stringify(res));
                                 that.globalData.openid = res.data.openid;
-                                // that.globalData.userId = res.data.UserId;
-                                console.log("openid= "+that.globalData.openid);
+                                // console.log("userLogin openid= "+that.globalData.openid);
                                 wx.setStorageSync("openid", that.globalData.openid)
-                                // wx.setStorageSync("session", res.data.session_key)
 
-                                // if (res.data.IsMember !=0) {
-                                //
-                                // } // isMember>0 which is member and will return properties
-                                // console.log("2 OPEN ID= "+ res.data.openid+"    ---   SESSIID = "+res.data.session_key+" other factor ="+res.data.IsMember);
-                                // that.GetData(res.data.openid);
                                 resolve(res)
 
                                 console.log("network status = "+  res.statusCode);
+                                that.globalData.log.logging("app.js/userLogin successfully gets openid")
 
                             } else {
+                                that.globalData.log.logging( "app.js/userLogin failed to get openid, code= "+res.statusCode+"error = "+res.errMsg)
+
                                 console.log("network status = "+  res.statusCode); // this error code should be recorded on the backend server
 
                                 console.log("network error = "+res.errMsg);// useless error message
                                 reject(res);
                             }
 
-                            // resolve(res)
-                        // }else{
-                        //     reject('error')
                         },
                         fail: function(res) {
                             reject(res);
@@ -156,13 +139,13 @@ App({    /**
                         },
                         complete: () => {
 
+
                         } //complete接口执行后的回调函数，无论成功失败都会调用
 
                     })
 
                 }
             })
-            // WxLogin(e)
 // 调用登录接口
 
         }).catch(function(reason) {
@@ -176,7 +159,6 @@ App({    /**
 
 
     },
-// })
 
     GetData:function(openid)
     {
@@ -184,22 +166,15 @@ App({    /**
 //需要用到用户编号换取商品信息的接口
         if(!openid){
     let openid = wx.getStorageSync("openid");}
-        // return openid;
         let that = this;
 
         wx.request({
             // url: '后台通过获取前端传的code返回openid的接口地址',
-            // url: 'https://www.ttalent.com.cn/linghuo/getOpenID.php?p=1&profile='+openid,
             url: getApp().globalData.serverURL+'/getOpenID.php?p=1&profile='+openid,
-
-            // data: { code: code },
-            // method: 'POST',
             method: 'GET',
             header: { 'content-type': 'application/json'},
             success: function (res) {
-                console.log("********query database for profile = ",res);
-
-
+                console.log("user query the DB to get self data 1st time at app.js= ",res);
 
                 if (res.statusCode == 200) {
 
@@ -207,8 +182,8 @@ App({    /**
                             if(res.data != 0) { // if this is not a registered member then backend return 0 , then not neecessary to setstorage
 
                                 wx.setStorageSync("member_address", res.data[0].member_address)
-                                wx.setStorageSync("member_application", res.data[0].member_application)
-                                wx.setStorageSync("member_certificate", res.data[0].member_certificate)
+                                // wx.setStorageSync("member_application", res.data[0].member_application) //temporarily no need to set this parameter in the local storage
+                                // wx.setStorageSync("member_certificate", res.data[0].member_certificate)//temporarily no need to set this parameter in the local storage
                                 wx.setStorageSync("member_id", res.data[0].member_id)
                                 wx.setStorageSync("member_marrige", res.data[0].member_marrige)
                                 wx.setStorageSync("member_name", res.data[0].member_name)
@@ -216,29 +191,28 @@ App({    /**
                                 wx.setStorageSync("member_gender", res.data[0].member_gender)
                                 wx.setStorageSync("member_nationality", res.data[0].member_nationality)
                                 wx.setStorageSync("member_phone_num", res.data[0].member_phone_num)
-                                wx.setStorageSync("member_registered_addr", res.data[0].member_registered_addr)
+                                // wx.setStorageSync("member_registered_addr", res.data[0].member_registered_addr)
                                 wx.setStorageSync("member_role", res.data[0].member_role)
                                 wx.setStorageSync("member_sn", res.data[0].member_sn)
                                 wx.setStorageSync("member_birthday", res.data[0].member_birthday)
                                 wx.setStorageSync("member_corporate", res.data[0].member_corporate)
                                 wx.setStorageSync("expiration", res.data[0].member_ID_expiration)
+                                that.globalData.log.logging("existing member and set all data to local storage")
 
                             }else{
                                 console.log("this is a new user, not yet register as a member");
                                 // issue log : how to persuade new user to register
+                                that.globalData.log.logging("this is a new user, not yet register as a member",res)
+
                             }
 
 
                 } else { // network or backend server problem
                     console.log("network status = "+  res.statusCode); // this error code should be recorded on the backend server
+                    that.globalData.log.logging("network or backend server problem,code= "+res.statusCode+"network error = "+res.errMsg)
 
-                    // console.log("network error = "+res.errMsg);// useless error message
-                    // reject(res);
                 }
 
-                // resolve(res)
-                // }else{
-                //     reject('error')
             },
             fail: function(res) {
                 // reject(res);

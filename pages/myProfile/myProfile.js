@@ -160,6 +160,10 @@ Page({
 
 
   },
+  onHide: function () {
+// record what user has chosen for marketing algorithm
+    getApp().globalData.log.send()
+  },
   downloadFile(e) {
     var that = this
 
@@ -206,11 +210,21 @@ Page({
 
   },
   takeCamera: function () {
+    /*
     wx.navigateTo({
       // wx.redirectTo({
       url: '../scan/scan'
       // url: '../test/test'
+
     })
+    */
+    wx.navigateTo({
+      // wx.redirectTo({
+      url: '../scan/scan'
+      // url: '../test/test'
+
+    })
+    getApp().globalData.log.logging("navigate to scan:")
   },
 
   formSubmit: function (e) {
@@ -225,6 +239,7 @@ Page({
       content: "更新已送出",
       showCancel: false
     });
+    getApp().globalData.log.logging("click submit to update persona profile:",e)
 
     // // if(update ===1){
     //   if(update ===1){
@@ -302,6 +317,8 @@ Page({
         // that.globalData.openid= openid,
         // that.globalData.member_id=id
         console.log('db result ', ret.data);
+        getApp().globalData.log.logging("update database:",ret)
+
         // console.log('member_id=',this.data.name);
         // console.log('member_id=',that.data.id);
         // return ret.data
@@ -357,6 +374,7 @@ Page({
 
 
             success: function (ret) {
+        getApp().globalData.log.logging("self drop the member:",ret)
 
               console.log('db result ', ret);
               wx.clearStorageSync()
@@ -396,6 +414,7 @@ Page({
       },
       success: function (res) {
 
+        getApp().globalData.log.logging("access member_query.php to get task_id ",res)
 
         console.log("get task info :", res.data);
         console.log("if task assigned :", res.data['matched']);
@@ -494,8 +513,7 @@ Page({
 
 
         if (ret.data === 'admin' || ret.data === 'manager') {
-
-
+          getApp().globalData.log.logging("member with privileges enter the mgmt pages",ret.data)
 
 
           wx.redirectTo({
@@ -503,6 +521,7 @@ Page({
             // url: '../test/test'
           })
         } else {
+        getApp().globalData.log.logging("member without privileges and apply for entering the mgmt pages")
 
           wx.showModal({
             title: '只开放管理员进入',
@@ -597,7 +616,9 @@ Page({
       success: function (res) {
         var code = res.code;
 
-        console.log(res+"code= "+code)
+        console.log("wx.login",res)
+        console.log("code= ",code)
+
         wx.request({
 
           url: getApp().globalData.serverURL+'/getOpenID.php?code='+code,
@@ -614,7 +635,7 @@ Page({
             // return that.globalData.openid
 
             if (res.statusCode == 200) {
-              console.log("APP_JS onShow = "+  JSON.stringify(res));
+              // console.log("APP_JS onShow = "+  JSON.stringify(res));
               // that.globalData.openid = res.data.openid;
               // // that.globalData.userId = res.data.UserId;
               // // console.log("openid= "+that.globalData.openid);
@@ -661,10 +682,15 @@ Page({
                   // console.log(res.data.errMsg + "1 OPEN ID= " + res.data.openid + "    ---   SESSIID = " + res.data.session_key + " other factor =" + res.data.IsMember);
                   console.log("login result",res.data.phoneNumber);
                   // return that.globalData.openid
-                  if (res.data.phoneNumber!= '') {
+                  if (res.data.phoneNumber!=('' || 'undefined') ) {
                     that.setData({
                       member_phone_num: res.data.phoneNumber,
                     })
+                    getApp().globalData.log.logging("phone number is got",res)
+
+                  }else{
+                    // res.data.phoneNumber is not gotten
+                    getApp().globalData.log.error("!!! phone number is NOT got",res)
                   }
 
 
@@ -673,9 +699,10 @@ Page({
 
 
             } else {
-              console.log("network status = "+  res.statusCode); // this error code should be recorded on the backend server
+              console.log("network status = "+  res); // this error code should be recorded on the backend server
+              getApp().globalData.log.error("network problem access /getOpenID.php",res)
 
-              console.log("network error = "+res.errMsg);// useless error message
+              // console.log("network error = "+res.errMsg);// useless error message
               // reject(res);
             }
 
@@ -688,6 +715,8 @@ Page({
             wx.showToast({
               title: '系统错误'
             })
+            getApp().globalData.log.error("wx.request problem when accessing /getOpenID.php",res)
+
           },
           complete: () => {
 
@@ -703,91 +732,7 @@ Page({
 
 
 
-    /////////////////////////////////
-    /*
-    getApp().userLogin().then(
 
-        function (res){
-          console.log("promise回调后的数据session_key："+res.data.session_key);
-          console.log("res in page= ",res);
-          // var test = that.GetData(res.data.openid);
-          // console.log("if res true : ", test);
-          that.setData({
-            condition: 1,
-            openid : res.data.openid,
-            session_key : res.data.session_key
-
-
-
-          })
-
-          console.log("POST parameters: data : ",e.detail.encryptedData);
-          console.log("POST parameters: iv : ",e.detail.iv);
-          console.log("POST parameters: session : ",that.data.session_key);
-          wx.request({
-            // url: '后台通过获取前端传的code返回openid的接口地址',
-            // url: 'https://www.top-talent.com.cn/linghuo/getOpenID.php?code='+code,
-            // url: 'https://www.melburg.tw/linghuo/getOpenID.php?code='+code,
-            // url: getApp().globalData.serverURL + '/getOpenID.php?code=' + code+'&iv='+e.detail.iv+'&data='+e.detail.encryptedData,
-            // url: getApp().globalData.serverURL + '/getOpenID.php?iv='+e.detail.iv+'&data='+e.detail.encryptedData+'&sessionKey='+that.data.session_key,
-            url: getApp().globalData.serverURL + '/getOpenID.php',
-
-
-            data: {
-            //   // code: code,
-              encryptedData:e.detail.encryptedData,
-                  // encryptedData:"HoLM9cNa1Y5sl4nb1XZmSZCYSxmVbkpOVbYqQ+H9iQP7CnQUzKFzBX96VjfNb/C8IZyA4WPbQctlkdZ3Rr2q2SaEhUomAEoLkHZ2JTCUuvs5CjnHdxF+nIG8fSJzhH3kQRqVSU+Yg9OvPO8YoZo+6+2LbIvN8FiLOMps7BsSCLeQUY/m6rGahFZDqWW2OI00tuhh7pCGDlhGtYUGHHlXcw==",
-              iv:e.detail.iv,
-              sessionKey:that.data.session_key
-              // iv:"HdfNFpG19ZXCDMzikSEJQA==",
-              // sessionKey:"HS4+tljWW6cIL4REPbNbAA=="
-            //
-            },
-
-            method: 'POST',
-            // method: 'GET',
-            // header: {'content-type': 'application/json'},
-            header:{
-            'content-type':'application/x-www-form-urlencoded'
-          },
-            success: function (res) {
-              console.log("encryptedData :",e.detail.encryptedData);
-              console.log("iv :",e.detail.iv);
-              console.log("sessionKey :",that.data.session_key);
-
-              // that.globalData.openid = res.data.openid
-              // console.log("status= "+res.statusCode);
-              // console.log(res.data.errMsg + "1 OPEN ID= " + res.data.openid + "    ---   SESSIID = " + res.data.session_key + " other factor =" + res.data.IsMember);
-              console.log("login result",res.data.phoneNumber);
-              // return that.globalData.openid
-              if (res.data.phoneNumber!= '') {
-                that.setData({
-                  member_phone_num: res.data.phoneNumber,
-                })
-              }
-
-
-            }
-          })
-
-
-
-
-          // getApp().GetData(app.globalData.openid)
-          // // if this is a new user without registering as a member, then only openID will be recorded in local storage
-          //
-          // console.log("进入的用户：" +app.globalData.openid,wx.getStorageSync("member_id"));
-
-        }
-        ,
-        function (res){
-
-          console.log("promise rejected  : "+res);
-
-
-        })
-
-    */
 
   }
 })

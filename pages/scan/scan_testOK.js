@@ -1,6 +1,9 @@
 // this page is for validate ID card with camera OCR recognition ////////
 var _switch =0
-
+// globalData:{
+//   userInfo:null,
+//       test:"test"
+// }
 Page({
 
   data:{
@@ -14,8 +17,7 @@ Page({
     load: false,
     hideToast: false,
     hideLoading: false,
-    log:getApp().globalData.log,
-  // onChoose:'true'
+    // onChoose:'true'
 
   },
 
@@ -23,18 +25,20 @@ Page({
 
     console.log("onchoose -3", this.data.onChoose);
 
-
+/*
     if (!wx.cloud) {
       wx.redirectTo({
         url: '../chooseLib/chooseLib',
       })
       return
     }
-
+*/
 
     console.log("onchoose -2", this.data.onChoose)
 
 
+    // this.photo("shenfenzheng")
+    // this.photo("shenfenzheng")
     // this.photo("shenfenzheng")
 
 
@@ -46,6 +50,7 @@ Page({
   },
 
   onShow: function (options) {
+    let that = this
     // if(this.data.loading ==='0'){
     //   this.shenfenzheng();
     // this.photo("shenfenzheng")
@@ -75,23 +80,113 @@ Page({
     _switch +=1
     console.log("switch :", _switch);
     if(_switch<2) {
-      this.photo("shenfenzheng")
+
+      that.photo("shenfenzheng")
+      // console.log("without chooseImage ")
+/*
+            wx.chooseImage({
+                 count: 1,
+                 sizeType: ['original', 'compressed'],
+                 sourceType: ['camera', 'album'],
+
+             success: function (res) {
+               console.log("chooseImage ", res)
+
+             }
+
+
+
+           that.photo("shenfenzheng").then(
+               function (res){
+
+                 // success(res)=>{
+
+             console.log("promise success", res)
+
+             that.data.loading = 1
+
+             that.setData({
+               loading: "1",
+               onChoose: false
+             })
+             console.log("onchoose3", that.data.onChoose,"loading:",that.data.loading)
+
+
+             // tempFilePath可以作为img标签的src属性显示图片
+             let imgUrl = res.tempFilePaths[0];
+             // return;
+             // It was directly go to getImgUrl but I change it for better control
+             console.log("choose image OK, uploading the image to OCR", that.data, res)
+             that.loadIcon()
+
+             that.uploadImg("shenfenzheng", imgUrl)
+
+
+           },
+               function (res){
+
+                 console.log("promise failed", res)
+
+                 that.setData({
+                   loading: "1",
+                   onChoose: false,
+                 })
+
+
+
+
+                 // console.log("counting concels:", countCencel)
+
+                 console.log("choose image failure", res)
+
+                 if (_switch < 4) {
+
+                   countCencel += 1
+
+                   console.log("go go counting concels:", countCencel)
+
+                   that.photo("shenfenzheng") // currently working
+
+                 } else {
+
+                   wx.showModal({
+                     title: '是否发生问题?',
+                     content: '请按『确定』键选择正确照片，或按『取消』键回到主页。',
+                     success (res) {
+                       if (res.confirm) {
+                         // jump to scan the back side
+                         that.photo("shenfenzheng")
+                         // record everything on to local storage
+                       }else{
+                         // wx.navigateTo({
+                         wx.switchTab({
+                           url: '../index/index'
+                         })
+
+                       }
+
+                     }//success of showModal
+                   }) // end of showModal
+
+
+
+                 }
+                 // return false
+
+
+          })
+
+ */
 
     }
-    this.loadIcon()
+    // this.loadIcon()
 
   },
   onUnload: function (options) {
   // _switch =0
     console.log("onUnload and _switch = ",_switch)
-    getApp().globalData.log.send()
 
     // log to the backend
-  },
-  onHide: function () {
-// record what user has chosen for marketing algorithm
-    getApp().globalData.log.send()
-
   },
 
   /*
@@ -104,7 +199,134 @@ Page({
 
 */
 
-//拍照从相册选择要识别的照片
+//拍照或者从相册选择要识别的照片
+  // due to infinite looping when chooseImage, I change the photo function to a promise way
+  /////////////////////////////
+  photo_promise: function(type) {
+    // login means get the openID not necessary means registered as a member
+    var that = this;
+    var countCencel=0
+
+//定义promise方法
+    return new Promise(function(resolve, reject) {
+
+
+          wx.chooseImage({
+            count: 1,
+            sizeType: ['original', 'compressed'],
+            sourceType: ['camera', 'album'],
+
+        success: function (res) {
+          resolve(res)
+/*
+          console.log("chooseImage success",res)
+
+          return
+
+          that.data.loading = 1
+
+          that.setData({
+            loading: "1",
+            onChoose: false
+          })
+          console.log("onchoose3", that.data.onChoose,"loading:",that.data.loading)
+
+
+          // tempFilePath可以作为img标签的src属性显示图片
+          let imgUrl = res.tempFilePaths[0];
+          // return;
+          // It was directly go to getImgUrl but I change it for better control
+          console.log("choose image OK, uploading the image to OCR", that.data, res)
+          that.loadIcon()
+
+          that.uploadImg(type, imgUrl)
+
+*/
+
+
+          // resolve(res)
+
+
+
+            },
+            fail: function(res) {
+
+              reject(res);
+/*
+              that.setData({
+                loading: "1",
+                onChoose: false,
+              })
+
+
+
+
+              console.log("counting concels:", countCencel)
+
+              console.log("choose image failure", res)
+
+              if (_switch < 4) {
+
+                countCencel += 1
+
+                console.log("go go counting concels:", countCencel)
+
+                that.photo("shenfenzheng") // currently working
+
+              } else {
+
+                wx.showModal({
+                  title: '是否发生问题?',
+                  content: '请按『确定』键选择正确照片，或按『取消』键回到主页。',
+                  success (res) {
+                    if (res.confirm) {
+                      // jump to scan the back side
+                      that.photo("shenfenzheng")
+                      // record everything on to local storage
+                    }else{
+                      // wx.navigateTo({
+                      wx.switchTab({
+                        url: '../index/index'
+                      })
+
+                    }
+
+                  }//success of showModal
+                }) // end of showModal
+
+
+
+              }
+              // return false
+*/
+
+
+
+            },
+            complete: () => {
+
+
+            } //complete接口执行后的回调函数，无论成功失败都会调用
+
+          })
+
+
+    }).catch(function(reason) {
+      console.log('catch:', reason);
+      reject(res);
+    })
+
+
+
+
+
+
+  },
+
+
+
+  /////////////////////////////
+  // photo_backup(type) {
     photo(type) {
 
       let that = this;
@@ -128,6 +350,7 @@ Page({
       // if(that.data.onChoose){
 
       // if (that.data.onChoose==true) return
+      // that.data.onChoose = true
       // var pages = getCurentPages();
     //
     //     that.data.onChoose = false
@@ -135,20 +358,11 @@ Page({
         console.log("onchoose2", that.data.onChoose)
 
       // if(that.data.onChoose==true) {
-      //   _switch = true
-      //   that.setData({
-      //     loading: "1",
-      //     onChoose: false
-      //   })
-
-/*
-      if(that.data.onChoose) {return}
-
-   that.setData({
-                loading: "1",
-                onChoose: true
-              })
-*/
+        // _switch = true
+        // that.setData({
+        //   loading: "1",
+        //   onChoose: false
+        // })
 
       var countCencel=0
 
@@ -163,6 +377,9 @@ Page({
           // sourceType: ['camera'],
 
           success: function (res) {
+            console.log("chooseImage success",res)
+
+            // return
 
             that.data.loading = 1
 
@@ -175,6 +392,26 @@ Page({
 
 
 
+            // openLoading: function() {
+           /* console.log("start to set loading circle running")
+              that.setData({
+                load: true
+              });
+              setTimeout(() => {
+                that.setData({
+                  hideLoading: true
+                });
+                setTimeout(() => {
+                  that.setData({
+                    load: false,
+                    hideLoading: false,
+                  });
+                }, 300);
+              }, 3000);
+            // }
+            console.log("end of setting loading circle running")
+
+            */
 
 
             // tempFilePath可以作为img标签的src属性显示图片
@@ -189,14 +426,12 @@ Page({
             // return true
             // this.data.onChoose = false
             // that.data.onChoose = false
-            getApp().globalData.log.logging("choose image successfully",res)
 
 
           },
           fail: function (res) {
-            getApp().globalData.log.error("choose image failed, maybe cancel when choosing",res)
 
-            console.log("choose image failure", res)
+            // console.log("choose image failure", res)
             that.setData({
               loading: "1",
               onChoose: false,
@@ -236,14 +471,11 @@ Page({
                       // jump to scan the back side
                       that.photo("shenfenzheng")
                       // record everything on to local storage
-                      getApp().globalData.log.error("choose image failed , maybe cancel when choosing, after 4 times popup warning, user click confirm to re-scan")
-
-                                     }else{
+                    }else{
                                        // wx.navigateTo({
                                        wx.switchTab({
                                          url: '../index/index'
                                        })
-                                       getApp().globalData.log.error("choose image failed , maybe cancel when choosing, after 4 times popup warning, user click cancel to go back to index")
 
                                      }
 
@@ -291,14 +523,9 @@ Page({
 
     // 上传图片到云存储
     uploadImg(type, imgUrl) {
-
       var current_time = new Date().getTime();
       var openid = wx.getStorageSync("openid");
       let that = this
-      that.setData({
-        loading: "1",
-        onChoose: false
-      })
       console.log("上传", that.data.loading)
       wx.cloud.uploadFile({
         // cloudPath: 'ocr/' + type + '.png', // I added for test
@@ -311,8 +538,6 @@ Page({
         loading: "1",
         current: current_time
       })
-            getApp().globalData.log.logging("upload the ID card image to cloud")
-          console.log("upload the ID card image to cloud", res)
 
           // It was directly go to getImgUrl but I change it for better control
           that.getImgUrl(type, res.fileID)
@@ -323,8 +548,6 @@ Page({
         },
         fail: err => {
           console.log("失败", err)
-          getApp().globalData.log.error("FAILED to upload the ID card image to cloud")
-
         }
       })
     },
@@ -343,14 +566,10 @@ Page({
           // that.shenfenzheng(imgUrl)
 
           console.log("上传成功123", res.fileID, "cloudPath:")
-          getApp().globalData.log.logging("GET the temp ID card image from cloud")
-
 
         },
         fail: err => {
           console.log("获取图片url失败", err)
-          getApp().globalData.log.error("FAILED to get the temp ID card image from cloud")
-
         }
       })
     },
@@ -368,7 +587,6 @@ Page({
       // fileList: ["cloud://testbed-freestyle.7465-testbed-freestyle-1300943434/ocr/shenfenzheng.png"],
       success(res) {
         console.log("删除文件：", res, "file:", res.fileList[0], "fileID:", fileID)
-        getApp().globalData.log.logging("to delete the temp ID card image from cloud")
 
       }
     })
@@ -394,9 +612,7 @@ Page({
       type: type,
       imgUrl: imgUrl
     },
-    success(res) { //wx.cloud.callFunction({
-    getApp().globalData.log.logging("do the ocr ID regconising")
-
+    success(res) {
    console.log("识别成功xx", res, " TYPE=", type, " IMAGE URL=", imgUrl)
 
    console.log("GET the ID number", res.result.id)
@@ -457,7 +673,7 @@ Page({
                           that.photo("shenfenzheng")
                           // record everything on to local storage
 
-                          that.data.log.logging("front side is scanned, click confirm to turn around to scan the back")
+
                         }
 
 
@@ -469,14 +685,11 @@ Page({
                   case "00":
 
                     console.log("both sides are NOT scanned", process);
-                    /*
-                    // I moved this part to the validated ID block to insure that process will not be updated if user may cancel the process
                     // scan it and set front =1
                     that.setData({
                       frontCheck:'1',
                       msg:'you scanned the front side please turn to the back side'
                     })
-                      */
 
                     var pass = that.IdentityCodeValid(res.result.id)
                           if (pass===true) {
@@ -487,7 +700,6 @@ Page({
                             that.setLocalStorage(result)
                             // that.upload2backend(imgUrl,res.result.type)
                             // var result = JSON.stringify(res)
-
                             wx.showModal({
                               title: '此面扫描完成',
                               content: '请翻面拍照上传',
@@ -499,39 +711,22 @@ Page({
                                   // that.shenfenzheng();
                                   // record everything on to local storage
                                 }
-                                if(res.cancel){
-                                  wx.reLaunch({
-                                    url: '../myProfile/myProfile'
-                                  })
-                                }
 
                               }
                             })
-                            that.setData({
-                              frontCheck:'1',
-                              msg:'you scanned the front side please turn to the back side'
-                            })
-                            getApp().globalData.log.logging("front-side scanned and ID passed the validation, and set to local storage and set process=10")
 
-                            //if the ID is validated then update the frontcheck to 1
                           }else { // if id number is not passed the validation
 
                             wx.showModal({
                               title: '身分证号有误',
-                              content: '请使用正确证件重新拍照，并且避免歪斜，拍照时靠近清楚，以利正确辨识。',
+                              content: '请使用正确证件重新拍照',
                               success (res) {
                                 if (res.confirm) {
                                   that.photo("shenfenzheng")
-                                  // console.log('用户点击确定,重新拍照')
-                                  getApp().globalData.log.error("front-side scanned and ID NOT passed the validation, user click re-scan")
+                                  console.log('用户点击确定,重新拍照')
 
-                                }
-                                if (res.cancel) {
-                                  wx.reLaunch({
-                                    url: '../myProfile/myProfile'
-                                  })
-                                  getApp().globalData.log.error("front-side scanned and ID NOT passed the validation, user CANCEL the process, go back to myProfile")
-                                  // console.log('用户点击取消')
+                                } else if (res.cancel) {
+                                  console.log('用户点击取消')
                                 }
                               }
                             })
@@ -581,8 +776,6 @@ Page({
                           }
                     console.log("upload and delete the image")
                     that.upload2backend(imgUrl,res.result.type)
-                    that.data.log.logging("both side is scanned, upload and delete the image")
-
                     break;
                 }
 
@@ -592,7 +785,17 @@ Page({
 
       else
       {
+/*
+        const scanBack = new Promise(function (resolve,reject){
+          var exdate = that.printedText(type,imgUrl)
+          if(exdate==true){
+            resolve(exdate)
 
+          }else{
+            reject(exdate)
+          }
+
+        })*/
         _switch =0
         console.log("switch :", _switch);
               switch (process) {
@@ -607,8 +810,6 @@ Page({
                     // url:'../test/test?info=test',
                     url: '../IDcheck/IDcheck?result=0',
                   })
-                  that.data.log.logging("both side is scanned, navigate to url: '../IDcheck/IDcheck?result=0'")
-
                   break;
 
 
@@ -617,12 +818,10 @@ Page({
                 case "10":
                   console.log("front side is scanned, lets do the back side", process);
                   // scan it and set back =1
-                    /*  I move it below for setting data after validation checked
                   that.setData({
                     backCheck: '1',
                     msg: 'now both side are scanned, lets go to the next page'
                   })
-                    */
                   ///////////////////////////////////////////////
                   // var exdate = that.printedText(type,imgUrl)
                   // console.log("the expired date is : ", exdate);
@@ -680,12 +879,8 @@ Page({
                                     // url:'../test/test?info=test',
                                     url: '../IDcheck/IDcheck?result=0',
                                   })
-                    // I move the process check set data here
-                     that.setData({
-                       backCheck: '1',
-                       msg: 'now both side are scanned, lets go to the next page'
-                                      })
-                  that.data.log.logging("passed the verifyExpiration(extraDate), and both side is scanned, navigate to url: '../IDcheck/IDcheck?result=0'")
+
+
 
                                 }else{
 
@@ -699,7 +894,6 @@ Page({
                                       // that.bianshi1(type,imgUrl)
                                       // navigate to warning page
                                       if (res.confirm) {
-
                                         // that.photo("shenfenzheng")
                                         console.log('证件过期,用户点击确定,重新拍照', err)
                                         // wx.setStorageSync("expiration", expirationDate);
@@ -709,17 +903,10 @@ Page({
                                           // url:'../test/test?info=test',
                                           url: '../IDcheck/IDcheck?result=0',
                                         })
-                                        that.data.log.error("NOT passed the verifyExpiration(extraDate), but user is confident to click confirm to modify on his own at next page")
 
+                                      } else if (res.cancel) {
+                                        console.log('用户点击取消')
                                       }
-                                      if (res.cancel) {
-                                        wx.reLaunch({
-                                          url: '../myProfile/myProfile'
-                                        })
-                                        getApp().globalData.log.error("NOT passed the verifyExpiration(extraDate), user CANCEL the process, go back to myProfile")
-                                        // console.log('用户点击取消')
-                                      }
-
                                     }
 
                                   })
@@ -739,13 +926,24 @@ Page({
                     console.log("normal status 10 and get is expiration test passed then go to the next : ", expirationDate, result, exdate);
 
 
-                    wx.redirectTo({ // DO NOT USE SWITCH BAR AS URL
+                    wx.navigateTo({ // DO NOT USE SWITCH BAR AS URL
                       // url:'../test/test?info=test',
                       url: '../IDcheck/IDcheck?result=0',
                     })
-                    getApp().globalData.log.error("ID-OCR can NOT regconise the backside, use text OCR and got ",expirationDate)
+                    /*
+                    wx.showModal({
+                      title: '此面扫描完成',
+                      content: '请翻面拍照上传',
+                      success (res) {
+                        // jump to scan the back side
+                        // that.bianshi1(type,imgUrl)
+                        if (res.confirm) {
+                          that.photo("shenfenzheng")
+                        }
+                      }
+                    })
 
-
+                    */
                   }, function (err) {
 
                     if (err == '00000000') {
@@ -763,38 +961,18 @@ Page({
                                             console.log('证件过期,用户点击确定,重新拍照', err)
                                             // wx.setStorageSync("expiration", expirationDate);
                                             wx.setStorageSync("expiration_err", err);
-
-                                            // that.photo("shenfenzheng") // I agree user to input manually not re-scan
-
-                                            wx.redirectTo({ // DO NOT USE SWITCH BAR AS URL
-                                              // url:'../test/test?info=test',
-                                              url: '../IDcheck/IDcheck?result=0',
-                                            })
+                                            that.photo("shenfenzheng")
 
                                             /*
-                                            wx.redirectTo({ // DO NOT USE SWITCH BAR AS URL
+                                            wx.navigateTo({ // DO NOT USE SWITCH BAR AS URL
                                               // url:'../test/test?info=test',
                                               url: '../IDcheck/IDcheck?result=' + result,
                                             })
                                             */
-                                          getApp().globalData.log.error("ID-OCR can NOT regconise the backside, use text OCR and still got falied , user click confirm to input manually ")
 
-                                          }
-
-                                          if (res.cancel) {
-                                            wx.reLaunch({
-                                              url: '../myProfile/myProfile'
-                                            })
-                                            getApp().globalData.log.error("ID-OCR can NOT regconise the backside, use text OCR and still got falied , user click CANCEL to go back to myProfile ")
-                                            // console.log('用户点击取消')
-                                          }
-
-                                          /*
-                                          else if (res.cancel) {
+                                          } else if (res.cancel) {
                                             console.log('用户点击取消')
                                           }
-
-                                          */
                                         }
 
                                       })
@@ -819,29 +997,14 @@ Page({
                             // wx.setStorageSync("expiration", expirationDate);
                             wx.setStorageSync("expiration_err", err);
 
-                            wx.redirectTo({ // DO NOT USE SWITCH BAR AS URL
+                            wx.navigateTo({ // DO NOT USE SWITCH BAR AS URL
                               // url:'../test/test?info=test',
                               url: '../IDcheck/IDcheck?result=0',
                             })
-                            getApp().globalData.log.error("ID-OCR can NOT regconise the backside, use text OCR and maybe wrong or expired, but user is confident to click confirm to modify on his own at next page ")
 
-
-                          }
-
-                          if (res.cancel) {
-                            wx.reLaunch({
-                              url: '../myProfile/myProfile'
-                            })
-                            getApp().globalData.log.error("ID-OCR can NOT regconise the backside, use text OCR and maybe wrong or expired , user click CANCEL to go back to myProfile ")
-                            // console.log('用户点击取消')
-                          }
-
-                          /*
-                          else if (res.cancel) {
+                          } else if (res.cancel) {
                             console.log('用户点击取消')
                           }
-
-                          */
                         }
 
                       })
@@ -856,7 +1019,56 @@ Page({
                   console.log("upload and delete the image")
                   that.upload2backend(imgUrl,res.result.type)
 
+///////////////////////////////
 
+                    /*
+                  scanBack.then(function(exdate){
+                    console.log("vvvvvv the expired date is : ", exdate);
+
+
+                    wx.navigateTo({ // DO NOT USE SWITCH BAR AS URL
+                      // url:'../test/test?info=test',
+                      url: '../IDcheck/IDcheck?result=' + result,
+                    })
+
+                  },function (error){
+
+                    var expirationDate = wx.getStorageSync("expiration");
+                    wx.showModal({
+                      title: '证件过期',
+                      content: '证件到期日:'+expirationDate+'请更新证件',
+                      success (res) {
+                        // jmp to scan the back side
+                        // that.bianshi1(type,imgUrl)
+                        // navigate to warning page
+                      }
+                    })
+                    console.error('出错了', error);
+                  });
+
+*/
+
+
+                /*
+                  if(exdate){
+                    wx.navigateTo({ // DO NOT USE SWITCH BAR AS URL
+                      // url:'../test/test?info=test',
+                      url: '../IDcheck/IDcheck?result=' + result,
+                    })
+                  }else{
+                    wx.showModal({
+                      title: '证件过期',
+                      content: '证件到期日:'+expirationDate+'请更新证件',
+                      success (res) {
+                        // jump to scan the back side
+                        // that.bianshi1(type,imgUrl)
+                        // navigate to warning page
+                      }
+                    })
+                  }
+
+
+                  */
 
 
 
@@ -870,6 +1082,21 @@ Page({
                   that.setData({backCheck:'1'})
 
 
+                 /*const scanBack = new Promise(function (resolve,reject){
+                   // var exdate = that.printedText(type,imgUrl)
+                   console.log("show exdate : ", exdate,type,imgUrl);
+
+
+                   if(that.printedText(type,imgUrl)){
+                     console.log("resolve")
+                     resolve()
+
+                   }else{
+                     console.log("reject")
+                     reject()
+                   }
+
+                 })*/
 
 
                   // var res ="20040919-20240918"
@@ -898,15 +1125,6 @@ Page({
                           // that.bianshi1(type,imgUrl)
                           if (res.confirm) {
                             that.photo("shenfenzheng")
-                            that.data.log.logging("user first scan the back and pass the validation of expiration, click confirm to scan the front")
-
-                          }
-                          if (res.cancel) {
-                            wx.reLaunch({
-                              url: '../myProfile/myProfile'
-                            })
-                            getApp().globalData.log.error("user first scan the back and pass the validation of expiration, BUT user click CANCEL to go back to myProfile ")
-                            // console.log('用户点击取消')
                           }
                         }
                       })
@@ -930,22 +1148,10 @@ Page({
                             // wx.setStorageSync("expiration", expirationDate);
                             wx.setStorageSync("expiration_err", err);
                             that.photo("shenfenzheng")
-                            getApp().globalData.log.error("user first scan the back and did NOT pass the validation of expiration, click confirm to re-scan")
 
-                          }
-
-                          if (res.cancel) {
-                            wx.reLaunch({
-                              url: '../myProfile/myProfile'
-                            })
-                            getApp().globalData.log.error("user first scan the back and did NOT pass the validation of expiration, user click CANCEL to go back to myProfile")
-                            // console.log('用户点击取消')
-                          }
-                          /*
-                          else if (res.cancel) {
+                          } else if (res.cancel) {
                             console.log('用户点击取消')
                           }
-                          */
                         }
 
                       })
@@ -958,7 +1164,6 @@ Page({
 
                     var expirationDate = wx.getStorageSync("expiration");
                     console.log("normal status 00 and get is expiration test passed then go to the next : ", expirationDate, result, exdate);
-                    that.data.log.logging("user first scan the back and pass the validation of expiration, and wx.getStorageSync(expiration)")
 
                   }else {
 
@@ -977,15 +1182,6 @@ Page({
                               // that.bianshi1(type,imgUrl)
                               if (res.confirm) {
                                 that.photo("shenfenzheng")
-                                that.data.log.logging("user first scan the back-side but failed in ID-OCR, and use the text OCR and pass the validation of expiration, and click confirm to scan the front side")
-
-                              }
-                              if (res.cancel) {
-                                wx.reLaunch({
-                                  url: '../myProfile/myProfile'
-                                })
-                                getApp().globalData.log.error("user first scan the back-side but failed in ID-OCR, and use the text OCR and pass the validation of expiration, BUT user click CANCEL to go back to myProfile")
-                                // console.log('用户点击取消')
                               }
                             }
                           })
@@ -1011,30 +1207,18 @@ Page({
                                   console.log('证件过期,用户点击确定,重新拍照', err)
                                   // wx.setStorageSync("expiration", expirationDate);
                                   wx.setStorageSync("expiration_err", err);
-                                  // that.photo("shenfenzheng") // I agreed user to input manally
-                                  wx.redirectTo({ // DO NOT USE SWITCH BAR AS URL
+                                  that.photo("shenfenzheng")
+
+                                  /*
+                                  wx.navigateTo({ // DO NOT USE SWITCH BAR AS URL
                                     // url:'../test/test?info=test',
-                                    url: '../IDcheck/IDcheck?result=0',
+                                    url: '../IDcheck/IDcheck?result=' + result,
                                   })
-                                  getApp().globalData.log.error("user first scan the back-side but ID-OCR can NOT regconise the backside, use text OCR and still got falied , user click confirm to input manually")
+                                  */
 
-
-
-                                }
-
-                                if (res.cancel) {
-                                  wx.reLaunch({
-                                    url: '../myProfile/myProfile'
-                                  })
-                                  getApp().globalData.log.error("user first scan the back-side but ID-OCR can NOT regconise the backside, use text OCR and still got falied, user click CANCEL to go back to myProfile")
-                                  // console.log('用户点击取消')
-                                }
-
-                                /*
-                                else if (res.cancel) {
+                                } else if (res.cancel) {
                                   console.log('用户点击取消')
                                 }
-                                */
                               }
 
                             })
@@ -1057,24 +1241,17 @@ Page({
                                 // wx.setStorageSync("expiration", expirationDate);
                                 wx.setStorageSync("expiration_err", err);
                                 that.photo("shenfenzheng")
-                                getApp().globalData.log.error("user first scan the back-side but ID-OCR can NOT regconise the backside, use text OCR and still got expiration but maybe wrong or expired, user click confirm to re-scan")
 
-
-
-                              }
-                              if (res.cancel) {
-                                wx.reLaunch({
-                                  url: '../myProfile/myProfile'
+                                /*
+                                wx.navigateTo({ // DO NOT USE SWITCH BAR AS URL
+                                  // url:'../test/test?info=test',
+                                  url: '../IDcheck/IDcheck?result=' + result,
                                 })
-                                getApp().globalData.log.error("user first scan the back-side but ID-OCR can NOT regconise the backside, use text OCR and still got expiration but maybe wrong or expired, user click CANCEL to go back to myProfile")
-                                // console.log('用户点击取消')
-                              }
+                                */
 
-                              /*
-                              else if (res.cancel) {
+                              } else if (res.cancel) {
                                 console.log('用户点击取消')
                               }
-                              */
                             }
 
                           })
@@ -1085,6 +1262,22 @@ Page({
 
 
 
+                  // console.log("vvvvvv the expired date is : ", exdate);
+                  // var expirationDate = wx.getStorageSync("expiration");
+/*
+                  wx.showModal({
+                    title: '此面扫描完成',
+                    content: '请翻面拍照'+expirationDate,
+                    success (res) {
+                      // jump to scan the back side
+                      // that.bianshi1(type,imgUrl)
+                      if (res.confirm) {
+                        that.photo("shenfenzheng")
+                      }
+                    }
+                  })
+
+                    */
 
                   console.log("upload and delete the image")
                   that.upload2backend(imgUrl,res.result.type)
@@ -1102,15 +1295,7 @@ Page({
                       // that.bianshi1(type,imgUrl)
                       if(res.confirm){
                         that.photo("shenfenzheng")
-                        getApp().globalData.log.logging("user first scan the back-side and ask user to turn to front side, user click confirm to re-scan")
 
-                      }
-                      if (res.cancel) {
-                        wx.reLaunch({
-                          url: '../myProfile/myProfile'
-                        })
-                        getApp().globalData.log.error("user first scan the back-side and ask user to turn to front side, BUT user click CANCEL to go back to myProfile")
-                        // console.log('用户点击取消')
                       }
                     }
                   })
@@ -1121,18 +1306,175 @@ Page({
     },
     fail(res){
       console.log("FAIL in cloud call Function OCR:",res)
-      getApp().globalData.log.error("FAIL in cloud call Function OCR:",res)
-
 
     },
   })
 
 
+  /*
+    console.log("the processing number:", process)
+
+  // var process = that.data.frontCheck+that.data.backCheck
+
+
+  console.log("this step processing number:", process, that.data.msg)
+
+
+  var finalDate =  that.extractString()
+   console.log("check the expired:", finalDate)
+
+   wx.showModal({
+     title: '重要提示'+finalDate,
+     content: that.data.msg,
+     success (res) {
+
+     }
+   })
+     */
 
 
 
 },
 
+/*
+    //调用云函数，实现OCR识别
+    shibie(type, imgUrl) {
+
+      console.log("Shibei",type,imgUrl)
+      let that = this
+      wx.cloud.callFunction({
+        name: "ocr",
+        data: {
+          type: type,
+          imgUrl: imgUrl
+        },
+        success(res) {
+          console.log("识别成功xx", res, " TYPE=", type, " IMAGE URL=", imgUrl)
+
+          console.log("GET the ID number", res.result.id)
+          //////  check if this is front side or rare /////////
+
+
+           if(res.result.type==='Front'){
+
+
+
+                    if (that.data.frontCheck==='1'){
+
+                      console.log("the front side is already checked, please turn around to scan the backside", that.data.frontCheck)
+                    }
+
+                     var pass = that.IdentityCodeValid(res.result.id)
+
+
+
+
+
+          /////////////////////////////////////////
+
+          // var pass = that.IdentityCodeValid(res.result.id)
+          getApp().globalData.member_id =res.result.id
+          console.log("ID validation", pass)
+          // console.log("ID validation2", that.IdentityCodeValid('830000199201300022'))
+
+
+                          if (pass===true) {
+
+                            var result = JSON.stringify(res)
+
+                            /////////////////////   I added this for managing the cloud file system ////////////
+                            console.log("front side or rare: ", res.result['type'])
+
+                            // that.uploadImg(type, imgUrl);
+                            // that.delFile(imgUrl);
+
+
+                            that.setData({
+                              frontCheck:"1"
+                            })
+
+
+                            ////////////////////////////////////////////////////////////////////////////////////
+
+                            wx.navigateTo({ // DO NOT USE SWITCH BAR AS URL
+                              // url:'../test/test?info=test',
+                              url: '../IDcheck/IDcheck?result=' + result,
+                            })
+                          } else { // if id number is not passed the validation
+
+                            wx.showModal({
+                              title: '身分证号有误',
+                              content: '请重新拍照',
+                              success (res) {
+                                if (res.confirm) {
+                                  that.photo("shenfenzheng")
+                                  console.log('用户点击确定,重新拍照')
+
+                                } else if (res.cancel) {
+                                  console.log('用户点击取消')
+                                }
+                              }
+                            })
+
+
+                          }
+
+
+
+           }else{ // if type is back side
+             console.log("jump to the next scan",res);
+             console.log("jump to the next scan",res.result.type);
+             // console.log("jump to authority",res.result.authority);
+             console.log("jump to validDate",res.result.validDate);
+             // console.log("jump to the next scan",res.result.cardProperty);
+             console.log("jump to the next scan",res.result.errCode);
+
+             //
+             // var textOCR = that.printedText("textocr",imgUrl)
+             //
+             // console.log("OCR @ text", textOCR);
+             // // console.log("raw OCR @ text", that.printedText("textocr",imgUrl));
+
+
+
+             var expiration = that.verifyExpiration(res.result.validDate)
+             // if (that.verifyExpiration(res.result.validDate)===true){
+             if (expiration===true){
+               console.log("final not expired",expiration)
+
+
+
+             }else{
+
+
+
+               console.log("This ID card is expired, please update!",expiration)
+
+
+              // if the ID card expired by first scan then rescan with OCR text to verify again.
+
+               var textOCR = that.printedText("textocr",imgUrl)
+
+               console.log("OCR @ text", textOCR);
+               // console.log("raw OCR @ text", that.printedText("textocr",imgUrl));
+
+
+               wx.redirectTo({
+                 url: '../test/expiredPage'
+               })
+             }
+
+
+           }
+
+        },
+        fail(res) {
+          console.log("识别失败123!!!", res, " TYPE=", type, " IMAGE URL=", imgUrl)
+        }
+      })
+    },
+
+  */
 
     IdentityCodeValid(code) {
 
@@ -1341,7 +1683,14 @@ Page({
         }
       })
 
+      /*if(that.printedText(type,imgUrl)){
+        console.log("resolve")
+        resolve()
 
+      }else{
+        console.log("reject")
+        reject()
+      }*/
 
     // })
 
@@ -1477,7 +1826,34 @@ extraValidDate(e){
       }
     })
 
+/*
+    wx.uploadFile({
+      url: "https://www.top-talent.com.cn/linghuo/upload_IDcard.php?openid="+openid+"&member_id="+member_id+"&type="+type,
+      filePath: file,
+      name: "file",
+      header: { "Content-Type": "multipart/form-data" },
+      //成功
+      success: function success(res) {
+        console.log(res);
+        if (res.statusCode != 200) {
+        // log it in the back end
+          console.log("network problem status ! = 200 :", res);
 
+          return;
+        }
+        var data = res.data;
+        console.log("successfully uploaded:", data);
+        that.delFile(file)
+
+      },
+      //成功
+      fail: function fail(e) {
+        // log it in the back end
+        console.log("failed to upload", e);
+      }
+    });
+
+    */
 
 
 

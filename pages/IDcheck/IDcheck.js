@@ -25,6 +25,17 @@ Page({
     //
     // }
 
+    if (wx.getStorageSync("expiration_err")){
+      var member_id_expiration= wx.getStorageSync("expiration_err")?wx.getStorageSync("expiration_err"):'00000000'
+    }else {
+        var member_id_expiration= wx.getStorageSync("expiration")?wx.getStorageSync("expiration"):'00000000'
+    }
+
+    // var id_expiration = member_id_expiration.replaceAll('.','-')
+    var id_expiration = member_id_expiration.replace(/\./g,'-')
+
+    console.log("member_id_expiration:", id_expiration)
+
     if (res =='0'){
       this.setData({
 
@@ -35,9 +46,9 @@ Page({
         placeholder_gender: wx.getStorageSync("member_gender"),
         placeholder_id: wx.getStorageSync("member_id"),
         placeholder_nationality: wx.getStorageSync("member_nationality"),
-        member_id_expiration: wx.getStorageSync("expiration_err"),
-        member_id_expiration: wx.getStorageSync("expiration")
-
+        // member_id_expiration: wx.getStorageSync("expiration_err")?wx.getStorageSync("expiration_err"):'00000000',
+        // member_id_expiration: wx.getStorageSync("expiration")?wx.getStorageSync("expiration"):'00000000'
+        member_id_expiration: id_expiration
 
       })
     }else {
@@ -60,8 +71,12 @@ Page({
         placeholder_gender: res["result"].gender,
         placeholder_id: res["result"].id,
         placeholder_nationality: res["result"].nationality,
-        member_id_expiration: wx.getStorageSync("expiration_err"),
-        member_id_expiration: wx.getStorageSync("expiration")
+        // member_id_expiration: wx.getStorageSync("expiration_err"),
+        // member_id_expiration: wx.getStorageSync("expiration"),
+        // member_id_expiration: wx.getStorageSync("expiration_err")?wx.getStorageSync("expiration_err"):'00000000',
+        // member_id_expiration: wx.getStorageSync("expiration")?wx.getStorageSync("expiration"):'00000000'
+        member_id_expiration: id_expiration
+
       })
     }
     if(this.data.placeholder_id.substring(0,2)==='83'){
@@ -110,52 +125,8 @@ Page({
 
     // console.log("mem_id",wx.getStageSync("member_id"))
     that.IfTask();
-/*
-     var matchedTask = that.IfTask();
-    if(matchedTask==="0"){
-      console.log("there is no matched task",that.IfTask())
 
 
-    }else{
-      console.log("matched task id is ",matchedTask    }
-
-    */
-    // console.log("TRUE = ",this.IfTask())
-
-
-
-
-    // let { phone, pwd, isPub, sex } = e.detail.value;
-    // if (!phone || !pwd) {
-    //   this.setData({
-    //     warn: "手机号或密码为空！",
-    //     isSubmit: true
-    //   })
-    //   return;
-    // }
-    // this.setData({
-    //   warn: "",
-    //   isSubmit: true,
-    //   phone,
-    //   pwd,
-    //   isPub,
-    //   sex
-    // })
-    // this.setData({
-    //   warn: "",
-    //   isSubmit: true,
-    //   input_name,
-    //   input_ID,
-    //   input_addr,
-    //   input_gender,
-    //   input_nationality,
-    //   input_birthday,
-    //   input_phone,
-    //  input_home,
-    //   input_marriage,
-    //   input_certificates
-    //   // sex
-    // })
   },
 
   formReset: function () {
@@ -208,33 +179,6 @@ Page({
         expiration:that.data.member_id_expiration,
         // role:"員工",
         application:that.data.scan_result
-        //
-        // name: e["result"].name,
-        // id: e["result"].ID,
-        // addr: e["result"].addr,
-        // birthday: e["result"].birthday,
-        // gender: e["result"].gender,
-        // nationality: e["result"].nationality,
-        // type: e["result"].type,
-        // openid: app.globalData.member_openID,
-        // marriage:"0",
-        // certificates:"0",
-        // registered_addr: "0",
-        // phone_num:"0",
-        // role:"0",
-        // application:"0"
-        //
-        // name: input_name,
-        // input_ID,
-        // input_addr,
-        // input_gender,
-        // input_nationality,
-        // input_birthday,
-        // input_phone,
-        // input_home,
-        // input_marriage,
-        // input_certificates
-        //
 
       },
 
@@ -253,29 +197,11 @@ Page({
           return 0;
         }
 
-        // console.log('member_id=',app.globalData.member_id);
-        // console.log('openid=',that.globalData.openid);
-        // console.log('memberid=',e.detail.value.input_ID);
+
 
         // I shall check whether this member was assigned to specific task_id before getting sign off
 
-            // member_id: app.globalData.member_id,
-        //
-        // that.setData({
-        //
-        //
-        //   list: ret.data,
-        // })
-        // wx.hideToast();
-        // if(ret){
-        //   wx.navigateTo({ // o NOT use stch bar url
-        //     // url:'../test/test?info=test',
-        //     url:'../draw/draw?info=test',
-        //   }),
-              // wx.showModal({
-              //   title: 'RETURN',
-              //   content: '返回'+ret.data,
-              // })
+
 
         // }
 
@@ -286,9 +212,6 @@ Page({
 
 
 
-    // wx.navigateTo({
-    //   url: '../storageConsole/storageConsole'
-    // })
 
 
   },
@@ -323,22 +246,7 @@ Page({
 
         console.log("assigned task:",that.data.ifmatched)
         console.log("assigned task matched:",res.data["matched"])
-        //
-        // that.setData({
-        //   list: res.data,
-        //   task_name: '職缺',
-        //   task_corporation: '公司',
-        //   task_date: '刊登日期',
-        //   task_description: '工作內容',
-        //   task_requirement: '要求資質',
-        //   task_address: '工作地點',
-        //   task_num_recruiting: '需求人數',
-        //   task_expiration: '截止日期',
-        //   matched :res.data['matched'],
-        //   ifMatched: ifmatched
-        //
-        //
-        // })
+
 
       },
       fail: function (res) {
@@ -348,7 +256,7 @@ Page({
         console.log("switch contract by task id : ", that.data.ifmatched);
 
 
-            wx.navigateTo({
+            wx.redirectTo({
               url:'../contract/contract?openid='+app.globalData.openid+'&member_id='+that.data.id+'&member_name='+that.data.name+'&task_id='+that.data.ifmatched
             })
 

@@ -117,9 +117,13 @@
 
                 <view class="weui-cell__bd">
                     <!--                    <input class="weui-btn weui-btn_default" name="input_member_birthday" class="weui-input" placeholder="请输入" value="{{member_birthday}}"  />-->
-                    <picker mode="date" value="{{member_id_expiration}}" start="1900-09-01" end="2040-01-01" bindchange="bindDateChange">
+                    <picker mode="date" value="{{member_id_expiration}}" start="1900-09-01" end="2030-12-31" bindchange="bindDateChange">
                         <a class="">{{member_id_expiration}}</a>
                     </picker>
+
+<!--                      <picker mode="date" value="{{member_birthday}}" start="1900-09-01" end="2005-09-01" bindchange="birthdayChange">-->
+<!--                        <a class="">{{member_birthday}}</a>-->
+<!--                    </picker>-->
 
                 </view>
 

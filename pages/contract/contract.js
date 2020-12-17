@@ -223,7 +223,8 @@ Page({
 
 
     if (flag===true){
-    wx.navigateTo({
+      // wx.navigateTo({
+        wx.redirectTo({
       url:'../draw1/draw1?member_id='+this.data.member_id+'&member_name='+this.data.member_name+'&task_id='+this.data.task_id
     })
     console.log("flag draw= ",flag)

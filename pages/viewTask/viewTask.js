@@ -123,7 +123,8 @@ Page({
       url: src,
       success: function (res) {
         console.log(res)
-        var Path = res.tempFilePath              //返回的文件临时地址，用于后面打开本地预览所用
+        if (res.statusCode != "404"){
+          var Path = res.tempFilePath              //返回的文件临时地址，用于后面打开本地预览所用
         wx.openDocument({
           filePath: Path,
           Type: 'pdf',
@@ -135,9 +136,18 @@ Page({
             // })
           }
         })
+
+      }else{
+                  getApp().globalData.log.error("wx.downloadFile 404 file not found",res)
+
+        }
+
+
       },
       fail:function (res){
         console.log(res)
+        getApp().globalData.log.error("wx.downloadFile network failed",res)
+
       }
     })
 

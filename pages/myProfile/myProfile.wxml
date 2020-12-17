@@ -34,7 +34,7 @@
     </view>
 
 
-<view bindtap="takeCamera" class="weui-article " wx:if="{{IsMember =='0'}}">
+<view class="weui-article " wx:if="{{IsMember =='0'}}">
 
     <text class="weui-article__p"> 您尚未登录为会员，请依照后续引导步骤完善登录程序，谢谢！</text>
     <text class="weui-article__p"> 请准备好身份证，点击下方图案按钮</text>

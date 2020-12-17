@@ -190,7 +190,8 @@ Page({
                             var data = res.data;
                             console.log("上傳成功:" + data);
 
-                            wx.navigateTo({
+                            // wx.navigateTo({
+                                    wx.redirectTo({
                                 url:'../membership/membership?task_id='+that.data.task_id
                             })
                         },

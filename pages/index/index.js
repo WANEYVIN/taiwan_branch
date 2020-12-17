@@ -20,31 +20,8 @@ Page({
   },
 
   onLoad: function (option) {
-      // wx.setEnableDebug({
-      //     enableDebug: true
-      // })
 
-      // const logger = wx.getLogManager()
-      // logger.log({str: 'hello world'}, 'basic log', 100, [1, 2, 3])
-      //
-      // // logger.debug()
-      // let _nowTime = + new Date()
-      // console.log("logger manaer：" , _nowTime);
-
-      import {Logs} from '../../lib/log.js';
-      // const log = new Logs();
-
-      const log = require('../../lib/log_backup.js') // 引用上面的log.js文件
-      var takelook = log.log('index', 'this is a test event')
-      console.log("take a look", takelook)
-      // log.info('hello test hahaha') // 日志会和当前打开的页面关联，建议在页面的onHide、onShow等生命周期里面打
-      // log.warn('warn')
-      // log.error('error')
-      // log.setFilterMsg('filterkeyword)
-      // log.setFilterMsg('addfilterkeyword')
-
-
-      var app=getApp();
+    var app=getApp();
     var that = this;
     let openid = wx.getStorageSync("openid");
 
@@ -58,6 +35,7 @@ Page({
         // IsMember : app.globalData.IsMember
                 })
       console.log("SET CONDITION =0：" + that.data.condition);
+        getApp().globalData.log.logging( "user has no openid and set condition to 0 and call userLogin")
 
       app.userLogin().then(
 
@@ -85,6 +63,9 @@ Page({
           function (res){
 
               console.log("promise rejected  : "+res);
+              getApp().globalData.log.logging( "app.userLogin()"+" promise rejected  : "+res)
+              getApp().globalData.log.error( "app.userLogin()"+" promise rejected  : "+res)
+
 
 
           })
@@ -94,13 +75,18 @@ Page({
     else
     {
 //用户缓存存在
+        app.globalData.log.logging( "user's openid has been already gotten")
+        app.globalData.log.error( "user's openid has been already gotten")
+
         if(wx.getStorageSync("member_id")){
             that.setData({
                 condition : 1
 
             })
 
-            getApp().GetData(that.data.openid);
+            // getApp().GetData(that.data.openid); // no longer need to set to local storage again
+            app.globalData.log.logging( "user's member_id has been already gotten and set condition to 1")
+
             console.log("3进入首页的用户为：" +app.globalData.openid,wx.getStorageSync("member_id"),that.data.openid);
 
         }else{
@@ -109,6 +95,8 @@ Page({
                 badge:1
 
             })
+            app.globalData.log.logging( "user's member_id has no member_idand set condition to 0")
+
             console.log("4进入首页的用户为： o member_id condition =0 bage =1", that.data.condition, that.data.badge);
 
         }
@@ -138,6 +126,7 @@ Page({
       if (wx.getStorageSync("member_role") === ("admin" || "manager")) {
           that.admin_badge()
           console.log("ROLE = ", wx.getStorageSync("member_role"));
+        getApp().globalData.log.logging("user login as "+wx.getStorageSync("member_role"))
 
       }
 
@@ -149,6 +138,7 @@ Page({
       if (open_id == '') {
           // that.onLoad();
           console.log("ex_onShow open_id =null and go getAPP()" );
+          getApp().globalData.log.logging("user has no openid at onShow and relaunch index")
 
           // getApp().onLaunch;
           wx.reLaunch({
@@ -164,14 +154,14 @@ Page({
 
        */
       wx.request({
-          // url: 'https://www.top-talent.com.cn/linghuo/member_query.php?openid=' + open_id,
           url: getApp().globalData.serverURL + '/member_query.php?openid=' + open_id,
-          // url: 'https://www.top-talent.com.cn/linghuo/member_query.php?openid=oMa-B4rXn6o8QrlzhXhz27zxxhqs',
           header: {
               'Content-Type': 'application/json'
           },
           success: function (res) {
 
+              getApp().globalData.log.logging("user has openid at onShow and get task ",res)
+              // getApp().globalData.log.error("error log with result ",res)
 
               console.log("get data from database :", res.data);
               // console.log("get matched from storage :", res.data.length);
@@ -193,7 +183,11 @@ Page({
 
                   // var ifmatched='你有指定的任务';
                   console.log("check if condition = 1:", that.data.condition);
+                  getApp().globalData.log.logging("user has a matched task ")
+
               } else {
+                  getApp().globalData.log.logging("user has NO matched task ")
+
                   console.log("check if condition =0 :", that.data.condition);
                   that.setData({
 
@@ -240,6 +234,9 @@ Page({
           },
           fail: function (res) {
               console.log("fail: ", res);
+              // getApp().globalData.log.logging("failed when accessing to member_query.php?openid=")
+              getApp().globalData.log.error("error to access to member_query.php",res)
+
           },
           complete: function (res) {
               wx.hideNavigationBarLoading() //完成停止加载
@@ -258,13 +255,8 @@ Page({
     onHide: function () {
 // record what user has chosen for marketing algorithm
 
-        // const log = require('../../lib/log.js') // 引用上面的log.js文件
 
-        getApp().globalData.log.info('leaving index onhide') // 日志会和当前打开的页面关联，建议在页面的onHide、onShow等生命周期里面打
-        // log.warn('warn')
-        // log.error('error')
-        // log.setFilterMsg('filterkeyword')
-        // log.setFilterMsg('addfilterkeyword')
+        getApp().globalData.log.send()
 
     },
 
@@ -273,12 +265,14 @@ Page({
      */
     onReachBottom: function () {
 
+        getApp().globalData.log.logging("onReachBottom")
+
     },
 
 
   onPullDownRefresh: function() {
-    // var app =getApp();
-    // var that = this;
+        getApp().globalData.log.logging("onPullDownRefresh")
+
     wx.showNavigationBarLoading() //在标题栏中显示加载
     // console.log("reloading: ", app.globalData.openid);
     console.log("reloading: ", getApp().globalData.openid);
@@ -286,12 +280,9 @@ Page({
   },
     myProfile: function(e){
         var that = this;
-        console.log("photo tapped and condition = ", that.data.condition);
-        console.log("which tapped = ", e.currentTarget.id);
-        const log = require('../../lib/log.js') // 引用上面的log.js文件
 
-        log.info("which tapped = ", e.currentTarget.id) // 日志会和当前打开的页面关联，建议在页面的onHide、onShow等生命周期里面打
-
+        getApp().globalData.log.logging("go to myProfile with tapping "+e.currentTarget.id)
+        /*
         if(that.data.condition===0) {
             console.log("this is a brand new user not yet registered ", that.data.openid);
 
@@ -314,10 +305,19 @@ Page({
 
         }
 
+        wx.redirectTo({
+             url: '../myProfile/myProfile',
+        })*/
+        wx.switchTab({
+            url: '../myProfile/myProfile',
+        });
+
+
     },
 
 
     viewTask(e){
+
         var that = this;
 
         var taskID = e.currentTarget.id;
@@ -331,12 +331,15 @@ Page({
         console.log("task value:" + JSON.stringify(task[taskID]));
         console.log("matched value:" + matched);
         console.log("sign off value:" + signOff);
+        getApp().globalData.log.logging("view task= "+taskID+" ,sign off value:" + signOff+" ,matched value:" + matched)
 
         var tempID = 'mp6GxqAHDj4TUiop2I4Txd35ZM8UTVY_FUKPSCvzdNw'
 
         wx.getSetting({withSubscriptions: true,
             success(res){
                 console.log("withSubscriptions",res)
+                getApp().globalData.log.logging("wx.getSetting-withSubscriptions:",res)
+
                 // console.log("e",e)
                 // console.log("withSubscriptions.subscriptionsSetting-mainSwitch",res.subscriptionsSetting.mainSwitch)
                 // console.log("withSubscriptions.subscriptionsSetting-itemSettings",res.subscriptionsSetting.itemSettings[e])
@@ -372,7 +375,10 @@ Page({
                 // console.log("final flag",that.data.subscription)
 
             },
-            fail(err){}
+            fail(err){
+            getApp().globalData.log.error("wx.getSetting({withSubscriptions: true,",err)
+
+            }
         });
 
 
@@ -501,6 +507,8 @@ Page({
                 },
                 fail(res) {
                     console.log("FAILED requestSubscribeMessage", res)
+                    getApp().globalData.log.error("wx.requestSubscribeMessage({tmplIds:['mp6GxqAHDj4TUiop2I4Txd35ZM8UTVY_FUKPSCvzdNw']",res)
+
 
                 }
             })

@@ -1,0 +1,221 @@
+<!--miniprogram/pages/addTask/addTask.wxml-->
+<!--<text>miniprogram/pages/addTask/addTask.wxml</text>-->
+<!--<web-view src="https://www.top-talent.com.cn/linghuo/test.php"></web-view>-->
+
+<view class="page" data-weui-theme="{{theme}}">
+    <view class="page__hd">
+
+<view class="weui-cells__group weui-cells__group_form">
+
+
+    <form bindsubmit="formSubmit" bindreset="formReset">
+
+
+        <view class="weui-cells weui-cells_form">
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">公司 :</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="input_task_corporation" class="weui-input" placeholder="请输入" value="{{task_corporation}}"  />
+                </view>
+            </view>
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">任務名稱 :</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="input_task_name" class="weui-input" placeholder="请输入" value="{{task_name}}"  />
+                </view>
+            </view>
+
+
+<!--            <view class="weui-cell weui-cell_active weui-cell_disabled">-->
+<!--                <view class="weui-cell__hd">-->
+<!--                    <label class="weui-label">任務編號:</label>-->
+<!--                </view>-->
+<!--                <view class="weui-cell__bd">-->
+<!--                    <input name="input_task_id" class="weui-input" placeholder="请输入" value="{{task_id}}"  />-->
+<!--                </view>-->
+
+
+<!--            </view>-->
+
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">要求資質:</label>
+                </view>
+                <view class="weui-cell__bd">
+                                        <input name="input_task_certificate" class="weui-input" placeholder="请输入" value="{{task_certificate}}"  />
+
+<!--                    <picker bindchange="Picker_gender" value="{{certificate}}" range="{{certificate}}">-->
+<!--                        <a class="">{{certificate}}</a>-->
+<!--                    </picker>-->
+                </view>
+
+            </view>
+
+
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">工作內容 :</label>
+                </view>
+<!--                <view class="weui-cell__bd">-->
+<!--                    <input name="input_task_description" class="weui-input" placeholder="请输入" value="{{task_description}}"  />-->
+<!--                </view>-->
+
+                <view class="weui-cell__bd">
+                    <textarea name="input_task_description" class="weui-textarea" placeholder="请输入" value="{{task_description}}" rows="3"></textarea>
+                    <view class="weui-textarea-counter"></view>
+                </view>
+
+
+<!--                <view class="weui-form__control-area">-->
+<!--                    <view class="weui-cells__group weui-cells__group_form">-->
+<!--&lt;!&ndash;                        <view class="weui-cells__title">问题描述</view>&ndash;&gt;-->
+<!--                        <view class="weui-cells weui-cells_form">-->
+<!--                            <view class="weui-cell ">-->
+<!--                                -->
+<!--                            </view>-->
+<!--                        </view>-->
+<!--                    </view>-->
+<!--                </view>-->
+
+
+            </view>
+
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">工作地點:</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <input name="input_task_address" class="weui-input" placeholder="请输入" value="{{task_address}}"  />
+                </view>
+
+
+            </view>
+
+
+
+<!--            <view class="weui-cell weui-cell_active weui-cell_disabled">-->
+<!--                <view class="weui-cell__hd">-->
+<!--                    <label class="weui-label">用工類別:</label>-->
+<!--                </view>-->
+<!--                <view class="weui-cell__bd">-->
+<!--                    &lt;!&ndash;                    <input name="input_member_gender" class="weui-input" placeholder="请输入" value="{{member_gender}}"  />&ndash;&gt;-->
+
+<!--                    <picker bindchange="Picker_gender" value="{{gender_index}}" range="{{gender_array}}">-->
+<!--                        <a class="">{{shown_gender}}</a>-->
+<!--                    </picker>-->
+<!--                </view>-->
+
+
+<!--            </view>-->
+
+
+
+
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">終止日期 :</label>
+                </view>
+                <view class="weui-cell__bd">
+                    <!--                    <input class="weui-btn weui-btn_default" name="input_member_birthday" class="weui-input" placeholder="请输入" value="{{member_birthday}}"  />-->
+                    <picker mode="date" value="{{today}}" start="{{today}}" end="2040-01-01" bindchange="bindDateChange">
+                        <a class="">{{shown_today}}</a>
+                    </picker>
+
+                </view>
+
+
+            </view>
+
+<!--            <view class="weui-cell weui-cell_active weui-cell_disabled">-->
+<!--                <view class="weui-cell__hd">-->
+<!--                    <label class="weui-label">需求人數 :</label>-->
+<!--                </view>-->
+<!--                <view class="weui-cell__bd">-->
+<!--                    <input name="input_member_nationality" type="number" class="weui-input" placeholder="请输入" value="{{member_nationality}}"  />-->
+<!--                </view>-->
+
+
+<!--            </view>-->
+
+            <view class="weui-cell weui-cell_active weui-cell_disabled">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">聯絡電話:</label>
+                </view>
+<!--                <view class="weui-cell__bd">-->
+<!--                    <input name="input_task_contact" type="number" class="weui-input" placeholder="请输入" value="{{member_registered_addr}}"  />-->
+<!--                </view>-->
+
+                <view class="weui-cell__bd" >
+                    <button class="getPhoneButton" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">   <input name="input_task_contact" class="weui-input" type="number" placeholder="点击自动输入" value="{{member_registered_addr}}"  /></button>
+                </view>
+
+
+
+            </view>
+<!--    -->
+           <view bindchange="bindPickerChange" class="weui-cell weui-cell_active weui-cell_disabled" wx:if="{{copiedCase}}">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">上传协议:</label>
+                </view>
+                <view class="between weui-cell__bd">
+
+
+                    <view class=" weui-uploader__input-box">
+                        <view class="weui-uploader__input" bindtap="chooseDoc"></view>
+
+
+                    </view>
+                    <view>
+                     <button class="buttonConfig weui-btn_primary" bindtap="copyAgreement">{{copyAgreement}}</button>
+                    </view>
+
+                </view>
+
+
+            </view>
+
+
+
+            <view bindchange="bindPickerChange" class="weui-cell weui-cell_active weui-cell_disabled" wx:else="{{copiedCase}}">
+                <view class="weui-cell__hd">
+                    <label class="weui-label">上传协议:</label>
+                </view>
+                <view class="weui-cell__bd">
+
+                    <view class="weui-uploader__input-box">
+                        <view class="weui-uploader__input" bindtap="chooseDoc"></view>
+                    </view>
+                </view>
+
+
+            </view>
+
+
+
+            <view class="button-sp-area" >
+
+                <button class="weui-btn weui-btn_primary" formType="submit" >{{submitButton}}</button>
+
+            </view>
+
+
+
+
+
+
+        </view>
+    </form>
+
+</view>
+    </view>
+</view>

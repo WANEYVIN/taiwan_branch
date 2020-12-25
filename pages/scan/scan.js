@@ -70,7 +70,9 @@ Page({
     // if (this.data.onChoose) return;
     // that.data.onChoose = true
 
-
+    //chooseImage cause reopen album , I set up a flag _switch to prevent it!
+    // and other other hand, self-unLoading was due to the duplicated  tapping area in the my Profile,
+    // 2 views are bind to tap and those area are overlapped , cause one tap 2 action then the page load twice
     console.log("onchoose 0", this.data.onChoose)
     _switch +=1
     console.log("switch :", _switch);
@@ -82,7 +84,8 @@ Page({
 
   },
   onUnload: function (options) {
-  // _switch =0
+  // _switch =0 // I uncommented this, because that self-unLoading was due to the duplicated  tapping area in the my Profile,
+    // 2 views are bind to tap and those area are overlapped , cause one tap 2 action then the page load twice
     console.log("onUnload and _switch = ",_switch)
     getApp().globalData.log.send()
 

@@ -1,4 +1,3 @@
-// miniprogram/pages/addTask/addTask.js
 Page({
 
   /**
@@ -9,50 +8,71 @@ Page({
     submitButton:'確認提交',
     // shown_today:''
     uploaded:'0',
-    copy_it:'0'
+    copy_it:'0',
+    task_expiration:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log("option: ", JSON.parse(options.data));
-    // var copiedTask = JSON.parse(options.data)[0]
-    // console.log("copiedTask: ", copiedTask.task_requirement);
-    if(options.data!=null){
-      var copiedTask = JSON.parse(options.data)[0]
-      this.setData({
-        copiedCase:"1",
-        copyAgreement: "复制协议",
-        today: today,
-        shown_today:today,
-        task_corporation: wx.getStorageSync("member_corporate"), // maybe in the future, find a new way to identify the manager
-        task_name: copiedTask.task_name?copiedTask.task_name:'',
-        task_certificate: copiedTask.task_requirement?copiedTask.task_requirement:'',
-        task_description: copiedTask.task_description?copiedTask.task_description:'请描述工作內容',
-        task_address: copiedTask.task_address?copiedTask.task_address:'',
-        member_registered_addr:copiedTask.member_registered_addr?copiedTask.member_registered_addr:'',
-        copiedTask_id : copiedTask.task_id
-      })
-      console.log("This is a copied case",copiedTask);
+    let that = this
+    console.log('OPTION=',options.task_id);
+    that.setData({task_id:options.task_id})
 
-    }else{
-      console.log("This is a originated case");
 
-    }
 
+    wx.request({
+      url: getApp().globalData.serverURL+'/editTask.php',
+      method:"POST",
+      header:{
+        // 'Content-Type': 'application/json'
+        'content-type': 'application/x-www-form-urlencoded' //POST修改此处即可
+      },
+
+      data:{
+        act: 'show',
+        task_id: options.task_id,
+
+      },
+
+
+      success:function(ret){
+        // console.log('show task =',JSON.parse(ret));
+
+        console.log('show task =',ret.data);
+        that.setData({
+          task_name:ret.data[0].task_name
+          ,task_certificate:ret.data[0].task_requirement
+          ,task_description:ret.data[0].task_description
+          ,task_address:ret.data[0].task_address
+          // ,task_expiration:ret.data[0].task_expiration
+          ,shown_today:ret.data[0].task_expiration?ret.data[0].task_expiration:that.getToday()
+          ,member_registered_addr:wx.getStorageSync('member_phone_num')
+        })
+
+
+        console.log("task_expiration2 = ",that.data.task_expiration)
+
+
+
+      }
+    })
 
     var today = this.getToday()
-    this.setData({
+    var expiration = that.data.task_address
+    console.log("aaddrrr task_expiration = ",expiration)
+
+    // this.setData({
+    that.setData({
       today: today,
-      shown_today:today,
+      // shown_today:today,
+      shown_today:expiration?expiration:today,
       task_corporation: wx.getStorageSync("member_corporate"), // maybe in the future, find a new way to identify the manager
-      // task_name: copiedTask.task_name?copiedTask.task_name:'',
-      // task_certificate: copiedTask.task_requirement?copiedTask.task_requirement:'',
-      // task_description: copiedTask.task_description?copiedTask.task_description:'请描述工作內容',
-      // task_address: copiedTask.task_address?copiedTask.task_address:'',
-      // member_registered_addr:copiedTask.member_registered_addr?copiedTask.member_registered_addr:'',
-    })
+      })
+    console.log("today = ",today)
+    console.log("task_expiration = ",that.data.task_expiration)
+
 
   },
 
@@ -68,7 +88,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    /*
+    let that = this
+    var today = this.getToday()
+    this.setData({
+      today: today,
+      // shown_today:today,
+      shown_today:that.data.task_expiration?that.data.task_expiration:today,
+      task_corporation: wx.getStorageSync("member_corporate"), // maybe in the future, find a new way to identify the manager
+    })
+    console.log("today = ",today)
+    console.log("task_expiration = ",that.data.task_expiration)
+    */
   },
 
   /**
@@ -242,7 +273,7 @@ Page({
 
     wx.request({
       // url: 'https://www.top-talent.com.cn/linghuo/addTask.php',
-      url: getApp().globalData.serverURL+'/addTask.php',
+      url: getApp().globalData.serverURL+'/editTask.php',
       method:"POST",
       header:{
         // 'Content-Type': 'application/json'
@@ -250,6 +281,8 @@ Page({
       },
 
       data:{
+        task_id: that.data.task_id,
+        act:'edit',
         task_name: e.detail.value.input_task_name,
         task_description:e.detail.value.input_task_description,
         // task_date:$db->now(),
@@ -264,19 +297,20 @@ Page({
         task_contact:e.detail.value.input_task_contact,
         task_address:e.detail.value.input_task_address,
         // task_owner:wx.getStorageSync("openid"),
+     /*
         tmpFile_name: that.data.tmpFile_name,
         submit:"1",
         uploaded:that.data.uploaded,
         copied: that.data.copy_it,
         copiedTask_id:that.data.copiedTask_id
-
+*/
 
       },
 
 
       success:function(ret){
 
-        console.log('insert2DB result=',ret);
+        console.log('edited=',ret);
 
 
 

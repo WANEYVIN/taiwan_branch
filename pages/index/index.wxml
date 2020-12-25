@@ -1,6 +1,7 @@
 <!--index.wxml-->
 <view class="page" data-weui-theme="{{theme}}">
 
+
     <view class="center weui-cell__hd" bindtap="myProfile"  id="avatar">
 <!--        <open-data class="user-avatar" type="userAvatarUrl" ></open-data>-->
         <view style="position: relative;margin-right: 5px;margin-top: 5px;" >
@@ -49,7 +50,8 @@
         <block wx:for="{{list}}" wx:key="list" wx:for-index="idx">
 
 
-                <view wx:if="{{item!=list.matched && item!=list.signOff}}" class="taskProfile"  catchtap="viewTask" id="{{idx}}">
+            <view wx:if="{{item!=list.matched && item!=list.signOff}}" class="taskProfile"  catchtap="viewTask" id="{{idx}}">
+<!--            <view  wx:if="{{item!=list.matched && item!=list.signOff}}" class="taskProfile"  catchtap="viewTask" id="{{item.task_id?item.task_id:idx}}">-->
 
 
 

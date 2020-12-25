@@ -173,3 +173,8 @@
 
         </block>
 </view>
+
+
+<!--<view class="page__bd">-->
+<!--    <mp-half-screen-dialog bindselectresult="selectResult" search="{{search}}"></mp-half-screen-dialog>-->
+<!--</view>-->

@@ -11,3 +11,11 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.back_colour{
+    background-color: beige;
+}
+
+.separator_colour{
+    background-color: #888888;
+}

@@ -71,6 +71,13 @@ Page({
 
 
 },
+  onHide: function () {
+// record what user has chosen for marketing algorithm
+
+
+    getApp().globalData.log.send()
+
+  },
   downloadFile(e) {
     var that = this
 
@@ -78,6 +85,8 @@ Page({
     // var src = this.data.contractDoc; // 这个定义了一个属性src来存地址
     // var src = e.data.contractDoc; // 这个定义了一个属性src来存地址
     console.log( "contract = ",this.data.contractDoc)
+    getApp().globalData.log.logging("user click download for contract ",this.data.contractDoc)
+
     var src = this.data.contractDoc
 
     wx.downloadFile({
@@ -101,6 +110,8 @@ Page({
 
   },
   go_home:function(){
+    getApp().globalData.log.logging("user click on go home page")
+
     let that = this
 
     that.setData({
@@ -113,6 +124,8 @@ Page({
   },
   myProfile: function(){
     // var that = this;
+    getApp().globalData.log.logging("user click on go to myProfile page")
+
     let that = this
 
     that.setData({
@@ -132,6 +145,7 @@ Page({
 // *  this is for update the date of user's signing off and add path of signed off contract to the match table and flag condition in match table with 1
       var app = getApp();
       let that = this
+   app.globalData.log.logging("update the sign off date on matchings table as today when user sign off with the matched task")
 
 
       wx.request({
@@ -181,12 +195,15 @@ Page({
    that.setData({
      dialog2: false,
    })
+
    wx.requestSubscribeMessage({
      tmplIds: ['mp6GxqAHDj4TUiop2I4Txd35ZM8UTVY_FUKPSCvzdNw'],
 
      // tmplIds: ['mCx2f5QrEiQfIdHdLL2z2fv28SO9zTieO7zBCldrOns'],
 
      success(res) {
+       getApp().globalData.log.logging("user click on I know to agree wx.requestSubscribeMessage with mp6GxqAHDj4TUiop2I4Txd35ZM8UTVY_FUKPSCvzdNw")
+
        console.log("requestSubscribeMessage", res)
 
        wx.switchTab({
@@ -195,6 +212,8 @@ Page({
        // return true
      },
      fail(res) {
+       getApp().globalData.log.error("user click on I know BUT FAILED to agree wx.requestSubscribeMessage with mp6GxqAHDj4TUiop2I4Txd35ZM8UTVY_FUKPSCvzdNw",res)
+
        console.log("FAILED requestSubscribeMessage", res)
 
      }

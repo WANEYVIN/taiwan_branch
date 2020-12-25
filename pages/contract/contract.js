@@ -41,12 +41,17 @@ Page({
           imgUrl:getApp().globalData.serverURL+'/contract/templates/freelancer/contract_template.jpg',  //图片路径
           contractDoc: getApp().globalData.serverURL+'/contract/templates/freelancer/full_contract.pdf'
           })
+
+      getApp().globalData.log.logging("user has no matched task, use default template contract")
+
     }else{
       that.setData({
       imgUrl:getApp().globalData.serverURL+'/contract/templates/'+that.data.task_id+'/contract_template.jpg',  //图片路径
       contractDoc: getApp().globalData.serverURL+'/contract/templates/'+that.data.task_id+'/contract_template.pdf'
       })
-      }
+      getApp().globalData.log.logging("user has matched task",that.data.contractDoc)
+
+    }
 
 
   console.log("task id = ",that.data.task_id)
@@ -79,6 +84,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+        getApp().globalData.log.send()
 
   },
 
@@ -86,6 +92,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+        getApp().globalData.log.send()
 
   },
 
@@ -169,6 +176,9 @@ Page({
 
 
   clickImg: function(e){
+
+    getApp().globalData.log.logging("user click on image to preview")
+
     var imgUrl = this.data.imgUrl;
     wx.previewImage({
       urls: [imgUrl], //需要预览的图片http链接列表，注意是数组
@@ -181,6 +191,8 @@ Page({
 // 下载文件
   // 使用这个api获取到临时路径
   downloadFile(e) {
+    getApp().globalData.log.logging("user download the contract document")
+
     // var src = e.currentTarget.dataset.src; // 这个定义了一个属性src来存地址
     var src = this.data.contractDoc; // 这个定义了一个属性src来存地址
 
@@ -207,6 +219,8 @@ Page({
 
   /**是否同意协议 */
   boxcheck: function (e) {
+    getApp().globalData.log.logging("user agree the contract and check checkbox")
+
     var flag = e.detail.value[0];
     if (flag === undefined) {
       // this.data.next_class = '';

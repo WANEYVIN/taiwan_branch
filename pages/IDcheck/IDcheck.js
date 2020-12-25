@@ -51,6 +51,9 @@ Page({
         member_id_expiration: id_expiration
 
       })
+
+      getApp().globalData.log.logging("get data from scan result set in storage, when front-rare sequence was applied during scanning")
+
     }else {
       // var packAddr = options.packages;
       // var packAddr = options.packages[esult"].addr;
@@ -78,6 +81,8 @@ Page({
         member_id_expiration: id_expiration
 
       })
+      getApp().globalData.log.logging("get data from scan result directly, when rare then front was applied during scanning")
+
     }
     if(this.data.placeholder_id.substring(0,2)==='83'){
       this.setData({
@@ -103,7 +108,13 @@ Page({
 
   },
 
+  onHide: function () {
+// record what user has chosen for marketing algorithm
 
+
+        getApp().globalData.log.send()
+
+    },
 
   formSubmit: function (e) {
 
@@ -111,17 +122,9 @@ Page({
     let that = this
     that.insert2DB(e);
 
-   // let{input_name,input_ID,input_addr,input_gender,input_nationality,input_birthday,input_phone,input_home,input_marriage,input_certificates}=e.detail.value;
-   //  var insert = that.insert2DB(e);
-   //  if(insert==="1"){
-   //    console.log("insert2DB result successfully",insert)
-   //
-   //  }else{
-   //    console.log("insert2DB result failed",insert)
-   //
-   //  }
 
     app.GetData(wx.getStorageSync("openid")) // this is for writing data to local storage
+    getApp().globalData.log.logging("tapped submit data to DB and get openid to check if matched tasks", e)
 
     // console.log("mem_id",wx.getStageSync("member_id"))
     that.IfTask();
@@ -196,6 +199,7 @@ Page({
         }else{
           return 0;
         }
+        getApp().globalData.log.logging("successfully insert to database", ret)
 
 
 
@@ -246,11 +250,14 @@ Page({
 
         console.log("assigned task:",that.data.ifmatched)
         console.log("assigned task matched:",res.data["matched"])
+        getApp().globalData.log.logging("get task_id if matched or assigned", res)
 
 
       },
       fail: function (res) {
         console.log("fail: ", res);
+        getApp().globalData.log.error("Fail to access member_query.php?openid= open_id ", res)
+
       },
       complete: function (res) {
         console.log("switch contract by task id : ", that.data.ifmatched);
@@ -267,11 +274,14 @@ Page({
 
 
   bindDateChange: function(e) {
+    getApp().globalData.log.logging("user click to change the expired date", e)
+
     this.setData({
       member_id_expiration: e.detail.value
     })
   },
   birthdayChange: function(e) {
+    getApp().globalData.log.logging("user click to change the birthday", e)
     this.setData({
       member_birthday: e.detail.value
     })

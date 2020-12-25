@@ -1,8 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {},
-  "navigationBarTitleText": "MyTask",
-  "enablePullDownRefresh": true,
-  "backgroundTextStyle": "dark"
-
-}

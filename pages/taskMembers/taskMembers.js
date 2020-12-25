@@ -5,30 +5,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    export:'下载成员名单',
-    list:'0'
+    export: '下载成员名单',
+    list: '0',
+    addPersonnel:'增加人员',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("task id = ",options.task_id)
+    console.log("task id = ", options.task_id)
 
     let that = this
     that.setData({
-      task_id:options.task_id
+      task_id: options.task_id
     })
 
     var taskMember = that.listMember(options.task_id)
     console.log("taskMember  = ", that.data.list)
 
 
-    if (taskMember=='0'){
+    if (taskMember == '0') {
       wx.showModal({
         title: '本案無清單',
         content: '回到前頁',
-        success (res) {
+        success(res) {
           // jump to scan the back side
           // that.bianshi1(type,imgUrl,result)
           // that.photo("shenfenzheng")
@@ -98,13 +99,13 @@ Page({
 
   },
 
-  listMember: function(task_id){
+  listMember: function (task_id) {
     // console.log("click: ", e, e.currentTarget.id);
     let that = this
     // var task_id = e.currentTarget.id
     wx.request({
-      url: getApp().globalData.serverURL+'/listMembers.php?id='+task_id,
-      header:{
+      url: getApp().globalData.serverURL + '/listMembers.php?id=' + task_id,
+      header: {
         'Content-Type': 'application/json'
       },
 
@@ -119,72 +120,71 @@ Page({
         // console.log("string name of members: ", res.toString().data);
 
 
-
         // console.log("JSONstring name of members: ", JSON.parse(JSON.stringify(res.data[0][0][0].member_name)));
 
-    if (res.data==0){
-      that.setData({
-        list: 0})
+        if (res.data == 0) {
+          that.setData({
+            list: 0
+          })
 
-      console.log("ZERO: ", res.data);
-      wx.showModal({
-        title: '本任务暂无人员清单',
-        content: '回到前页',
-        success (res) {
-          // jump to scan the back side
-          // that.bianshi1(type,imgUrl,result)
-          // that.photo("shenfenzheng")
-          if (res.confirm) {
-            // jump to scan the back side
-            // wx.navigateTo({
-            //   url: '../listTask/listTask',
-            //
-            // })
-            wx.navigateBack({
-              // delta: 2
-            })
-
-
-          }
-          if (res.cancel) {
-            // jump to scan the back side
-            // wx.navigateTo({
-            //   url: '../listTask/listTask',
-            //
-            // })
-            wx.navigateBack({
-              // delta: 2
-            })
+          console.log("ZERO: ", res.data);
+          wx.showModal({
+            title: '本任务暂无人员清单',
+            content: '回到前页',
+            success(res) {
+              // jump to scan the back side
+              // that.bianshi1(type,imgUrl,result)
+              // that.photo("shenfenzheng")
+              if (res.confirm) {
+                // jump to scan the back side
+                // wx.navigateTo({
+                //   url: '../listTask/listTask',
+                //
+                // })
+                wx.navigateBack({
+                  // delta: 2
+                })
 
 
-          }
+              }
+              if (res.cancel) {
+                // jump to scan the back side
+                // wx.navigateTo({
+                //   url: '../listTask/listTask',
+                //
+                // })
+                wx.navigateBack({
+                  // delta: 2
+                })
 
-        }
-      })
 
-    }else {
+              }
 
-      var result = JSON.parse(JSON.stringify(res.data))
-      // console.log("JSONstring name of members: ", JSON.parse(JSON.stringify(res.data[0][0][0].member_name)));
+            }
+          })
+
+        } else {
+
+          var result = JSON.parse(JSON.stringify(res.data))
+          // console.log("JSONstring name of members: ", JSON.parse(JSON.stringify(res.data[0][0][0].member_name)));
 
 
-      that.setData({
-        list: result,
-        member_name: "姓名",
-        phone: "电话",
-        id: "身分证号",
-        birthday: "生日",
-        gender: "性别",
-        signOff_date: "签署日期",
-        approval: "现况",
-        deleteButton:"在本任务删除该员",
-        notSignOff: "尚未签署"
-      })
-    }// if =0
+          that.setData({
+            list: result,
+            member_name: "姓名",
+            phone: "电话",
+            id: "身分证号",
+            birthday: "生日",
+            gender: "性别",
+            signOff_date: "签署日期",
+            approval: "现况",
+            deleteButton: "在本任务删除该员",
+            notSignOff: "尚未签署"
+          })
+        }// if =0
 
 
         // return that.data.list
-
 
 
       },
@@ -197,27 +197,25 @@ Page({
       }
     })
   },
-  deletePersonnel: function (e){
+  deletePersonnel: function (e) {
     console.log("sn= ", e.currentTarget.id)
 
     wx.showModal({
       title: '删除该员',
       content: '若要在本任务删除该员，请按确定',
-      success (res) {
-        // jump to scan the back side
-        // that.bianshi1(type,imgUrl,result)
-        // that.photo("shenfenzheng")
+      success(res) {
+
         if (res.confirm) {
           wx.request({
-            url: getApp().globalData.serverURL+'/deleteTaskMember.php?sn='+e.currentTarget.id,
-            header:{
+            url: getApp().globalData.serverURL + '/deleteTaskMember.php?sn=' + e.currentTarget.id,
+            header: {
               'Content-Type': 'application/json'
             },
 
             success: function (res) {
-            console.log("respose from deleteTaskMember:  ", res.data)
+              console.log("respose from deleteTaskMember:  ", res.data)
 
-              if(res.data ='1'){
+              if (res.data = '1') {
                 wx.showToast({
                   title: '该成员已从本任务删除',
                   icon: 'success',
@@ -225,10 +223,10 @@ Page({
                 })
 
 
-              }else{
+              } else {
                 wx.showToast({
                   title: '删除未成功请与管理员联系',
-                  icon: 'ading',
+                  icon: 'loading',
                   duration: 2000
                 })
 
@@ -259,12 +257,12 @@ Page({
     })
 
 
-
   },
+
 
   downloadFile: function (e) {
     console.log("id= ", e.currentTarget.id)
-    var member_id  = e.currentTarget.id
+    var member_id = e.currentTarget.id
 
     var that = this
     // contractDoc: 'https://www.top-talent.com.cn/linghuo/contract/member_signoff/' + res.data.member[0].member_id + '/' + res.data.member[0].member_id +'-'+wx.getStorageSync("task_id")+ '.pdf'
@@ -275,8 +273,8 @@ Page({
     // console.log( "contract = ",this.data.contractDoc)
     // var src = 'https://www.top-talent.com.cn/linghuo/contract/member_signoff/' + wx.getStorageSync("member_id") + '/' + wx.getStorageSync("member_id") +'-'+wx.getStorageSync("task_id")+ '.pdf'
     // var src = getApp().globalData.serverURL+'/contract/member_signoff/' + wx.getStorageSync("member_id") + '/' + wx.getStorageSync("member_id") +'-'+wx.getStorageSync("task_id")+ '.pdf'
-    var src = getApp().globalData.serverURL+'/contract/member_signoff/' + member_id + '/' + member_id +'-'+that.data.task_id+ '.pdf'
-    console.log( "contract = ",src)
+    var src = getApp().globalData.serverURL + '/contract/member_signoff/' + member_id + '/' + member_id + '-' + that.data.task_id + '.pdf'
+    console.log("contract = ", src)
 
     wx.downloadFile({
       url: src,
@@ -295,61 +293,146 @@ Page({
           }
         })
       },
-      fail:function (res){
+      fail: function (res) {
         console.log(res)
       }
     })
 
   },
 
-export(e){
-let that = this
-  wx.request({
-    url: getApp().globalData.serverURL+'/listMembers.php?export='+wx.getStorageSync("openid")+'&id='+that.data.task_id,
-    header:{
-      'Content-Type': 'application/json'
-    },
+  export(e) {
+    let that = this
+    wx.request({
+      url: getApp().globalData.serverURL + '/listMembers.php?export=' + wx.getStorageSync("openid") + '&id=' + that.data.task_id,
+      header: {
+        'Content-Type': 'application/json'
+      },
 
-    success: function (res) {
+      success: function (res) {
 
-      var src = getApp().globalData.serverURL+'/templates/' + wx.getStorageSync("openid") + '-' + that.data.task_id +'_memberList.csv'
+        var src = getApp().globalData.serverURL + '/templates/' + wx.getStorageSync("openid") + '-' + that.data.task_id + '_memberList.csv'
 
-      wx.downloadFile({
-        url: src,
-        success: function (res) {
-          console.log(res)
-          var Path = res.tempFilePath              //返回的文件临时地址，用于后面打开本地预览所用
-          wx.openDocument({
-            filePath: Path,
-            Type: 'pdf',
-            showMenu: true,
-            success: function (res) {
-              // console.log('打开文档成功')
-              // wx.navigateBack({
-              //   delta:1
-              // })
-            }
-          })
+        wx.downloadFile({
+          url: src,
+          success: function (res) {
+            console.log(res)
+            var Path = res.tempFilePath              //返回的文件临时地址，用于后面打开本地预览所用
+            wx.openDocument({
+              filePath: Path,
+              Type: 'pdf',
+              showMenu: true,
+              success: function (res) {
+                // console.log('打开文档成功')
+                // wx.navigateBack({
+                //   delta:1
+                // })
+              }
+            })
+          },
+          fail: function (res) {
+            console.log(res)
+          }
+        })
+
+
+      },
+      fail: function (res) {
+        console.log("fail: ", res);
+      },
+      complete: function (res) {
+        // wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh();
+      }
+    })
+
+
+  },
+
+  addPersonnel: function (e) {
+    let that = this
+    console.log("add personnel= ", e.currentTarget.id)
+
+    that.setData({
+      addPersona:1,
+      addPerson:'提交',
+      addPerson_description:'请填妥下列资质后，点击提交上传'
+
+    })
+
+  },
+
+  addPerson: function (e) {
+    let that = this
+    console.log("to addPerson= ", e.detail.target.id)
+    console.log("E= ", e.detail.value.input_name)
+    that.setData({
+      addPersona:0,})
+    wx.showToast({
+      title: '成功',
+  icon: 'loading',
+  // duration: 2000
+    })
+    var manager= wx.getStorageSync('member_name')
+
+
+      wx.request({
+        url: getApp().globalData.serverURL + '/addPersonnel.php',
+        method:"POST",
+        header:{
+          // 'Content-Type': 'application/json'
+          'content-type': 'application/x-www-form-urlencoded' //POST修改此处即可
         },
-        fail:function (res){
-          console.log(res)
-        }
-      })
+
+        data:{
+          manager: manager,
+   task_id: e.detail.target.id
+          ,name: e.detail.value.input_name
+       ,uid:  e.detail.value.input_uid
+       ,phone:e.detail.value.input_phone
+       ,bank:e.detail.value.input_bank
+       ,bank_branch:e.detail.value.input_bank_branch
+       ,bank_account: e.detail.value.input_bank_account
+
+        },
+
+
+        success: function (res) {
+        console.log( "add person return result", res.data)
+
+          if(res.data =='11'){
+            var msg = '人员增加成功'
+            var icon = 'success'
+
+        }else{
+            var msg = res.data
+            var icon = 'error'
+          }
+
+          wx.showToast({
+            title: msg,
+            icon: icon,
+            // duration: 2000
+          })
 
 
 
-    },
-    fail: function (res) {
-      console.log("fail: ", res);
-    },
-    complete: function (res) {
-      // wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh();
-    }
-  })
+      },
+      fail: function (res) {
+        console.log("fail: ", res);
+      },
+      complete: function (res) {
+        // wx.hideNavigationBarLoading() //完成停止加载
+        // wx.stopPullDownRefresh();
+        wx.reLaunch({
+          url: 'taskMembers?task_id='+e.detail.target.id
+        })
+      }
+    })
 
 
 
-}
+
+  },
+
 
 })

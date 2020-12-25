@@ -376,6 +376,14 @@ Page({
   },
   editing:function(e) {
 
+     console.log("click: ", e, e.currentTarget.id);
+
+    var task_id = e.currentTarget.id
+
+    wx.navigateTo({
+      url: '../editTask/editTask?task_id='+task_id,
+
+    })
 
 
   },

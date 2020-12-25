@@ -14,7 +14,8 @@ Page({
       always_accept_request:"您也可以选总是允许，不再询问，以免每次询问打扰",
       request_title:"请求",
       request_subtile: "提醒通知",
-      abc: '',
+      loading:''
+      // abc: '',
 
 
   },
@@ -25,7 +26,7 @@ Page({
     var that = this;
     let openid = wx.getStorageSync("openid");
 
-      console.log("进入首页的用户编号为：" + openid);
+      console.log("进入首页的openid用户编号为：" + openid);
 
 
     if (openid == '') { // for the brand new user who enter this app for the first time, call back the user login function on app.js
@@ -34,19 +35,22 @@ Page({
         condition : 0
         // IsMember : app.globalData.IsMember
                 })
-      console.log("SET CONDITION =0：" + that.data.condition);
-        getApp().globalData.log.logging( "user has no openid and set condition to 0 and call userLogin")
+      console.log("no openid, SET CONDITION =0：" + that.data.condition);
+        getApp().globalData.log.logging( "user has no openid and set condition to 0 and call  this is a new user")
 
-      app.userLogin().then(
+
+
+        app.userLogin().then(
 
           function (res){
-            console.log("promise回调后的数据："+res.data.openid);
+            console.log("app.userLogin promise回调后的数据："+res.data.openid);
             console.log("res in page= ",res);
             // var test = that.GetData(res.data.openid);
             // console.log("if res true : ", test);
               that.setData({
                   condition: 1,
-                  openid : res.data.openid
+                  openid : res.data.openid,
+                  loading:'1'
 
 
               })
@@ -56,7 +60,7 @@ Page({
               getApp().GetData(app.globalData.openid)
               // if this is a new user without registering as a member, then only openID will be recorded in local storage
 
-              console.log("进入的用户：" +app.globalData.openid,wx.getStorageSync("member_id"));
+              console.log("进入的用户 openid：" +app.globalData.openid,wx.getStorageSync("member_id"));
 
           }
       ,
@@ -76,7 +80,6 @@ Page({
     {
 //用户缓存存在
         app.globalData.log.logging( "user's openid has been already gotten")
-        app.globalData.log.error( "user's openid has been already gotten")
 
         if(wx.getStorageSync("member_id")){
             that.setData({
@@ -137,15 +140,18 @@ Page({
       // I added it for the dropped user redirect to index without openid, and should be re-login
       if (open_id == '') {
           // that.onLoad();
-          console.log("ex_onShow open_id =null and go getAPP()" );
+          console.log("onShow open_id =null and go getAPP()" );
           getApp().globalData.log.logging("user has no openid at onShow and relaunch index")
 
-          // getApp().onLaunch;
-          wx.reLaunch({
-              url: 'index'
-          })
+          if(that.data.loading !='1'){ // loading =1 means userLogin is processing and need to wait, or else it will loop relaunching many times when waiting for userLogin
+              // getApp().onLaunch;
+              wx.reLaunch({
+                  url: 'index'
+              })
+          }
 
-          console.log("finished go getAPP()" );
+
+          console.log("no openid and reLaunch index to go getAPP()" );
 
       }else{
 
@@ -153,14 +159,16 @@ Page({
       issue log: check if this user has already been assigned to specific task with backend php member_query
 
        */
-      wx.request({
+          console.log("openid is got : ", open_id);
+
+          wx.request({
           url: getApp().globalData.serverURL + '/member_query.php?openid=' + open_id,
           header: {
               'Content-Type': 'application/json'
           },
           success: function (res) {
 
-              getApp().globalData.log.logging("user has openid at onShow and get task ",res)
+              getApp().globalData.log.logging("user has openid at onShow and get task ",JSON.stringify(res))
               // getApp().globalData.log.error("error log with result ",res)
 
               console.log("get data from database :", res.data);
@@ -175,15 +183,22 @@ Page({
 
                   }
 
+
                     // if it is a registered member and has been assigned with job, then advertise the commercials
                   that.setData({
                       commercials:true,
                   })
                     that.shoppingWindows()
 
-                  // var ifmatched='你有指定的任务';
+                  var ifmatched='你有指定的任务';
+
+
+                  if (!wx.getStorageSync("task_id")){
+                      wx.setStorageSync("task_id", res.data[0].task_id);
+                  }
+
                   console.log("check if condition = 1:", that.data.condition);
-                  getApp().globalData.log.logging("user has a matched task ")
+                  getApp().globalData.log.logging("user has a matched task and set to storage ")
 
               } else {
                   getApp().globalData.log.logging("user has NO matched task ")
@@ -256,7 +271,9 @@ Page({
 // record what user has chosen for marketing algorithm
 
 
-        getApp().globalData.log.send()
+        // getApp().globalData.log.send()
+        getApp().globalData.log.onhide()
+
 
     },
 
@@ -328,6 +345,13 @@ Page({
 
         console.log("task tapped, & task ID= ",taskID); //输出点击的view的id，第二种情况就不重复写了
         // console.log("task content:" + JSON.stringify(task));
+        // console.log("task value:" + JSON.stringify(that.data.list));
+
+        // if(matched =='1'){
+        //     taskID=0
+        // }else{
+        //
+        // }
         console.log("task value:" + JSON.stringify(task[taskID]));
         console.log("matched value:" + matched);
         console.log("sign off value:" + signOff);
@@ -380,20 +404,6 @@ Page({
 
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     },
 
     admin_badge(){
@@ -419,61 +429,6 @@ Page({
 
     },
 
-    ifSubscribe(e){
-        let that = this
-        wx.getSetting({withSubscriptions: true,
-            success(res){
-                // console.log("withSubscriptions",res)
-                // console.log("e",e)
-                // console.log("withSubscriptions.subscriptionsSetting-mainSwitch",res.subscriptionsSetting.mainSwitch)
-                // console.log("withSubscriptions.subscriptionsSetting-itemSettings",res.subscriptionsSetting.itemSettings[e])
-                if(!res.subscriptionsSetting.mainSwitch){
-                    //mainswitch should be turn on as true , or else no message will be accepted
-
-                    wx.showModal({
-                        title: '您关闭了订阅消息开关',
-                        content: '请点击右上角三点并在设置中打开接收订阅消息，以便收到通知消息',
-                        success(res) {
-
-                        }
-                    })
-                    that.setData({
-                        abc: 0,
-                    })
-
-
-                }else{
-                    if (res.subscriptionsSetting.itemSettings[e]== "accept"){
-
-
-
-                        console.log("TRUE nitice is accepted",e, res.subscriptionsSetting.itemSettings[e])
-                        that.setData({
-                            abc: 1,
-                        })
-                        return 1;
-                        // console.log("TRUE flag",that.data.subscription)
-
-                    } else{
-                        // console.log("notice is NOT accepted",e, res.subscriptionsSetting.itemSettings[e])
-
-                        that.setData({
-                            abc: 0,
-                        })
-
-                    }
-
-
-
-                }
-
-                console.log("final flag",that.data.subscription)
-
-            },
-            fail(err){}
-        });
-
-    },
     close(){
         let that = this
         that.setData({
@@ -498,6 +453,7 @@ Page({
                             url: that.data.path
                         })
                         console.log("redirect; ", res[tmplIds])
+       getApp().globalData.log.logging("user click on I know to agree wx.requestSubscribeMessage with mp6GxqAHDj4TUiop2I4Txd35ZM8UTVY_FUKPSCvzdNw")
 
                         // return true
                     }else{

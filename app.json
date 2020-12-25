@@ -3,9 +3,6 @@
     "pages/index/index",
     "pages/addFunction/addFunction",
     "pages/chooseLib/chooseLib",
-    "pages/test/test",
-    "pages/draw/draw",
-    "pages/IDcard/IDcard",
     "pages/IDcheck/IDcheck",
     "pages/contract/contract",
     "pages/draw1/draw1",
@@ -15,11 +12,10 @@
     "pages/listTask/listTask",
     "pages/viewTask/viewTask",
     "pages/myProfile/myProfile",
-    "pages/test/failPage",
-    "pages/test/expiredPage",
     "pages/scan/scan",
     "pages/taskMembers/taskMembers",
-    "pages/apply4mgmt/apply4mgmt"
+    "pages/apply4mgmt/apply4mgmt",
+    "pages/editTask/editTask"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

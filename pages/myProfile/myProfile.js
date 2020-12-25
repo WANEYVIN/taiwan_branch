@@ -52,6 +52,7 @@ Page({
         label_nationality: "證件屬籍:"
       })
     }
+    that.getTask();
 
 
     // if (wx.getStorageSync("openid") === 'oMa-B4qh1ancRHPAr32QBHiTQGSk') {
@@ -71,7 +72,7 @@ Page({
 
 
     let open_id = wx.getStorageSync("openid");
-    that.getTask();
+    // that.getTask(); // I move it to onLoad
     // var task_id = that.getTask();
     // console.log("get from getTask = "+ that.getTask())
 
@@ -162,7 +163,8 @@ Page({
   },
   onHide: function () {
 // record what user has chosen for marketing algorithm
-    getApp().globalData.log.send()
+    // getApp().globalData.log.send()
+    getApp().globalData.log.onhide()
   },
   downloadFile(e) {
     var that = this
@@ -352,6 +354,7 @@ Page({
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
+        getApp().globalData.log.logging("user confirm to drop the membership:")
 
           // wx.navigateTo({
           //   url:'../index/index'
@@ -374,10 +377,13 @@ Page({
 
 
             success: function (ret) {
-        getApp().globalData.log.logging("self drop the member:",ret)
 
               console.log('db result ', ret);
+
+              getApp().globalData.log.logging("drop the member and clean the storage",ret)
+              getApp().globalData.log.send()
               wx.clearStorageSync()
+
               console.log('clean storage');
               // wx.navigateTo({
               //   url:'../index/index'
@@ -385,6 +391,7 @@ Page({
               // wx.reLaunch({
               //   url: 'index'
               // })
+
               wx.switchTab({
                 url: '../index/index',
               });
@@ -557,6 +564,9 @@ Page({
           })
 
         }
+
+
+
 
 
       }

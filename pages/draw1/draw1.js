@@ -20,6 +20,14 @@ Page({
         });
 
     },
+    onHide: function () {
+// record what user has chosen for marketing algorithm
+
+
+        getApp().globalData.log.send()
+
+    },
+
     /**
      * 触摸开始
      */
@@ -126,6 +134,7 @@ Page({
         var app = getApp();
             // console.log('check temp file: ',this.data.FilePath);
             console.log('memberID : ',this.data.member_id);
+    getApp().globalData.log.logging("user complete sign off upload sign-off signature to the backend for further procedures")
 
             /*
                     wx.canvasToTempFilePath({
@@ -185,6 +194,8 @@ Page({
                                     content: "上传失败",
                                     showCancel: false
                                 });
+                                getApp().globalData.log.error("FAILED to upload to uploaded_doc.php",res)
+
                                 return;
                             }
                             var data = res.data;
@@ -282,12 +293,16 @@ Page({
      * 清除涂鸦信息
      */
     clearCanvas: function (options) {
+        getApp().globalData.log.logging("user use eraser for erasing")
+
         console.log("clearCanvas");
         this.setData({
             isClear: true
         });
     },
     pen: function (options) {
+        getApp().globalData.log.logging("user use pen for writing")
+
         console.log("start writing");
         this.setData({
             isClear: false

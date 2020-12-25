@@ -95,7 +95,7 @@ App({    /**
                 success: function (res) {
                     var code = res.code;
 
-                    console.log(res+"code= "+code)
+                    console.log("code= "+code)
                     wx.request({
                         // url: '后台通过获取前端传的code返回openid的接口地址',
                        url: that.globalData.serverURL+'/getOpenID.php?code='+code,
@@ -227,8 +227,6 @@ App({    /**
         })
 
     },
-
-
 
 
 

@@ -8,8 +8,77 @@
     <view class="taskButtons">
         <button class="weui-btn_primary" id="{{task_id}}" bindtap="export">{{export}}</button>
     </view>
+    <view class="taskButtons">
+        <button class="weui-btn_primary" id="{{task_id}}" bindtap="addPersonnel">{{addPersonnel}}</button>
+    </view>
 
 </view>
+
+    <view wx:if="{{addPersona=='1'}}">
+        <form bindsubmit="addPerson" >
+
+        <view class=" back_colour">
+            <view class="weui-form__desc">{{addPerson_description}}
+                <button formType="submit" class="weui-btn_primary" id="{{task_id}}" >{{addPerson}}</button>
+            </view>
+
+            <view class="weui-cell weui-cell_active">
+
+            <view class="weui-cell__hd"><label class="weui-label">名字</label></view>
+        <view class="weui-cell__bd">
+            <input name="input_name" class="weui-input" placeholder="请填写" placeholder-class="weui-input__placeholder" />
+        </view>
+
+            </view>
+
+            <view class="weui-cell weui-cell_active">
+
+                <view class="weui-cell__hd"><label class="weui-label">身份證號</label></view>
+                <view class="weui-cell__bd">
+                    <input name="input_uid" class="weui-input" placeholder="请填写" placeholder-class="weui-input__placeholder" />
+                </view>
+
+            </view>
+
+            <view class="weui-cell weui-cell_active">
+
+                <view class="weui-cell__hd"><label class="weui-label">電話</label></view>
+                <view class="weui-cell__bd">
+                    <input name="input_phone" class="weui-input" placeholder="请填写" placeholder-class="weui-input__placeholder" />
+                </view>
+
+            </view>
+            <view class="weui-cell weui-cell_active">
+
+                <view class="weui-cell__hd"><label class="weui-label">指定銀行</label></view>
+                <view class="weui-cell__bd">
+                    <input name="input_bank" class="weui-input" placeholder="请填写" placeholder-class="weui-input__placeholder" />
+                </view>
+
+            </view><view class="weui-cell weui-cell_active">
+
+            <view class="weui-cell__hd"><label class="weui-label">銀行支行</label></view>
+            <view class="weui-cell__bd">
+                <input name="input_bank_branch" class="weui-input" placeholder="请填写" placeholder-class="weui-input__placeholder" />
+            </view>
+
+        </view><view class="weui-cell weui-cell_active">
+
+            <view class="weui-cell__hd"><label class="weui-label">銀行帳號</label></view>
+            <view class="weui-cell__bd">
+                <input name="input_bank_account" class="weui-input" placeholder="请填写" placeholder-class="weui-input__placeholder" />
+            </view>
+
+        </view>
+        </view>
+        </form>
+    <view class="weui-form__desc separator_colour">下方为现有人员</view>
+
+
+        </view>
+
+
+
 </view>
 <block wx:for="{{list}}" wx:key="list" wx:for-index="idx" wx:for-item="value">
 
